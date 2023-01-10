@@ -26,16 +26,34 @@
     </div>
     <div class="row mb-4">
       <div class="col-12">
-        <label class="title" for="">¿Cuántas mesas están abiertas?
+        <label class="title" for="">¿Cuántas mesas reales están abiertas?
         </label>
         <br />
         <span>{{ data.data.tables }}</span>
       </div>
       <div class="col-12">
-        <label class="title" for="">¿Cuántos comensales hay?
+        <label class="title" for="">¿Cuántos comensales reales hay en sucursal?
         </label>
         <br />
         <span>{{ data.data.dinners }}</span>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12">
+            <label class="title" for="">Comentario
+            </label>
+            <br />
+            <span>{{ data.data.comment }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.data.photoPeopleCountings; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
       </div>
     </div>
 

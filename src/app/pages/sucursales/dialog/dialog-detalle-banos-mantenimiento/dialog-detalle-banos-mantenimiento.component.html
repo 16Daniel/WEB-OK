@@ -32,18 +32,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.urinals" type="checkbox" class="custom-control-input" id="urinals">
-          <label class="custom-control-label" for="urinals">¿Se encuentra en buen estado?</label>
+          <label class="custom-control-label" for="urinals">¿Funcionan correctamente y sin fugas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.urinals === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentUrinals }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.urinals === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo1; index as position">
             <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -57,18 +57,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.handWashBasin" type="checkbox" class="custom-control-input" id="handWashBasin">
-          <label class="custom-control-label" for="handWashBasin">¿Tienen fugas? ¿Funcionan correctamente?</label>
+          <label class="custom-control-label" for="handWashBasin">¿Funcionan correctamente y sin fugas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.handWashBasin === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentHandWashBasin }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.handWashBasin === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo2; index as position">
             <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -82,18 +82,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.luminaires" type="checkbox" class="custom-control-input" id="luminaires">
-          <label class="custom-control-label" for="luminaires">¿Completos y funcionando?</label>
+          <label class="custom-control-label" for="luminaires">¿Focos y leds funcionan correctamente?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentLuminaires }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo3; index as position">
             <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -110,15 +110,15 @@
           <label class="custom-control-label" for="doors">¿En buen estado y funcionando?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.doors === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentDoors }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.doors === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo4; index as position">
             <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>

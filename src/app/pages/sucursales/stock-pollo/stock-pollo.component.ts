@@ -13,28 +13,55 @@ export class StockPolloComponent implements OnInit {
   public today = new Date();
   public DB;
   public data: any[] = [];
-
+  public user;
+  public ciudad;
+  public catState: any[] = [];
+  public catSucursal: any[] = [];  
+  public sucursal;
+  public catRegionales: any[] = [];
+  public regional;
+  public dateInit;
+  public dateEnd;
   constructor(
     public service: ServiceGeneralService,
     public _dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    // console.log("get data");
-    // this.service
-    //   .serviceGeneralGet(`StockChicken/Admin/All-Branch`)
-    //   .subscribe((resp) => {
-    //     if (resp.success) {
-    //       this.data = resp.result;
-    //       console.log("data", this.data);
-    //     }
-    //   });
+    this.getdataState();
+    this.user = JSON.parse(localStorage.getItem("userData"));
+    console.log('user', this.user);
+    if (this.user.roleId === 2) {
+      this.ciudad = (this.user.stateId).toString();
+      console.log('City', this.ciudad);
+      this.getdataSucursal(this.ciudad);
+    }
   }
-  getdataStock(db) {
-    console.log(`base seleccionada ${db}`);
-
+  getdataState() {
+    this.service.serviceGeneralGet("User/GetStateList").subscribe((resp) => {
+      if (resp.success) {
+        this.catState = resp.result;
+        console.log("resp state", this.catState);
+      }
+    });
+  }
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    let endpoint = this.user.roleId !== 2 ? 
+      `User/Branches/${id}/${this.ciudad}` : `User/Branches/${this.user.id}/${this.user.stateId}`;  
+    this.service.serviceGeneralGet(endpoint).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
+  getdataStock(ciudad, sucursal, dateInit, dateEnd) {
+    if (ciudad == undefined || dateEnd == undefined || dateInit == undefined || sucursal == undefined) {
+      return
+    }
     this.service
-      .serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${db}`)
+      .serviceGeneralGet(`StockChicken/Admin/Stock?city=${ciudad}&branch=${sucursal}&dateInit=${dateInit}&dateEnd=${dateEnd}`)
       .subscribe((resp) => {
         if (resp.success) {
           this.data = resp.result;
@@ -42,6 +69,15 @@ export class StockPolloComponent implements OnInit {
         }
       });
     // StockChicken/Admin/All-Branch?dataBase=DB2
+  }
+  getdataRegional(id){
+    this.catRegionales = []; 
+    this.service.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catRegionales = resp.result;
+        console.log("resp regionales", this.catRegionales);
+      }
+    });
   }
   addStock(id: number, name: string, branch: number) {
     const dialogRef = this._dialog.open(DialogAddStockPolloComponent, {

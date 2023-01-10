@@ -17,6 +17,7 @@ export class DialogDetalleEncuestaComponent implements OnInit {
   public taskId;
   public dataBranch: any[] = [];
   public nameBranch = '';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
   constructor(public dialogRef: MatDialogRef<DialogDetalleEncuestaComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,

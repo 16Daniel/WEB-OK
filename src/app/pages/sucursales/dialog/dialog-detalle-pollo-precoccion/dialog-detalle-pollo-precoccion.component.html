@@ -24,143 +24,36 @@
         <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
       </div>
     </div>
-    <div class="row mb-4" *ngIf="data.data.precookedChickenOnTheTable === true">
+    <div class="row mb-4">
       <div class="col-12">
         <div class="row">
-          <div class="col-6">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.precookedChickenOnTheTable" type="checkbox"
-                class="custom-control-input" id="customSwitch2">
-              <label class="custom-control-label" for="customSwitch2">¿Hay pollo precocido en tabla?</label>
-            </div>
-          </div>
-          <div class="col-6">
-            <label class="title" for="">Cantidad de pollo en tabla
+          <div class="col-12">
+            <label class="title" for="">Cantidad de kilos precocidos indicados en tu tabla de precocción de pollo
             </label>
             <br />
             <span>{{ data.data.amountPrecookedChickenOnTheTable }}</span>
           </div>
         </div>
-
       </div>
-      <!-- pollo general -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-6">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.precookedChickenInGeneral" type="checkbox"
-                class="custom-control-input" id="customSwitch3">
-              <label class="custom-control-label" for="customSwitch3">¿Hay pollo precocido en general?</label>
-            </div>
-          </div>
-          <div class="col-6">
-            <label class="title" for="">Cantidad de pollo en general
-            </label>
-            <br />
-            <span>{{ data.data.amountPrecookedChickenInGeneral }}</span>
-          </div>
-        </div>
-
-      </div>
-      <div class="col-12">
-        <div class="row">
-          <div class="col-6">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.bonelesOrPrecookedPotatoes" type="checkbox"
-                class="custom-control-input" id="customSwitch1">
-              <label class="custom-control-label" for="customSwitch1">¿Hay Boneless o papas precocidas?</label>
-            </div>
-          </div>
-          <div class="col-6">
-            <label class="title" for="">Cantidad
-            </label>
-            <br />
-            <span>{{ data.data.amountBonelesOrPrecookedPotatoes }}</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    <!-----------------faslse chicken----------------->
-
-    <div class="row mb-4" *ngIf="data.data.precookedChickenOnTheTable !== true">
-      <!--chicken in table-->
       <div class="col-12">
         <div class="row">
           <div class="col-12">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.precookedChickenOnTheTable" type="checkbox"
-                class="custom-control-input" id="customSwitch22">
-              <label class="custom-control-label" for="customSwitch22">¿Hay pollo precocido en tabla?</label>
-            </div>
-          </div>
-          <div class="col-12">
-            <label class="title" for="">Comentario</label>
+            <label class="title" for="">Comentario
+            </label>
             <br />
             <span>{{ data.data.commentPrecookedChickenOnTheTable }}</span>
           </div>
-          <div class="col-12">
-            <label class="title" for="">Fotografías</label>
-            <div class="row">
-              <div class="col-4" *ngFor="let photo of data.photos; index as position">
-                <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-      <!-- chicken general -->
       <div class="col-12">
+        <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-12">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.precookedChickenInGeneral" type="checkbox"
-                class="custom-control-input" id="customSwitch22">
-              <label class="custom-control-label" for="customSwitch22">¿Hay pollo precocido en general?</label>
-            </div>
-          </div>
-          <div class="col-12">
-            <label class="title" for="">Comentario</label>
-            <br />
-            <span>{{ data.data.commentPrecookedChickenInGeneral }}</span>
-          </div>
-          <div class="col-12">
-            <label class="title" for="">Fotografías</label>
-            <div class="row">
-              <div class="col-4" *ngFor="let photo of data.photos; index as position">
-                <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- boneless  -->
-      <div class="col-12">
-        <div class="row">
-          <div class="col-12">
-            <div class="custom-control custom-switch">
-              <input disabled [(ngModel)]="data.data.bonelesOrPrecookedPotatoes" type="checkbox" class="custom-control-input"
-                id="customBonneless">
-              <label class="custom-control-label" for="customBonneless">¿Hay Boneless o papas precocidas?</label>
-            </div>
-          </div>
-          <div class="col-12">
-            <label class="title" for="">Comentario</label>
-            <br />
-            <span>{{ data.data.commentBonelesOrPrecookedPotatoes }}</span>
-          </div>
-          <div class="col-12">
-            <label class="title" for="">Fotografías</label>
-            <div class="row">
-              <div class="col-4" *ngFor="let photo of data.photos; index as position">
-                <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
-              </div>
-            </div>
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
 

@@ -32,18 +32,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.accessDoors" type="checkbox" class="custom-control-input" id="accessDoors">
-          <label class="custom-control-label" for="accessDoors">¿Existe algún descuadre?</label>
+          <label class="custom-control-label" for="accessDoors">¿Cierra correctamente?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.accessDoors === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentAccessDoors }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.accessDoors === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo1; index as position">
             <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -60,15 +60,15 @@
           <label class="custom-control-label" for="badges">¿Funcionan correctamente?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.badges === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentBadges }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.badges === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo2; index as position">
             <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -82,18 +82,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.luminaires" type="checkbox" class="custom-control-input" id="luminaires">
-          <label class="custom-control-label" for="luminaires">¿Fijas con trampas de olor y tornillería?</label>
+          <label class="custom-control-label" for="luminaires">¿Focos, leds y letreros luminosos funcionan correctamente?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentLuminaires }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.luminaires === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo3; index as position">
             <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -111,15 +111,15 @@
           <label class="custom-control-label" for="switches">¿Completos y funcionando?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.switches === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentSwitches }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.switches === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo4; index as position">
             <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -136,15 +136,15 @@
           <label class="custom-control-label" for="furnitureOne">¿Las mesas están fijas a su base y niveladas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.furnitureOne === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentFurnitureOne }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.furnitureOne === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo5; index as position">
             <img *ngIf="photo.type === 5" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -163,15 +163,15 @@
           <label class="custom-control-label" for="furnitureTwo">¿Sillas en buen estado? ¿Tienen sus gomas completas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.furnitureTwo === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentFurnitureTwo }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.furnitureTwo === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo6; index as position">
             <img *ngIf="photo.type === 6" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -181,7 +181,7 @@
     <!-- Boths -->
     <div class="row mb-4">
       <div class="col-12 mb-2">
-        <span>Boths</span>
+        <span>Booths</span>
       </div>
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
@@ -190,15 +190,15 @@
           <label class="custom-control-label" for="boths">¿En buen estado?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.boths === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentBoths }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.boths === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo7; index as position">
             <img *ngIf="photo.type === 7" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -216,15 +216,15 @@
           <label class="custom-control-label" for="fireExtinguishers">¿Tienen la presión correcta?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.fireExtinguishers === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentFireExtinguishers }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.fireExtinguishers === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo8; index as position">
             <img *ngIf="photo.type === 8" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>

@@ -13,29 +13,60 @@
     <div class="col-md-3 align-center">
       <h4 class="subtitle-negro">INFORME DE ACTIVIDAD</h4>
     </div>
-    <div class="col-md-3 align-center">
-      <div class="form-group">
-        <label class="non-margin" for="Ciudad">Ciudad</label>
-        <select (change)="getdataSucursal(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
-          <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
-        </select>
+  </div>
+  <div class="row my-4">
+    <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo)" [(ngModel)]="sucursal"
+            class="form-control" id="Sucursal">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
       </div>
-    </div>
-    <div class="col-md-3 align-center">
-      <div class="form-group">
-        <label class="non-margin" for="Sucursal">Sucursal</label>
-        <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash)" [(ngModel)]="sucursal"
-          class="form-control" id="Sucursal">
-          <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
-        </select>
+    </ng-container>
+    <ng-template #AdminSectionB>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+            <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+          </select>
+        </div>
       </div>
-    </div>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Regional</label>
+          <select (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
+            <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Sucursal2">Sucursal</label>
+          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaInicial">Fecha</label>
+        <label for="fechaInicial">Fecha Inicio</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash)" />
+            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo)" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
+        <label for="fechaFinal">Fecha Final</label>
+        <div class="input-group">
+          <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
+            [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo)" />
         </div>
       </div>
     </div>
@@ -51,7 +82,7 @@
     </div>
     <div class="col-12 col-md-4 col-sm-12 align-center">
       <span class="date-grey">
-        {{ dateDash | date: "dd MMM yyy" }}
+        {{ dateDash | date: "dd MMM yyy" }} / {{ dateDashTwo | date: "dd MMM yyy" }}
       </span>
     </div>
     <div class="col-4 align-center">
@@ -145,28 +176,28 @@
           <table class="table">
             <thead class="thead-warning header_table">
               <tr>
-                <th scope="col">Empleado</th>
-                <th scope="col">Puesto</th>
+                <th scope="col">Vendedores</th>
+                <th scope="col">Cajeros</th>
+                <th scope="col">Cocineros</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Hora de llegada</th>
                 <th scope="col">Asistencia</th>
                 <th scope="col">Detalle</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of data.assistanceMorningsCollection">
-                <th scope="row">{{item.name}}</th>
-                <td>{{item.jobTittle}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
-                <td>{{item.timeArrive | date: "dd MMM yyy"}}%</td>
+                <th scope="row">{{item.sellers}}</th>
+                <td>{{item.cashiers}}</td>
+                <td>{{ item.chefs }}</td>
+                <td>{{item.date | date: "dd MMM yyy HH:mm"}}</td>
                 <td>
-                  <img *ngIf="item.assistanceStatus === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
+                  <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
                     height="32">
-                  <img *ngIf="item.assistanceStatus === 0" src="./assets/icon/icon-falt.svg" alt="asistio" width="32"
+                  <img *ngIf="item.status === 0" src="./assets/icon/icon-falt.svg" alt="asistio" width="32"
                     height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32"
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32"
                     height="32">
                 </td>
               </tr>
@@ -178,28 +209,28 @@
           <table class="table">
             <thead class="thead-warning header_table">
               <tr>
-                <th scope="col">Empleado</th>
-                <th scope="col">Puesto</th>
+                <th scope="col">Vendedores</th>
+                <th scope="col">Cajeros</th>
+                <th scope="col">Cocineros</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">Hora de llegada</th>
                 <th scope="col">Asistencia</th>
                 <th scope="col">Detalle</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let item of data.assistanceMorningsCollection">
-                <th scope="row">{{item.name}}</th>
-                <td>{{item.jobTittle}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
-                <td>{{item.timeArrive | date: "dd MMM yyy"}}%</td>
+                <th scope="row">{{item.sellers}}</th>
+                <td>{{item.cashiers}}</td>
+                <td>{{ item.chefs }}</td>
+                <td>{{item.date | date: "dd MMM yyy HH:mm"}}</td>
                 <td>
-                  <img *ngIf="item.assistanceStatus === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
+                  <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
                     height="32">
-                  <img *ngIf="item.assistanceStatus === 0" src="./assets/icon/icon-falt.svg" alt="asistio" width="32"
+                  <img *ngIf="item.status === 0" src="./assets/icon/icon-falt.svg" alt="asistio" width="32"
                     height="32">
                 </td>
                 <td>
-                  <img *ngIf="item.detail !== 0" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32"
+                  <img *ngIf="item.detail !== 0" (click)="detail(item, 1, ciudad)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32"
                     height="32">
                 </td>
               </tr>

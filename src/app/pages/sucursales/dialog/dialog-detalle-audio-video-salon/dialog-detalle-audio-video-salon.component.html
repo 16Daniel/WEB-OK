@@ -35,7 +35,7 @@
             piso?</label>
         </div>
       </div>
-      <div *ngIf="data.data.tvWorksProperly === false" class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentTvWorksProperly }}</span>
@@ -45,11 +45,11 @@
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.speakersWorkProperly" type="checkbox" class="custom-control-input"
             id="speakersWorkProperly">
-          <label class="custom-control-label" for="speakersWorkProperly">¿Funcionan de manera correcta todas las bocinas en terraza?
+          <label class="custom-control-label" for="speakersWorkProperly">¿Funcionan de manera correcta todas las bocinas en piso?
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.speakersWorkProperly === false" class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentSpeakersWorkProperly }}</span>
@@ -63,7 +63,7 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.terraceTvWorksProperly === false" class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentTerraceTvWorksProperly }}</span>
@@ -78,10 +78,27 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.terraceSpeakersWorkProperly === false" class="col-12 mb-2">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentTerraceSpeakersWorkProperly }}</span>
+      </div>
+      <!--PHOTOS-->
+      <div class="col-12">
+        <label class="title" for="">Fotografías Cont. A</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of photoAudioVideosA; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <label class="title" for="">Fotografías Cont. B</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of photoAudioVideosB; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
       </div>
     </div>
   </div>

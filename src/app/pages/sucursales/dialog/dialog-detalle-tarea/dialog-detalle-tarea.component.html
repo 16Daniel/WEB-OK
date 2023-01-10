@@ -24,21 +24,19 @@
         <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
       </div>
     </div>
-
-    <!-- este solo es para cantidaddes -->
-    <div *ngIf="data.data.amount"  class="row mb-4">
-      <div class="col-12">
-        <label class="title" for="">Cantidad</label>
-        <br />
-        <span>{{ data.data.amount }}</span>
-      </div>
-    </div>
-    <!-- averageTime -->
-    <div *ngIf="data.data.averageTime" class="row mb-4">
+    <div *ngIf="data.data.averageTime"  class="row mb-4">
       <div class="col-12">
         <label class="title" for="">Tiempo</label>
         <br />
         <span>{{ data.data.averageTime }}</span>
+      </div>
+    </div>
+    <!-- este solo es para cantidaddes -->
+    <div *ngIf="data.data.amount"  class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Cantidad o porcentaje {{data.name}}</label>
+        <br />
+        <span>{{ data.data.amount }}</span>
       </div>
     </div>
     <div class="row mb-4">

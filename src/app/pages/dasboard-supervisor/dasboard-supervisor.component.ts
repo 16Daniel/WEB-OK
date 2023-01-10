@@ -6,6 +6,7 @@ import { MatDialog, MatDialogRef } from "@angular/material/dialog";
 import { DialogDetalleProductoRiesgoComponent } from '../sucursales/dialog/dialog-detalle-producto-riesgo/dialog-detalle-producto-riesgo.component';
 import { DialogVoladoEfectivoComponent } from '../sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
 import { DialogDetalleStockPolloComponent } from '../sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
+import { DialogDetalleAperturaComponent } from '../sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
 
 @Component({
   selector: 'app-dasboard-supervisor',
@@ -25,14 +26,22 @@ export class DasboardSupervisorComponent implements OnInit {
   public today = new Date();
   public dateDash;
   public dateFormat;
-
+  public dateDashTwo;
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
   public ciudad;
   public catState: any[] = [];
   public catSucursal: any[] = [];
+  public catCompletado: any[] = [ 
+    { id: 2, text: 'Todo'},
+    { id: 1, text: 'Si'}, 
+    { id: 0, text: 'No'}
+    ];
+  public isDone;
   public db;
+  public catRegionales: any[] = [];
+  public regional;
 
 
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
@@ -41,18 +50,21 @@ export class DasboardSupervisorComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
     this.getdataState();
-
+    if (this.user.roleId === 2) {
+      this.ciudad = (this.user.stateId).toString();
+      this.getdataSucursal(this.ciudad);
+    }
   }
-  getDataDash(branch, date) {
+  getDataDash(branch, dateOne, dateTwo, isDone) {
     console.log('sucursal', branch);
-    console.log('dateDash', date);
-    if (branch == undefined || date == undefined) {
+    console.log('dateDash', dateOne);
+    if (branch == undefined || dateOne == undefined || dateTwo == undefined || isDone == undefined) {
       return
     }
     else {
-      console.log(date);
+      console.log(dateOne);
       this.services.serviceGeneralGet(`Dashboard/${branch
-        }/Supervisor?dateTime=${date}`).subscribe(resp => {
+        }/Supervisor?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
           if (resp.success) {
             this.data = resp.result;
             console.log('data dash', this.data);
@@ -83,8 +95,8 @@ export class DasboardSupervisorComponent implements OnInit {
         case 'Validación de asistencias':
 
           break;
-        case 'Validación de gas':
-          console.log('validacion de gas');
+        case 'GAS':
+          console.log('GAS');
           this.services
             .serviceGeneralGet('ValidationGas/' + data.detail)
             .subscribe((resp) => {
@@ -108,43 +120,48 @@ export class DasboardSupervisorComponent implements OnInit {
           break;
         case 'Stock de pollo':
           break;
-        case 'SALÓN MONTADO':
-          console.log('SALÓN MONTADO');
+        case 'APERTURA':
+          console.log('APERTURA');
           this.services
-            .serviceGeneralGet('ToSetTable/' + data.detail)
+            .serviceGeneralGet('ToSetTable/By-Id/' + data.detail)
             .subscribe((resp) => {
               if (resp.success) {
                 this.dataTask = resp.result;
                 this.photosTemp = this.dataTask.photoToSetTables;
                 console.log('get data', this.dataTask);
-                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                const dialog = this.dialog.open(DialogDetalleAperturaComponent, {
                   data: {
                     data: this.dataTask,
                     photos: this.photosTemp,
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: '98vw', //sets width of dialog
+                  height:'70vh', //sets width of dialog
+                  maxWidth: '100vw', //overrides default width of dialog
+                  maxHeight: '100vh', //overrides default height of dialog
                 });
                 dialog.afterClosed().subscribe();
               }
             });
 
           break;
-        case 'Mesas en espera':
+        case 'EN ESPERA':
 
-          console.log('Mesas en espera');
+          console.log('EN ESPERA');
           this.services
             .serviceGeneralGet('WaitListTable/' + data.detail)
             .subscribe((resp) => {
               if (resp.success) {
                 this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoToSetTables;
                 console.log('get data', this.dataTask);
                 const dialog = this.dialog.open(DialogDetalleMesaEsperaComponent, {
                   data: {
                     data: this.dataTask,
                     name: data.nameTask,
                     baseDatos: this.db,
+                    photos: this.photosTemp
                   },
                   width: "30rem",
                 });
@@ -153,6 +170,55 @@ export class DasboardSupervisorComponent implements OnInit {
             });
 
           break;
+        case 'BAÑOS':
+
+          console.log('BAÑOS');
+          this.services
+            .serviceGeneralGet(`LivingRoomBathroomCleaning/${data.detail}`)
+            .subscribe((resp) => {
+              if (resp.success) {
+                this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoLivingRoomBathroomCleanings;
+                console.log('get data', this.dataTask);
+                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                  data: {
+                    data: this.dataTask,
+                    name: data.nameTask,
+                    baseDatos: this.db,
+                    photos: this.photosTemp
+                  },
+                  width: "30rem",
+                });
+                dialog.afterClosed().subscribe();
+              }
+            });
+
+          break;
+
+          case 'VOLADO':
+
+            console.log('VOLADO');
+            this.services
+              .serviceGeneralGet(`CashRegisterShortage/${data.detail}`)
+              .subscribe((resp) => {
+                if (resp.success) {
+                  this.dataTask = resp.result;
+                  this.photosTemp = this.dataTask.photoCashRegisterShortages;
+                  console.log('get data', this.dataTask);
+                  const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                    data: {
+                      data: this.dataTask,
+                      name: data.nameTask,
+                      baseDatos: this.db,
+                      photos: this.photosTemp
+                    },
+                    width: "30rem",
+                  });
+                  dialog.afterClosed().subscribe();
+                }
+              });
+  
+            break;
         default:
           break;
       }
@@ -207,8 +273,8 @@ export class DasboardSupervisorComponent implements OnInit {
             });
 
           break;
-        case 'RESGUARDO DE PROPINA':
-          console.log('RESGUARDO DE PROPINA');
+        case 'PROPINA':
+          console.log('PROPINA');
           this.services
             .serviceGeneralGet('Tip/' + data.detail)
             .subscribe((resp) => {
@@ -229,8 +295,8 @@ export class DasboardSupervisorComponent implements OnInit {
               }
             });
           break;
-        case 'Limpieza de salón y baños':
-          console.log('Limpieza de salón y baños');
+        case 'LIMPIEZA':
+          console.log('LIMPIEZA');
           this.services
             .serviceGeneralGet('LivingRoomBathroomCleaning/' + data.detail)
             .subscribe((resp) => {
@@ -252,8 +318,8 @@ export class DasboardSupervisorComponent implements OnInit {
             });
           break;
 
-        case 'Resguardo de tabletas':
-          console.log('Limpieza de salón y baños');
+        case 'TABLETAS':
+          console.log('TABLETAS');
           this.services
             .serviceGeneralGet('TabletSafeKeeping/' + data.detail)
             .subscribe((resp) => {
@@ -298,8 +364,8 @@ export class DasboardSupervisorComponent implements OnInit {
               }
             });
           break;
-        case 'Mesas en espera':
-          console.log('Mesas en espera');
+        case 'EN ESPERA':
+          console.log('EN ESPERA');
           this.services
             .serviceGeneralGet('WaitListTable/' + data.detail)
             .subscribe((resp) => {
@@ -321,8 +387,8 @@ export class DasboardSupervisorComponent implements OnInit {
 
           break;
 
-        case 'Volado de efectivo':
-          console.log('Volado de efectivo');
+        case 'VOLADO':
+          console.log('VOLADO');
           this.services
             .serviceGeneralGet('CashRegisterShortage/' + data.detail)
             .subscribe((resp) => {
@@ -366,10 +432,21 @@ export class DasboardSupervisorComponent implements OnInit {
   }
   getdataSucursal(id) {
     this.catSucursal = [];
-    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+    let endpoint = this.user.roleId !== 2 ? 
+      `User/Branches/${id}/${this.ciudad}` : `User/Branches/${this.user.id}/${this.user.stateId}`;  
+    this.services.serviceGeneralGet(endpoint).subscribe((resp) => {
       if (resp.success) {
         this.catSucursal = resp.result;
         console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
+  getdataRegional(id){
+    this.catRegionales = []; 
+    this.services.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catRegionales = resp.result;
+        console.log("resp regionales", this.catRegionales);
       }
     });
   }

@@ -27,25 +27,57 @@
     <!-- body -->
     <div class="row mb-4">
       <div class="col-12 mb-2">
+        <label class="title" for="">Jabon</label>
+      </div>
+      <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.isThereSoapPaper" type="checkbox" class="custom-control-input"
             id="isThereSoapPaper">
-          <label class="custom-control-label" for="isThereSoapPaper">¿La barra está limpia?
+          <label class="custom-control-label" for="isThereSoapPaper">¿Los dispensadores tienen jabón?
           </label>
         </div>
       </div>
       <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
-        <span>{{ data.data.comment }}</span>
+        <span>{{ data.data.commentSoapPaper }}</span>
       </div>
     </div>
     <div class="row mb-4">
       <div class="col-12">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
-            <img src="{{ url }}{{ photo.photo }}" alt="">
+          <div class="col-4" *ngFor="let photo of data.data.photoWashBasinWithSoapPapers; index as position">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mb-4">
+      <div class="col-12 mb-2">
+        <label class="title" for="">Funcionan</label>
+      </div>
+      <div class="col-12 mb-2">
+        <div class="custom-control custom-switch">
+          <input disabled [(ngModel)]="data.data.isThereDryer" type="checkbox" class="custom-control-input"
+            id="isThereDryer">
+          <label class="custom-control-label" for="isThereDryer">¿El secador/ el dispensador de papel funciona correctamente?
+          </label>
+        </div>
+      </div>
+      <div class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDryer }}</span>
+      </div>
+    </div>
+    <div class="row mb-4">
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.data.photoWashBasinWithSoapPapers; index as position">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
       </div>

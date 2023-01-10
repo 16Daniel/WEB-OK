@@ -18,7 +18,7 @@ export class DialogDetalleTareaComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
 
   constructor(public dialogRef: MatDialogRef<DialogDetalleTareaComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,

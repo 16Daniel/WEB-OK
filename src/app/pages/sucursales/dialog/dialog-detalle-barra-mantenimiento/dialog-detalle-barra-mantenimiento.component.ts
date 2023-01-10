@@ -18,7 +18,11 @@ export class DialogDetalleBarraMantenimientoComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public photo1: any[] = []; 
+  public photo2: any[] = []; 
+  public photo3: any[] = [];
+  public photo4: any[] = [];
   constructor(public dialogRef: MatDialogRef<DialogDetalleBarraMantenimientoComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
@@ -31,7 +35,10 @@ export class DialogDetalleBarraMantenimientoComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
+    this.photo1 = this.param.photos.filter(x => x.type === 1);
+    this.photo2 = this.param.photos.filter(x => x.type === 2);
+    this.photo3 = this.param.photos.filter(x => x.type === 3);
+    this.photo4 = this.param.photos.filter(x => x.type === 4);
   }
   close() {
     this.dialogRef.close();

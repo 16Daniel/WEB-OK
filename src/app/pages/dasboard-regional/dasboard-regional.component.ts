@@ -51,14 +51,23 @@ export class DasboardRegionalComponent implements OnInit {
   // variables de calendario
   public today = new Date();
   public dateDash;
+  public dateDashTwo;
   public dateFormat;
   public dataTask;
+  public isDone;
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
   public ciudad;
   public catState: any[] = [];
   public catSucursal: any[] = [];
+  public catCompletado: any[] = [ 
+    { id: 2, text: 'Todo'},
+    { id: 1, text: 'Si'}, 
+    { id: 0, text: 'No'}
+    ];
+  public catRegionales: any[] = [];
+  public regional;
   public db;
 
   constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
@@ -69,16 +78,21 @@ export class DasboardRegionalComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
     this.getdataState();
+    if (this.user.roleId === 2) {
+      this.ciudad = (this.user.stateId).toString();
+      console.log('City', this.ciudad);
+      this.getdataSucursal(this.ciudad);
+    }
   }
-  getDataDash(branch, date) {
+  getDataDash(branch, dateOne, dateTwo, isDone) {
     console.log('sucursal', branch);
-    console.log('dateDash', date);
-    if (branch == undefined || date == undefined) {
+    console.log('dateDash', dateOne, dateTwo);
+    if (branch == undefined || dateOne == undefined || dateTwo == undefined || isDone == undefined) {
       return
     }
     else {
-      console.log(date);
-      this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?dateTime=${date}`).subscribe(resp => {
+      console.log(dateOne, dateTwo);
+      this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
         if (resp.success) {
           this.data = resp.result;
           console.log('data dash', this.data);
@@ -105,8 +119,8 @@ export class DasboardRegionalComponent implements OnInit {
     // cocina
     if (area === 1) {
       switch (data.name) {
-        case 'Órdenes':
-          console.log('Órdenes');
+        case 'TIEMPOS':
+          console.log('TIEMPOS');
           this.services
             .serviceGeneralGet(`Order/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -129,8 +143,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Refrigeradores':
-          console.log('Refrigeradores');
+        case 'REFRIS':
+          console.log('REFRIS');
           this.services
             .serviceGeneralGet(`Fridge/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -153,8 +167,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Pollo con precocción':
-          console.log('Pollo con precocción');
+        case 'PRECOCCIÓN':
+          console.log('PRECOCCIÓN');
           this.services
             .serviceGeneralGet(`PrecookedChicken/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -201,8 +215,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Limpieza de freidoras':
-          console.log('Limpieza de freidoras');
+        case 'FREIDORAS':
+          console.log('FREIDORAS');
           this.services
             .serviceGeneralGet(`Fryer/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -232,8 +246,8 @@ export class DasboardRegionalComponent implements OnInit {
     // salon
     else if (area === 2) {
       switch (data.name) {
-        case 'Conteo de personas':
-          console.log('Conteo de personas');
+        case 'COMENSALES':
+          console.log('COMENSALES');
           this.services
             .serviceGeneralGet(`PeopleCounting/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -244,8 +258,7 @@ export class DasboardRegionalComponent implements OnInit {
                   data: {
                     name: data.name,
                     data: this.dataTask,
-                    baseDatos: this.db,
-
+                    baseDatos: this.db
                   },
                   width: "30rem",
                 });
@@ -254,21 +267,22 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Encuesta':
+        case 'ENCUESTA':
           // falta conectar modal
-          console.log('Encuesta');
+          console.log('ENCUESTA');
           this.services
             .serviceGeneralGet(`SatisfactionSurvey/${data.detail}/By-Id`)
             .subscribe((resp) => {
               if (resp.success) {
                 this.dataTask = resp.result;
-                console.log('get data', this.dataTask);
+                this.photosTemp = resp.result.photoSatisfactionSurveys;
+                console.log('get data', this.dataTask, this.db);
                 const dialog = this.dialog.open(DialogDetalleEncuestaComponent, {
                   data: {
                     name: data.name,
                     data: this.dataTask,
                     baseDatos: this.db,
-
+                    photos: this.photosTemp
                   },
                   width: "30rem",
                 });
@@ -277,8 +291,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Limpieza general':
-          console.log('Limpieza general');
+        case 'LIMPIEZA':
+          console.log('LIMPIEZA');
           this.services
             .serviceGeneralGet(`GeneralCleaning/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -301,8 +315,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Estación':
-          console.log('Estación');
+        case 'ESTACION':
+          console.log('ESTACION');
           this.services
             .serviceGeneralGet(`Station/By-Id/${data.detail}`)
             .subscribe((resp) => {
@@ -325,8 +339,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Temperatura de Bebidas':
-          console.log('Temperatura de Bebidas');
+        case 'BEBIDAS':
+          console.log('BEBIDAS');
           this.services
             .serviceGeneralGet(`DrinksTemperature/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -349,8 +363,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Audio y Video':
-          console.log('Audio y Video');
+        case 'AUDIO Y VIDEO':
+          console.log('AUDIO Y VIDEO');
           this.services
             .serviceGeneralGet(`AudioVideo/By-Id/${data.detail}`)
             .subscribe((resp) => {
@@ -371,8 +385,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Focos':
-          console.log('Focos');
+        case 'ILUMINACION':
+          console.log('ILUMINACION');
           this.services
             .serviceGeneralGet(`Spotlight/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -393,8 +407,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Limpieza en barra':
-          console.log('Limpieza en barra');
+        case 'BARRA':
+          console.log('BARRA');
           this.services
             .serviceGeneralGet(`BarCleaning/${data.detail}/By-Id/`)
             .subscribe((resp) => {
@@ -417,7 +431,7 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Refrigeradores':
+        case 'REFRIS':
           console.log('Refrigeradores');
           this.services
             .serviceGeneralGet(`FridgeSalon/${data.detail}/By-Id`)
@@ -449,30 +463,31 @@ export class DasboardRegionalComponent implements OnInit {
     // baños
     else if (area === 3) {
       switch (data.name) {
-        case 'Estado General':
-          console.log('Estado General');
+        case 'BAÑOS':
+          console.log('BAÑOS');
           this.services
             .serviceGeneralGet(`BathRoomsOverallStatus/${data.detail}/By-Id`)
             .subscribe((resp) => {
               if (resp.success) {
                 this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoBathRoomsOverallStatuses;
                 console.log('get data', this.dataTask);
                 const dialog = this.dialog.open(DialogDetalleEstadoGeneralBanosComponent, {
                   data: {
                     name: data.name,
                     data: this.dataTask,
                     baseDatos: this.db,
-
+                    photos: this.photosTemp
                   },
-                  width: "30rem",
+                  width: '30rem'
                 });
                 dialog.afterClosed().subscribe();
               }
             });
           break;
 
-        case 'Lavabos con jabón y papel':
-          console.log('Lavabos con jabón y papel');
+        case 'LAVABOS':
+          console.log('LAVABOS');
           this.services
             .serviceGeneralGet(`WashBasinWithSoapPaper/By-Id/${data.detail}`)
             .subscribe((resp) => {
@@ -503,8 +518,8 @@ export class DasboardRegionalComponent implements OnInit {
     else if (area === 4) {
       switch (data.name) {
 
-        case 'Ticket y Mesa':
-          console.log('Ticket y Mesa');
+        case 'TICKET VS MESA':
+          console.log('TICKET VS MESA');
           this.services
             .serviceGeneralGet(`TicketTable/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -527,8 +542,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'ENTRADAS CARGADAS COMO ALBARÁN ':
-          console.log('ENTRADAS CARGADAS COMO ALBARÁN');
+        case 'ENTRADAS ALBARÁN ':
+          console.log('ENTRADAS ALBARÁN');
           this.services
             .serviceGeneralGet(`EntriesChargedAsDeliveryNote/By-Id/${data.detail}`)
             .subscribe((resp) => {
@@ -551,8 +566,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Revisión de Pedido vs calendario':
-          console.log('Revisión de Pedido vs calendario');
+        case 'REVISIÓN CALENDARIO':
+          console.log('REVISIÓN CALENDARIO');
           this.services
             .serviceGeneralGet(`OrderScheduleReview/${data.detail}/By-Id`)
             .subscribe((resp) => {
@@ -575,8 +590,8 @@ export class DasboardRegionalComponent implements OnInit {
             });
           break;
 
-        case 'Revisión de Mesas':
-          console.log('Revisión de Mesas');
+        case 'REVISIÓN':
+          console.log('REVISIÓN');
           this.services
             .serviceGeneralGet(`CheckTable/By-Id/${data.detail}`)
             .subscribe((resp) => {
@@ -720,10 +735,21 @@ export class DasboardRegionalComponent implements OnInit {
   }
   getdataSucursal(id) {
     this.catSucursal = [];
-    this.services.serviceGeneralGet(`User/GetSucursalList?idState=${id}`).subscribe((resp) => {
+    let endpoint = this.user.roleId !== 2 ? 
+      `User/Branches/${id}/${this.ciudad}` : `User/Branches/${this.user.id}/${this.user.stateId}`;  
+    this.services.serviceGeneralGet(endpoint).subscribe((resp) => {
       if (resp.success) {
         this.catSucursal = resp.result;
         console.log("resp sucursal", this.catSucursal);
+      }
+    });
+  }
+  getdataRegional(id){
+    this.catRegionales = []; 
+    this.services.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
+      if (resp.success) {
+        this.catRegionales = resp.result;
+        console.log("resp regionales", this.catRegionales);
       }
     });
   }

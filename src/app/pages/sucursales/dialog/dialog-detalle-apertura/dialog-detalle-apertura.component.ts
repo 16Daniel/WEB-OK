@@ -1,18 +1,14 @@
-import { ServiceGeneralService } from "./../../../../core/services/service-general/service-general.service";
-import { Component, Inject, OnInit } from "@angular/core";
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialog,
-} from "@angular/material/dialog";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ServiceGeneralService } from 'app/core/services/service-general/service-general.service';
+import { DialogDetalleTareaComponent } from '../dialog-detalle-tarea/dialog-detalle-tarea.component';
 
 @Component({
-  selector: 'app-dialog-detalle-estado-general-banos',
-  templateUrl: './dialog-detalle-estado-general-banos.component.html',
-  styleUrls: ['./dialog-detalle-estado-general-banos.component.css']
+  selector: 'app-dialog-detalle-apertura',
+  templateUrl: './dialog-detalle-apertura.component.html',
+  styleUrls: ['./dialog-detalle-apertura.component.css']
 })
-export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
-
+export class DialogDetalleAperturaComponent implements OnInit {
   public user;
   public data;
   public taskId;
@@ -20,24 +16,35 @@ export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
   public nameBranch = '';
   public status;
   public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
-  constructor(public dialogRef: MatDialogRef<DialogDetalleEstadoGeneralBanosComponent>,
+  public photo1: any[] = [];
+  public photo2: any[] = [];
+  public photo3: any[] = [];
+  public photo4: any[] = [];
+  public photo5: any[] = [];
+  public photo6: any[] = [];
+  
+  constructor(public dialogRef: MatDialogRef<DialogDetalleTareaComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
     public _dialog: MatDialog) { }
 
-  // este modal solo recibe la data para mostrarla
   ngOnInit(): void {
     console.log("data que recibe", this.param);
     this.data = this.param;
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
+    this.photo1 = this.data.photos.filter(x => x.type === 1);
+    this.photo2 = this.data.photos.filter(x => x.type === 2);
+    this.photo3 = this.data.photos.filter(x => x.type === 3);
+    this.photo4 = this.data.photos.filter(x => x.type === 4);
+    this.photo5 = this.data.photos.filter(x => x.type === 5);
+    this.photo6 = this.data.photos.filter(x => x.type === 6);
+    console.log('Photos', this.photo1, this.photo2, this.photo3, this.photo4, this.photo5, this.photo6);
   }
   close() {
     this.dialogRef.close();
   }
-
 
   // get  name sucursal
   getBranch() {
@@ -65,8 +72,7 @@ export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
       }
     });
   }
+
+
+
 }
-
-
-
-

@@ -84,7 +84,19 @@
       <div class="col-12 mb-2">
         <label class="title" for="">¿Cómo calificarías tu experiencia en Rebel Wings?</label>
         <br />
-        <span>{{ data.data.email }}</span>
+        <ng-rating-bar 
+          [(value)]="data.data.review"
+          [ratingCount]="5"
+        ></ng-rating-bar>
+      </div>
+
+      <div class="col-6">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-12" *ngFor="let photo of data.photos; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
       </div>
 
 

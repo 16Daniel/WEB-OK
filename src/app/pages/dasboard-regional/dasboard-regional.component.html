@@ -13,28 +13,67 @@
     <div class="col-md-3 align-center">
       <h4 class="subtitle-negro">INFORME DE ACTIVIDAD</h4>
     </div>
+  </div>
+  <div class="row my-4">
+    <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #AdminSectionB>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+            <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Regional</label>
+          <select (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
+            <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-md-3 align-center">
+        <div class="form-group">
+          <label class="non-margin" for="Sucursal2">Sucursal</label>
+          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label class="non-margin" for="Ciudad">Ciudad</label>
-        <select (change)="getdataSucursal(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
-          <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+        <label class="non-margin" for="Sucursal">Completado</label>
+        <select (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="isDone" class="form-control" id="Sucursal">
+          <option [value]="item.id" *ngFor="let item of catCompletado">{{item.text}}</option>
         </select>
       </div>
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label class="non-margin" for="Sucursal">Sucursal</label>
-        <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
-          <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
-        </select>
-      </div>
-    </div>
-    <div class="col-md-3 align-center">
-      <div class="form-group">
-        <label for="fechaInicial">Fecha</label>
+        <label for="fechaInicial">Fechas</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash)" />
+            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
+        <label for="fechaFinal"></label>
+        <div class="input-group">
+          <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
+            [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
         </div>
       </div>
     </div>

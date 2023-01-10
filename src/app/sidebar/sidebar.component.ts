@@ -57,7 +57,7 @@ export const ROUTES: RouteInfo[] = [
       },
       {
         path: "/stock-pollo",
-        title: "Stock de pollo",
+        title: "Inventario",
         icon: "stock-de-pollo-inactivo",
         class: "",
       },

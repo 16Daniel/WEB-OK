@@ -19,7 +19,9 @@ export class DialogDetalleAudioVideoSalonComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public photoAudioVideosA: any[] = [];
+  public photoAudioVideosB : any[] = [];
   constructor(public dialogRef: MatDialogRef<DialogDetalleAudioVideoSalonComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
@@ -32,7 +34,10 @@ export class DialogDetalleAudioVideoSalonComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
+    if (this.data.data.photoAudioVideos !== undefined) {
+      this.photoAudioVideosA = this.data.data.photoAudioVideos.filter(f => f.type === 1);
+      this.photoAudioVideosB = this.data.data.photoAudioVideos.filter(f => f.type === 2);
+    }
   }
   close() {
     this.dialogRef.close();

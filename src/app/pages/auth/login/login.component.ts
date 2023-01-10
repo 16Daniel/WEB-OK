@@ -50,7 +50,7 @@ export class LoginComponent implements OnInit {
           this.disabled = false;
           localStorage.setItem("userData", JSON.stringify(this.dataProfile));
           // solo ingresaran los usuarios de tipo id 3
-          if (this.dataProfile.roleId !== 3) {
+          if (this.dataProfile.roleId === 1) {
             const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
               data: {
                 header: "Error",

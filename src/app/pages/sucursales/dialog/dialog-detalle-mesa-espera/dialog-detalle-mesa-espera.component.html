@@ -26,17 +26,30 @@
     </div>
     <!-- body -->
     <div class="row mb-4">
-      <div class="col-12">
+      <!-- <div class="col-12">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.waitlistTables" type="checkbox" class="custom-control-input"
             id="waitlistTables">
           <label class="custom-control-label" for="waitlistTables">¿Hubo personas en espera?</label>
         </div>
-      </div>
+      </div> -->
       <div class="col-12">
         <label class="title" for="">Número de personas en espera</label>
         <br />
         <span>{{ data.data.numberPeople }}</span>
+      </div>
+      <div class="col-12 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.comment }}</span>
+      </div>
+      <div class="col-12 mb-2">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.data.photoWaitlistTables; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
       </div>
       <!-- <div class="col-12">
         <label class="title" for="">¿Cuántas mesas hubo en espera?</label>

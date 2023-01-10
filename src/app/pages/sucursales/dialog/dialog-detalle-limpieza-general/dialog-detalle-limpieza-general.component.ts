@@ -19,7 +19,7 @@ export class DialogDetalleLimpiezaGeneralComponent implements OnInit {
   public taskId;
   public dataBranch: any[] = [];
   public nameBranch = '';
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
   constructor(public dialogRef: MatDialogRef<DialogDetalleLimpiezaGeneralComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,

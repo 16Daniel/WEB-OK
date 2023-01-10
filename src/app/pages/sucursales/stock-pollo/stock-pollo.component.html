@@ -5,29 +5,78 @@
       <img class="img-fluid" src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
     </div>
     <div class="col-11 align-center">
-      <h4 class="title align-center">STOCK DE POLLO</h4>
+      <h4 class="title align-center">INVENTARIO</h4>
     </div>
     <div class="col-2 align-center">
       <br />
       <br />
       <h5 class="subtitle-negro">SUCURSALES</h5>
     </div>
-    <div class="col-6 align-center">
+    <div class="col-2 align-center">
       <br><br>
       <span class="date-grey">
         {{ today | date: "dd MMM yyy" }}
       </span>
     </div>
-    <div class="col-4">
+  </div>
+  
+  <div class="row my-4">
+    <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
+      <div class="col-4">
+        <div class="form-group">
+          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <select [disabled]="ciudad == undefined" (change)="getdataStock(ciudad, sucursal)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #AdminSectionB>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <select (change)="getdataRegional(ciudad, null)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+            <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="non-margin" for="Ciudad">Regional</label>
+          <select [disabled]="ciudad == undefined" (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
+            <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class="col-3">
+        <div class="form-group">
+          <label class="non-margin" for="SucursalAdmin">Sucursal</label>
+          <select [disabled]="regional == undefined" (change)="getdataStock(ciudad, sucursal)" [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
+            <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+          </select>
+        </div>
+      </div>
+    </ng-template>
+    <div class="col-md-3 align-center">
       <div class="form-group">
-        <label class="non-margin" for="Ciudad">Ciudad</label>
-        <select (change)="getdataStock(DB)" [(ngModel)]="DB" class="form-control" id="Ciudad">
-          <option value="DB1">Queretaro</option>
-          <option value="DB2">CDMX</option>
-        </select>
+        <label for="fechaInicial">Fechas</label>
+        <div class="input-group">
+          <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
+            [(ngModel)]="dateInit" (ngModelChange)="getdataStock(ciudad, sucursal, dateInit, dateEnd)" />
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <div class="form-group">
+        <label for="fechaFinal"></label>
+        <div class="input-group">
+          <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
+            [(ngModel)]="dateEnd" (ngModelChange)="getdataStock(ciudad, sucursal, dateInit, dateEnd)" />
+        </div>
       </div>
     </div>
   </div>
+
 </div>
 <br />
 <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
@@ -35,37 +84,33 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col-4">Sucursal</th>
-          <th scope="col-3">Dirección</th>
-          <th scope="col-2">Supervisores</th>
-          <th scope="col-3">Espectativa</th>
+          <th scope="col-4">Articulo</th>
+          <th scope="col-2">Inv. Inicial</th>
+          <th scope="col-2">Inv. Registrado</th>
+          <th scope="col-2">Diferencia</th>
+          <th scope="col-3">intentos</th>
+          <th scope="col-4">Fecha</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data" (click)="addStock(item.salesExpectationsId, item.branchName, item.branchId)">
+        <tr *ngFor="let item of data">
+          <td class="col-3">
+            {{ item.articulo }}
+          </td>
+          <td class="col-2">
+            {{ item.invInicial }} KG
+          </td>
+          <td class="col-2">
+            {{item.invReg}} KG
+          </td>
+          <td class="col-2">
+            {{item.diferencia}} KG
+          </td>
+          <td class="col-2">
+            {{item.intentos}}
+          </td>
           <td class="col-4">
-            <div class="row">
-              <div class="col-3">
-                <img src="./assets/icon/sucursal.png" alt="sucursal" />
-              </div>
-              <div class="col-9">
-                <span>Sucursal {{ item.branchName }}</span>
-              </div>
-            </div>
-          </td>
-          <td class="col-3">
-            {{ item.description }}
-          </td>
-          <td class="col-2">{{item.supervisorName}}</td>
-          <td class="col-3">
-            <div class="row">
-              <div class="col-3">
-                <img src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
-              </div>
-              <div class="col-9">
-                <span>{{item.salesExpectations}}</span>
-              </div>
-            </div>
+            {{item.createdDate  | date: "dd MMM yyy"}}
           </td>
         </tr>
       </tbody>

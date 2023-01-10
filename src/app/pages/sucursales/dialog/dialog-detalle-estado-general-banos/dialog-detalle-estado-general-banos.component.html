@@ -31,7 +31,7 @@
         <span>Baños de mujeres
         </span>
       </div>
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.doesAnyBathroomLeakWomen" type="checkbox" class="custom-control-input"
             id="doesAnyBathroomLeakWomen">
@@ -39,13 +39,7 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.doesAnyBathroomLeakWomen === false"  class="col-12 mb-2">
-        <label class="title" for="">Comentario</label>
-        <br />
-        <span>{{ data.data.commentDoesAnyBathroomLeakWomen }}</span>
-      </div>
-
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.isThereAnyFaultsWomen" type="checkbox" class="custom-control-input"
             id="isThereAnyFaultsWomen">
@@ -53,7 +47,13 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.isThereAnyFaultsWomen === false" class="col-12 mb-2">
+      <div *ngIf="data.data.doesAnyBathroomLeakWomen === false"  class="col-6 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDoesAnyBathroomLeakWomen }}</span>
+      </div>
+
+      <div *ngIf="data.data.isThereAnyFaultsWomen === false" class="col-6 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentAreThereAnyFaultsWomen }}</span>
@@ -65,7 +65,7 @@
         <span>Baños de hombres
         </span>
       </div>
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.doesAnyBathroomLeakMen" type="checkbox" class="custom-control-input"
             id="doesAnyBathroomLeakMen">
@@ -73,25 +73,35 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.doesAnyBathroomLeakMen === false" class="col-12 mb-2">
-        <label class="title" for="">Comentario</label>
-        <br />
-        <span>{{ data.data.commentDoesAnyBathroomLeakMen }}</span>
-      </div>
-
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.isThereAnyFaultsMen" type="checkbox" class="custom-control-input"
-            id="isThereAnyFaultsMen">
+          id="isThereAnyFaultsMen">
           <label class="custom-control-label" for="isThereAnyFaultsMen">¿Hay alguna falla en las chapas?
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.isThereAnyFaultsMen === false" class="col-12 mb-2">
+      
+      <div *ngIf="data.data.doesAnyBathroomLeakMen === false" class="col-6 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentDoesAnyBathroomLeakMen }}</span>
+      </div>
+      <div *ngIf="data.data.isThereAnyFaultsMen === false" class="col-6 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentAreThereAnyFaultsMen }}</span>
       </div>
+
+      <div class="col-12">
+        <label class="title" for="">Fotografías</label>
+        <div class="row">
+          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+            <img src="{{ url }}{{ photo.photo }}" alt="">
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

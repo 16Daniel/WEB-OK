@@ -19,7 +19,15 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public photo1: any[] = []; 
+  public photo2: any[] = []; 
+  public photo3: any[] = [];
+  public photo4: any[] = [];
+  public photo5: any[] = []; 
+  public photo6: any[] = []; 
+  public photo7: any[] = [];
+  public photo8: any[] = [];
   constructor(public dialogRef: MatDialogRef<DialogDetalleSalonMantenimientoComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
@@ -32,7 +40,14 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
+    this.photo1 = this.param.photos.filter(x => x.type === 1);
+    this.photo2 = this.param.photos.filter(x => x.type === 2);
+    this.photo3 = this.param.photos.filter(x => x.type === 3);
+    this.photo4 = this.param.photos.filter(x => x.type === 4);
+    this.photo5 = this.param.photos.filter(x => x.type === 5);
+    this.photo6 = this.param.photos.filter(x => x.type === 6);
+    this.photo7 = this.param.photos.filter(x => x.type === 7);
+    this.photo8 = this.param.photos.filter(x => x.type === 8);
   }
   close() {
     this.dialogRef.close();

@@ -35,15 +35,15 @@
           <label class="custom-control-label" for="sink">¿Sujetas y sin fugas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.sink === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentSink }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.sink === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo1; index as position">
             <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -57,18 +57,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.mixer" type="checkbox" class="custom-control-input" id="mixer">
-          <label class="custom-control-label" for="mixer">¿Funcionando?</label>
+          <label class="custom-control-label" for="mixer">¿Funcionan correctamente y sin fugas?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.mixer === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentMixer }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.mixer === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo2; index as position">
             <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -82,18 +82,18 @@
       <div class="col-12 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.refrigerator" type="checkbox" class="custom-control-input" id="refrigerator">
-          <label class="custom-control-label" for="refrigerator">¿Temperatura correcta? ¿Distancia correcta a la pared?</label>
+          <label class="custom-control-label" for="refrigerator">¿En buen estado? ¿La temperatura es la correcta?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.refrigerator === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentRefrigerator }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.refrigerator === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo3; index as position">
             <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>
@@ -111,15 +111,15 @@
           <label class="custom-control-label" for="electricalConnections">¿Se encuentran en buen estado?</label>
         </div>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.electricalConnections === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentElectricalConnections }}</span>
       </div>
-      <div class="col-12 mb-2" *ngIf="data.data.electricalConnections === false">
+      <div class="col-12 mb-2">
         <label class="title" for="">Fotografías</label>
         <div class="row">
-          <div class="col-4" *ngFor="let photo of data.photos; index as position">
+          <div class="col-4" *ngFor="let photo of photo4; index as position">
             <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
           </div>
         </div>

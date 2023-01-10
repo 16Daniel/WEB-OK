@@ -1,18 +1,14 @@
-import { ServiceGeneralService } from "./../../../../core/services/service-general/service-general.service";
-import { Component, Inject, OnInit } from "@angular/core";
-import {
-  MatDialogRef,
-  MAT_DIALOG_DATA,
-  MatDialog,
-} from "@angular/material/dialog";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ServiceGeneralService } from 'app/core/services/service-general/service-general.service';
+import { DialogDetalleTareaComponent } from '../dialog-detalle-tarea/dialog-detalle-tarea.component';
 
 @Component({
-  selector: 'app-dialog-detalle-estado-general-banos',
-  templateUrl: './dialog-detalle-estado-general-banos.component.html',
-  styleUrls: ['./dialog-detalle-estado-general-banos.component.css']
+  selector: 'app-dialog-detalle-asistencia',
+  templateUrl: './dialog-detalle-asistencia.component.html',
+  styleUrls: ['./dialog-detalle-asistencia.component.css']
 })
-export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
-
+export class DialogDetalleAsistenciaComponent implements OnInit {
   public user;
   public data;
   public taskId;
@@ -20,24 +16,23 @@ export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
   public nameBranch = '';
   public status;
   public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
-  constructor(public dialogRef: MatDialogRef<DialogDetalleEstadoGeneralBanosComponent>,
+  
+  constructor(public dialogRef: MatDialogRef<DialogDetalleTareaComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
     public _dialog: MatDialog) { }
 
-  // este modal solo recibe la data para mostrarla
   ngOnInit(): void {
     console.log("data que recibe", this.param);
     this.data = this.param;
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
   }
+
   close() {
     this.dialogRef.close();
   }
-
 
   // get  name sucursal
   getBranch() {
@@ -65,8 +60,5 @@ export class DialogDetalleEstadoGeneralBanosComponent implements OnInit {
       }
     });
   }
+
 }
-
-
-
-

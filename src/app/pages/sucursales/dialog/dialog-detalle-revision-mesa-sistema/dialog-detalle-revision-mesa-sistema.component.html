@@ -32,7 +32,7 @@
           <br />
           <span>{{ data.data.numTable }}</span>
       </div>
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.productOne" type="checkbox" class="custom-control-input"
             id="productOne">
@@ -40,21 +40,22 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.productOne === false" class="col-12 mb-2">
-        <label class="title" for="">Comentario</label>
-        <br />
-        <span>{{ data.data.commentProductOne }}</span>
-      </div>
-
-      <div class="col-12 mb-2">
+      
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.productTwo" type="checkbox" class="custom-control-input"
-            id="productTwo">
+          id="productTwo">
           <label class="custom-control-label" for="productTwo">¿Está en la mesa el producto 2?
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.productTwo === false" class="col-12 mb-2">
+      
+      <div class="col-6 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentProductOne }}</span>
+      </div>
+      <div class="col-6 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentProductTwo }}</span>
@@ -63,7 +64,7 @@
     <!-- producto 3  -->
     <div class="row mb-4">
 
-      <div class="col-12 mb-2">
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.productThree" type="checkbox" class="custom-control-input"
             id="productThree">
@@ -71,21 +72,22 @@
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.productThree === false" class="col-12 mb-2">
-        <label class="title" for="">Comentario</label>
-        <br />
-        <span>{{ data.data.commentProductThree }}</span>
-      </div>
-
-      <div class="col-12 mb-2">
+      
+      <div class="col-6 mb-2">
         <div class="custom-control custom-switch">
           <input disabled [(ngModel)]="data.data.productFour" type="checkbox" class="custom-control-input"
-            id="productFour">
+          id="productFour">
           <label class="custom-control-label" for="productFour">¿Está en la mesa el producto 4?
           </label>
         </div>
       </div>
-      <div *ngIf="data.data.productFour === false" class="col-12 mb-2">
+      
+      <div class="col-6 mb-2">
+        <label class="title" for="">Comentario</label>
+        <br />
+        <span>{{ data.data.commentProductThree }}</span>
+      </div>
+      <div class="col-6 mb-2">
         <label class="title" for="">Comentario</label>
         <br />
         <span>{{ data.data.commentProductFour }}</span>

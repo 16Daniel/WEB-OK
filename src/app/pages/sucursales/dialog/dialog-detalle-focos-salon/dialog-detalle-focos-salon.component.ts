@@ -19,7 +19,9 @@ export class DialogDetalleFocosSalonComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://34.237.214.147/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public photosA: any[] = [];
+  public photosB : any[] = [];
   constructor(public dialogRef: MatDialogRef<DialogDetalleFocosSalonComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,
@@ -32,7 +34,10 @@ export class DialogDetalleFocosSalonComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     this.getBranch();
-
+    if (this.data.data.photoSpotlights !== undefined) {
+      this.photosA = this.data.data.photoSpotlights.filter(f => f.type === 1);
+      this.photosB = this.data.data.photoSpotlights.filter(f => f.type === 2);
+    }
   }
   close() {
     this.dialogRef.close();
