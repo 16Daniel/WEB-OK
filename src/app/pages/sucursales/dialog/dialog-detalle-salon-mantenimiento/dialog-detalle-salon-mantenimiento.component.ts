@@ -19,7 +19,7 @@ export class DialogDetalleSalonMantenimientoComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public url = 'http://operamx.mooo.com/back/api_rebel_wings/';
   public photo1: any[] = []; 
   public photo2: any[] = []; 
   public photo3: any[] = [];

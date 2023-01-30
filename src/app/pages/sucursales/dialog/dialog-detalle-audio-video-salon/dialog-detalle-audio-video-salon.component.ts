@@ -19,7 +19,7 @@ export class DialogDetalleAudioVideoSalonComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public url = 'http://operamx.mooo.com/back/api_rebel_wings/';
   public photoAudioVideosA: any[] = [];
   public photoAudioVideosB : any[] = [];
   constructor(public dialogRef: MatDialogRef<DialogDetalleAudioVideoSalonComponent>,
