@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  apiURL: "http://operamx.mooo.com/back/api_rebel_wings/api/",
-  //apiURL: "https://localhost:44308/api/"
+  //apiURL: "http://operamx.mooo.com/back/api_rebel_wings/api/",
+  apiURL: "https://localhost:44308/api/"
 };

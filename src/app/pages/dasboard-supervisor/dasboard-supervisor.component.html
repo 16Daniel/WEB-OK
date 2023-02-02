@@ -19,7 +19,7 @@
       <div class="col-md-3 align-center">
         <div class="form-group">
           <label class="non-margin" for="Sucursal">Sucursal</label>
-          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal"
+          <select [disabled]="ciudad == undefined"  [(ngModel)]="sucursal"
             class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -46,7 +46,7 @@
       <div class="col-md-3 align-center">
         <div class="form-group">
           <label class="non-margin" for="Sucursal2">Sucursal</label>
-          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
+          <select [disabled]="ciudad == undefined" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
         </div>
@@ -65,7 +65,7 @@
         <label for="fechaInicial">Fechas</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
+            [(ngModel)]="dateDash" />
         </div>
       </div>
     </div>
@@ -74,9 +74,15 @@
         <label for="fechaFinal"></label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
+            [(ngModel)]="dateDashTwo" />
         </div>
       </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <br/>
+      <button  (click)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+        BUSCAR
+      </button>
     </div>
   </div>
 
