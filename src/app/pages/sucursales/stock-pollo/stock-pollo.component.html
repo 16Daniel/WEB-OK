@@ -15,7 +15,7 @@
     <div class="col-2 align-center">
       <br><br>
       <span class="date-grey">
-        {{ today | date: "dd MMM yyy" }}
+        {{ today | date: "dd/MM/yyy" }}
       </span>
     </div>
   </div>
@@ -62,7 +62,7 @@
         <label for="fechaInicial">Fechas</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateInit" (ngModelChange)="getdataStock(ciudad, sucursal, dateInit, dateEnd)" />
+            [(ngModel)]="dateInit"  />
         </div>
       </div>
     </div>
@@ -71,9 +71,15 @@
         <label for="fechaFinal"></label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateEnd" (ngModelChange)="getdataStock(ciudad, sucursal, dateInit, dateEnd)" />
+            [(ngModel)]="dateEnd"  />
         </div>
       </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <br/>
+      <button  (click)="getdataStock(ciudad, sucursal, dateInit, dateEnd)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+        BUSCAR
+      </button>
     </div>
   </div>
 
@@ -84,33 +90,37 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th scope="col-4">Articulo</th>
-          <th scope="col-2">Inv. Inicial</th>
-          <th scope="col-2">Inv. Registrado</th>
-          <th scope="col-2">Diferencia</th>
-          <th scope="col-3">intentos</th>
-          <th scope="col-4">Fecha</th>
+          <th scope="col-2">Articulo</th>
+          <th scope="col-1">Inv. Inicial</th>
+          <th scope="col-1">Inv. Registrado</th>
+          <th scope="col-1">Diferencia</th>
+          <th scope="col-2">intentos</th>
+          <th scope="col-2">Fecha</th>
+          <th scope="col-3">Sucursal</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of data">
-          <td class="col-3">
+          <td class="col-2">
             {{ item.articulo }}
           </td>
-          <td class="col-2">
+          <td class="col-1">
             {{ item.invInicial }} KG
           </td>
-          <td class="col-2">
+          <td class="col-1">
             {{item.invReg}} KG
           </td>
-          <td class="col-2">
+          <td class="col-1">
             {{item.diferencia}} KG
           </td>
           <td class="col-2">
             {{item.intentos}}
           </td>
-          <td class="col-4">
+          <td class="col-2">
             {{item.createdDate  | date: "dd MMM yyy"}}
+          </td>
+          <td class="col-3">
+            {{item.branchName}}
           </td>
         </tr>
       </tbody>
