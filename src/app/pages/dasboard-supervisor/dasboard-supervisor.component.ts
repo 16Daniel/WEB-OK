@@ -136,7 +136,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: '98vw', //sets width of dialog
+                  width: '70vw', //sets width of dialog
                   height:'70vh', //sets width of dialog
                   maxWidth: '100vw', //overrides default width of dialog
                   maxHeight: '100vh', //overrides default height of dialog
@@ -174,11 +174,11 @@ export class DasboardSupervisorComponent implements OnInit {
 
           console.log('BAÑOS');
           this.services
-            .serviceGeneralGet(`LivingRoomBathroomCleaning/${data.detail}`)
+            .serviceGeneralGet(`BanosMatutino/${data.detail}`)
             .subscribe((resp) => {
               if (resp.success) {
                 this.dataTask = resp.result;
-                this.photosTemp = this.dataTask.photoLivingRoomBathroomCleanings;
+                this.photosTemp = this.dataTask.photoBanosMatutinos;
                 console.log('get data', this.dataTask);
                 const dialog = this.dialog.open(DialogDetalleTareaComponent, {
                   data: {
