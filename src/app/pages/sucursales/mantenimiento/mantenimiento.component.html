@@ -34,7 +34,7 @@
         <div class="col-6 col-md-3 align-center">
           <div class="form-group">
             <label class="non-margin" for="Sucursal">Sucursal</label>
-            <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDash2)" [(ngModel)]="sucursal" class="form-control"
+            <select [disabled]="ciudad == undefined" [(ngModel)]="sucursal" class="form-control"
               id="Sucursal">
               <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
             </select>
@@ -46,7 +46,7 @@
             <div class="input-group">
               <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                 placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
-                (ngModelChange)="getDataDash(sucursal, dateDash, dateDash2)" />
+                />
             </div>
           </div>
         </div>
@@ -56,15 +56,21 @@
             <div class="input-group">
               <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                 placeholder="yyyy-mm-dd" [(ngModel)]="dateDash2"
-                (ngModelChange)="getDataDash(sucursal, dateDash, dateDash2)" />
+                />
             </div>
           </div>
         </div>
-        <div class="col-2 align-center">
+        <div class="col-md-2 align-center">
+          <br/>
+          <button  (click)="getDataDash(sucursal, dateDash, dateDash2, ciudad)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+            BUSCAR
+          </button>
+        </div>
+        <!-- <div class="col-1 align-center">
           <h4>
             <i style=" color: #cf3c4f;" color="danger" (click)="ngOnInit()" class="bi bi-arrow-repeat"></i>
           </h4>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
@@ -72,7 +78,7 @@
   <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row my-3" tabindex="0">
     <div class="col-12">
       <table class="table table-hover col-12" >
-        <thead>
+        <thead class="thead-warning header_table">
           <tr>
             <th scope="col-3">Sucursal</th>
             <th scope="col-2">Regional</th>
@@ -83,14 +89,14 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of data" (click)="addTicket(item.id)">
+          <tr *ngFor="let item of data" (click)="addTicket(item.id, item.branch)">
             <td class="col-3">
               <div class="row">
                 <div class="col-3">
                   <img width="100%" src="./assets/icon/sucursal.png" alt="" />
                 </div>
                 <div class="col-9">
-                  <span>Sucursal {{item.branch}} <i class="cc cc-by-nc-jp"></i></span>
+                  <span>{{item.branch}} <i class="cc cc-by-nc-jp"></i></span>
                 </div>
               </div>
             </td>

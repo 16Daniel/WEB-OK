@@ -33,6 +33,7 @@ export class DialogAddTicketComponent implements OnInit {
     console.log('data', this.data);
     console.log("data que se envia", this.param);
     this.ticketId = this.param.id;
+    this.nameBranch = this.param.name;
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log("user", this.user);
     if (this.ticketId != 0) {
@@ -50,7 +51,7 @@ export class DialogAddTicketComponent implements OnInit {
           this.data = resp.result;
           this.status = this.data.status;
           console.log("resp", this.data);
-          this.getBranch();
+          //this.getBranch();
         }
       });
   }

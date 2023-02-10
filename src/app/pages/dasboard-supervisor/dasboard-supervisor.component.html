@@ -112,7 +112,7 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Omisión de Actividades</h5>
+                <h5>OMISION DE TAREAS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
@@ -150,13 +150,13 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Promedio de asistencias</h5>
+                <h5>TAREAS COMPLETAS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
               <div class="text-center">
                 <span class="card_porcentage">
-                  {{data.averageAttendance | number: '.1-2' }}%
+                  {{100 - data.omissionsActivities | number: '.1-2' }}%
                 </span>
               </div>
             </div>

@@ -30,24 +30,26 @@ export class MantenimientoComponent implements OnInit {
     this.sucursal = null;
     this.dateDash = null;
     this.dateDash2 = null;
-    console.log("get data");
-    this.service.serviceGeneralGet("Ticketing").subscribe((resp) => {
-      if (resp.success) {
-        this.data = resp.result;
-        console.log("data", this.data);
-      }
-    });
+    // console.log("get data");
+    // this.service.serviceGeneralGet("Ticketing").subscribe((resp) => {
+    //   if (resp.success) {
+    //     this.data = resp.result;
+    //     console.log("data", this.data);
+    //   }
+    // });
     this.getdataState();
   }
-  getDataDash(branch, date, date2) {
+  getDataDash(branch, date, date2, city) {
     console.log('sucursal', branch);
     console.log('dateDash', date);
+    console.log('city', city);
     if (branch == undefined || date == undefined || date2 == undefined) {
       return
     }
     else {
+      
       console.log(date);
-      this.service.serviceGeneralGet(`Ticketing/History?ids=${branch}&startDate=${date}&endDate=${date2}`).subscribe(resp => {
+      this.service.serviceGeneralGet(`Ticketing/History?ids=${branch}&startDate=${date}&endDate=${date2}&city=${city}`).subscribe(resp => {
         if (resp.success) {
           this.data = resp.result;
           console.log('data dash', this.data);
@@ -96,10 +98,12 @@ export class MantenimientoComponent implements OnInit {
       }
     });
   }
-  addTicket(id: number) {
+  addTicket(id: number, name: string) {
+    
     const dialogRef = this._dialog.open(DialogAddTicketComponent, {
       data: {
         id: id,
+        name: name,
       },
       width: "30rem",
     });

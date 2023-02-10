@@ -60,7 +60,7 @@ export class DashboardComponent implements OnInit {
       this.dateFormat = `${year}-${month}-${day}`;
       console.log(`${year}-${month}-${day}`)
     }
-    this.getDataDash(this.dateFormat);
+    //this.getDataDash(this.dateFormat);
   }
   getDataDash(date) {
     console.log(this.dateDash);

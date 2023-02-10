@@ -386,6 +386,8 @@ export class DasboardSupervisorComponent implements OnInit {
             });
 
           break;
+        
+
 
         case 'VOLADO':
           console.log('VOLADO');
