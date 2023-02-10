@@ -15,6 +15,7 @@ export interface child {
   title: string;
   icon: string;
   class: string;
+  access: any;
 }
 
 
@@ -27,16 +28,32 @@ export const ROUTES: RouteInfo[] = [
     target: "#colapseDashboard",
     id: "colapseDashboard",
     children: [{
+      path: "/vista-general-regional",
+      title: "Vista general regional",
+      icon: "regional-inactivo",
+      class: "",
+      access: [3]
+    },
+    {
+      path: "/vista-general-supervisor",
+      title: "Vista general supervisor",
+      icon: "supervisor-inactivo",
+      class: "",
+      access: [3]
+    },
+    {
       path: "/regionales",
       title: "Regionales",
       icon: "regional-inactivo",
-      class: ""
+      class: "",
+      access: [1,2,3]
     },
     {
       path: "/supervisores",
       title: "Supervisores",
       icon: "supervisor-inactivo",
-      class: ""
+      class: "",
+      access: [1,2,3]
     },
     ]
   },
@@ -54,31 +71,36 @@ export const ROUTES: RouteInfo[] = [
         title: "Asistencias",
         icon: "asistencias-inactivo",
         class: "",
+        access: [1,2,3]
       },
       {
         path: "/stock-pollo",
         title: "Inventario",
         icon: "stock-de-pollo-inactivo",
         class: "",
+        access: [1,2,3]
       },
       {
         path: "/mantenimiento",
         title: "Mantenimiento",
         icon: "mantenimiento-inactivo",
         class: "",
+        access: [1,2,3]
       },
        {
          path: "/usuarios",
         title: "Usuarios",
          icon: "regional-inactivo",
         class: "",
+        access: [3]
       },
-      // {
-      //   path: "/tarea",
-      //   title: "Tareas",
-      //   icon: "tareas-inactivo",
-      //   class: "",
-      // },
+      {
+        path: "/mermas",
+        title: "Mermas",
+        icon: "tareas-inactivo",
+        class: "",
+        access: [1,2,3]
+      },
     ],
   },
 
@@ -94,11 +116,11 @@ export const ROUTES: RouteInfo[] = [
 export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = false;
+  public user;
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem("userData"));
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     console.log(this.menuItems);
-
-
   }
 }

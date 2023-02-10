@@ -1,0 +1,25 @@
+.title {
+    color: #ad182d;
+    font-weight: bold;
+  }
+  
+  .align-center {
+    align-self: center;
+  }
+  .img-size{
+    width: 45%;
+  }
+  .img-size-min{
+    width: 12%;
+  }
+  .date-grey {
+    font-weight: 500;
+    color: grey;
+  }
+  .subtitle-negro {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+  }
+  

@@ -56,7 +56,10 @@ import { ModalComponent } from './pages/sucursales/dialog/modal/modal.component'
 import { DialogDetalleAperturaComponent } from './pages/sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
 import { DialogDetalleAsistenciaComponent } from './pages/sucursales/dialog/dialog-detalle-asistencia/dialog-detalle-asistencia.component';
 import { NgRatingBarModule } from "ng-rating-bar";
-
+import { MermasComponent } from './pages/sucursales/mermas/mermas.component';
+import { DashboardPerformanceRegionalComponent } from "./pages/dashboard-performance-regional/dashboard-performance-regional.component";
+import { DashboardPerformanceSupervisorComponent } from './pages/dashboard-performance-supervisor/dashboard-performance-supervisor.component';
+import { NgxChartsModule } from "@swimlane/ngx-charts";
 
 @NgModule({
   declarations: [
@@ -100,8 +103,9 @@ import { NgRatingBarModule } from "ng-rating-bar";
     ModalComponent,
     DialogDetalleAperturaComponent,
     DialogDetalleAsistenciaComponent,
-
-
+    MermasComponent,
+    DashboardPerformanceRegionalComponent,
+    DashboardPerformanceSupervisorComponent,
   ],
   imports: [
     BrowserAnimationsModule,
@@ -119,6 +123,7 @@ import { NgRatingBarModule } from "ng-rating-bar";
     CommonModule,
     MatDialogModule,
     NgRatingBarModule,
+    NgxChartsModule
   ],
   providers: [],
   schemas: [],

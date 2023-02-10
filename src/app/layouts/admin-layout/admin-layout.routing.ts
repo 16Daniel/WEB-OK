@@ -16,6 +16,10 @@ import { DasboardRegionalComponent } from 'app/pages/dasboard-regional/dasboard-
 import { DasboardSupervisorComponent } from 'app/pages/dasboard-supervisor/dasboard-supervisor.component';
 import { DashboardAsistenciasComponent } from 'app/pages/sucursales/dashboard-asistencias/dashboard-asistencias.component';
 import { UsuariosComponent } from 'app/pages/admon-user/usuarios/usuarios.component';
+import { MermasComponent } from 'app/pages/sucursales/mermas/mermas.component';
+import { DashboardPerformanceRegionalComponent } from "app/pages/dashboard-performance-regional/dashboard-performance-regional.component";
+import { DashboardPerformanceSupervisorComponent } from 'app/pages/dashboard-performance-supervisor/dashboard-performance-supervisor.component';
+
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
   { path: "regionales", component: DasboardRegionalComponent },
@@ -31,5 +35,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "mantenimiento", component: MantenimientoComponent },
   { path: "tarea", component: TareasComponent },
   { path: "asistencias", component: DashboardAsistenciasComponent},
-  { path: "usuarios", component: UsuariosComponent}
+  { path: "usuarios", component: UsuariosComponent},
+  { path: "mermas", component: MermasComponent },
+  { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
+  { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
 ];

@@ -1,0 +1,195 @@
+<div class="container">
+    <!-- header -->
+    <div class="row">
+        <div class="col-md-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion-regionales.png" alt="" />
+        </div>
+        <div class="col-md-11 align-center">
+            <h4 class="title align-center">VISTA GENERAL REGIONAL</h4>
+        </div>
+    </div>
+    <!--FILTROS-->
+    <div class="row my-4">
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">Ciudad</label>
+                <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+                    <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">Regional</label>
+                <select (change)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" [(ngModel)]="regional" class="form-control" id="Regional">
+                    <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaInicial">Fechas</label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
+                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaFinal"></label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"
+                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--TARJETAS-->
+    <div class="row my-4" *ngIf="data">
+        <!-- Task Completed -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <h5>TAREAS COMPLETADAS</h5>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <span class="card_porcentage">{{data.complete | number: '.1-2'}}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Task No Completed -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <h5>TAREAS NO COMPLETADAS</h5>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <span class="card_porcentage">{{data.noComplete | number: '.1-2'}}%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Avarage Evaluation  -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <h5>EVALUACIÓN PROMEDIO</h5>
+                  </div>
+                </div>
+                <div class="col-12 my-2">
+                  <div class="text-center">
+                    <span class="card_porcentage">{{ data.averageEvaluation }} <i
+                      class="bi bi-star-fill text-warning"></i>
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <br />
+    <!-- C H A R T S -->
+    <div class="row my-6" *ngIf="data">
+      <div class="col-12 col-md-12 ">
+        <div class="card my-4">
+          <div class="card-header ">
+            <h5 class="card-title">ACTIVIDADES OMITIDAS Y NO OMITIDAS POR SUCURSAL</h5>
+            <ngx-charts-bar-vertical-normalized
+              [view]="view"
+              scheme="cool"
+              [results]="multi"
+              [gradient]="gradient"
+              [xAxis]="showXAxis"
+              [yAxis]="showYAxis"
+              [legend]="showLegend"
+              [showXAxisLabel]="showXAxisLabel"
+              [showYAxisLabel]="showYAxisLabel"
+              [xAxisLabel]="xAxisLabel"
+              [yAxisLabel]="yAxisLabel"
+              (select)="onSelect($event)">
+            </ngx-charts-bar-vertical-normalized>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row my-6" *ngIf="data">
+      <div class="col-12 col-md-12 ">
+        <div class="card my-4">
+          <div class="card-header ">
+            <h5 class="card-title">TOP 5 ACTIVIDADES MÁS OMITIDAS</h5>
+            <ngx-charts-advanced-pie-chart
+              [view]="view"
+              scheme="cool"
+              [results]="singleDounut"
+              [gradient]="gradient"
+              (select)="onSelect($event)"
+              (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)"
+              >
+            </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- TABLE -->
+    <br />
+    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+        <div class="col-12">
+            <table class="table table-hover">
+                <thead class="thead-warning header_table">
+                    <tr>
+                        <th scope="col-4">Sucursal</th>
+                        <th scope="col-2">Completado</th>
+                        <th scope="col-2">No completado</th>
+                        <th scope="col-2">Evaluación Promedio</th>
+                        <th scope="col-2">Detalle</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data?.performances">
+                        <td class="col-3">
+                            {{ item.nameBranch }}
+                        </td>
+                        <td class="col-2">
+                            {{ item.complete | number: '.1-2' }}%
+                        </td>
+                        <td class="col-2">
+                            {{item.noComplete | number: '.1-2'}}%
+                        </td>
+                        <td class="col-2">
+                          {{ item.averageEvaluation }}
+                        </td>
+                        <td class="col-2">
+                            <img (click)="detail(item)" src="./assets/icon/ilustracion-ver.svg" alt="asistio" width="32" height="32">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+      
+</div>
