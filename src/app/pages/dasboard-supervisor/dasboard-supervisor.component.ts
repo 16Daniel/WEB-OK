@@ -7,6 +7,7 @@ import { DialogDetalleProductoRiesgoComponent } from '../sucursales/dialog/dialo
 import { DialogVoladoEfectivoComponent } from '../sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
 import { DialogDetalleStockPolloComponent } from '../sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
 import { DialogDetalleAperturaComponent } from '../sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-dasboard-supervisor',
@@ -44,7 +45,11 @@ export class DasboardSupervisorComponent implements OnInit {
   public regional;
 
 
-  constructor(public services: ServiceGeneralService, public dialog: MatDialog) { }
+  constructor(
+    public services: ServiceGeneralService, 
+    public dialog: MatDialog,
+    private route: ActivatedRoute
+    ) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem("userData"));
@@ -53,6 +58,30 @@ export class DasboardSupervisorComponent implements OnInit {
     if (this.user.roleId === 2) {
       this.ciudad = (this.user.stateId).toString();
       this.getdataSucursal(this.ciudad);
+    }
+    const p1 = this.route.snapshot.paramMap.get('city');
+    const p2 = this.route.snapshot.paramMap.get('regional');
+    const p3 = this.route.snapshot.paramMap.get('dateOne');
+    const p4 = this.route.snapshot.paramMap.get('dateTwo');
+    const p5 = this.route.snapshot.paramMap.get('branch');
+    console.log('Query params',p1,p2,p3,p4,p5);
+    if (p2 != undefined || p3 != undefined || p4 != undefined || p1 != undefined || p5 != undefined) {
+      console.log('Enter Query params');
+      
+      this.ciudad = (p1).toString();
+      this.getdataRegional(this.ciudad);
+      
+      this.regional = (p2).toString();
+      this.getdataSucursal(this.regional);
+
+      this.isDone = 2;
+
+      this.dateDash = (p3).toString();
+      this.dateDashTwo = (p4).toString();
+
+      this.sucursal = (p5).toString();
+
+      this.getDataDash(this.sucursal, this.dateDash, this.dateDashTwo, this.isDone);
     }
   }
   getDataDash(branch, dateOne, dateTwo, isDone) {

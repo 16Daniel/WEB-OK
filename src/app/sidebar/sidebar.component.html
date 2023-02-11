@@ -15,7 +15,7 @@
       <div class="collapse" [id]="menuItem.id" [name]="menuItem.id">
         <ul class="collapse show" data-parent="#accordionExample">
           <li *ngFor="let menuSoon of menuItem.children" routerLinkActive="active" class="{{ menuSoon.class }}">
-            <a [routerLink]="[menuSoon.path]">
+            <a [routerLink]="[menuSoon.access.indexOf(user.roleId) !== -1 ? menuSoon.path : null]">
               <img alt="" src="./assets/icon/{{menuSoon.icon}}.svg" />
               <span>{{ menuSoon.title }}</span>
             </a>
