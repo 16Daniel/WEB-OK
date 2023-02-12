@@ -11,6 +11,7 @@ https://canvasjs.com/license/
 /*eslint-disable*/
 /*jshint ignore:start*/
 import { Component, AfterViewInit, OnChanges, OnDestroy, Input, Output, EventEmitter } from '@angular/core';
+import { CommonModule } from '@angular/common';
 declare var require: any;
 var CanvasJS = require('./canvasjs.min');
 
