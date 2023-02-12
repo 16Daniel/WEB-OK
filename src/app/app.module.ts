@@ -60,6 +60,8 @@ import { MermasComponent } from './pages/sucursales/mermas/mermas.component';
 import { DashboardPerformanceRegionalComponent } from "./pages/dashboard-performance-regional/dashboard-performance-regional.component";
 import { DashboardPerformanceSupervisorComponent } from './pages/dashboard-performance-supervisor/dashboard-performance-supervisor.component';
 import { NgxChartsModule } from "@swimlane/ngx-charts";
+import { MatTableModule } from "@angular/material/table";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
   declarations: [
@@ -108,6 +110,8 @@ import { NgxChartsModule } from "@swimlane/ngx-charts";
     DashboardPerformanceSupervisorComponent,
   ],
   imports: [
+    MatTableModule,
+    MatInputModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(AppRoutes,{
       useHash: true

@@ -83,41 +83,41 @@
     </div>
   </div>
 
-</div>
+
 <br />
-<div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+<div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row my-3" tabindex="0">
   <div class="col-12">
-    <table class="table table-hover">
+    <table class="table table-hover col-12" >
       <thead class="thead-warning header_table">
         <tr>
-          <th scope="col-3">Articulo</th>
-          <th scope="col-1">Inv. Inicial</th>
-          <th scope="col-1">Inv. Registrado</th>
-          <th scope="col-1">Diferencia</th>
-          <th scope="col-2">intentos</th>
-          <th scope="col-2">Fecha</th>
+          <th scope="col-2">Articulo</th>
+          <th scope="col-2">Inv. Inicial</th>
+          <th scope="col-2">Inv. Registrado</th>
+          <th scope="col-2">Diferencia</th>
+          <th scope="col-1">intentos</th>
+          <th scope="col-1">Fecha</th>
           <!-- <th scope="col-1">Hora</th> -->
           <th scope="col-2">Sucursal</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let item of data">
-          <td class="col-3">
+          <td class="col-2">
             {{ item.articulo }}
           </td>
-          <td class="col-1">
+          <td class="col-2">
             {{ item.invInicial }} KG
           </td>
-          <td class="col-1">
+          <td class="col-2">
             {{item.invReg}} KG
           </td>
-          <td class="col-1">
+          <td class="col-2">
             {{item.diferencia}} KG
           </td>
-          <td class="col-2">
+          <td class="col-1">
             {{item.intentos}}
           </td>
-          <td class="col-2">
+          <td class="col-1">
             {{item.createdDate  | date: "dd/MM/yyy"}}
           </td>
           <!-- <td class="col-1">
@@ -130,4 +130,5 @@
       </tbody>
     </table>
   </div>
+</div>
 </div>

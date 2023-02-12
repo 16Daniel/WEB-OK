@@ -95,9 +95,9 @@
       <h5 class="subtitle-negro">{{nameBranch}}</h5>
     </div>
     <div class="col-12 col-md-4 col-sm-12 align-center">
-      <span class="date-grey">
+      <!-- <span class="date-grey">
         {{ dateDash | date: "dd/MM/yyy" }}
-      </span>
+      </span> -->
     </div>
     <div class="col-4 align-center">
     </div>
@@ -105,6 +105,27 @@
 
   <!-- tarjetas de informacion -->
   <div class="row my-4" *ngIf="data">
+    <!-- COMPLETAS -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>TAREAS COMPLETAS</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">
+                  {{100 - data.omissionsActivities | number: '.1-2' }}%
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- omision -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <div class="card card-stats">
@@ -137,27 +158,6 @@
             <div class="col-12 my-2">
               <div class="text-center">
                 <span class="card_porcentage">{{data.tickets}}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ticket -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-12 my-2">
-              <div class="text-center">
-                <h5>TAREAS COMPLETAS</h5>
-              </div>
-            </div>
-            <div class="col-12 my-2">
-              <div class="text-center">
-                <span class="card_porcentage">
-                  {{100 - data.omissionsActivities | number: '.1-2' }}%
-                </span>
               </div>
             </div>
           </div>
