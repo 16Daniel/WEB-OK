@@ -21,7 +21,7 @@ export interface child {
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "/dashboard",
+    path: "",
     title: "Dashboard",
     icon: "dashboard-inactivo",
     class: "",
