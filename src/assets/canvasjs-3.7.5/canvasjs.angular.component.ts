@@ -17,7 +17,7 @@ var CanvasJS = require('./canvasjs.min');
 
 @Component({
   selector: 'canvasjs-chart',
-  template: '<div id="{{chartContainerId}}" [ngStyle]="styles"></div>'
+  template: '<div id="{{chartContainerId}}" ></div>'
 })
 
 class CanvasJSChart implements AfterViewInit, OnChanges, OnDestroy {
