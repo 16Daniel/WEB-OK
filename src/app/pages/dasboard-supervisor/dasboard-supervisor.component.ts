@@ -43,6 +43,7 @@ export class DasboardSupervisorComponent implements OnInit {
   public db;
   public catRegionales: any[] = [];
   public regional;
+  public totalTareas;
 
 
   constructor(
@@ -97,6 +98,8 @@ export class DasboardSupervisorComponent implements OnInit {
           if (resp.success) {
             this.data = resp.result;
             console.log('data dash', this.data);
+            this.totalTareas = this.data.tasksMorningsCollection.length + this.data.tasksEveningsCollection.length;
+            console.log('Total Tareas: ', this.totalTareas);
           }
         });
       this.getNameBranch();

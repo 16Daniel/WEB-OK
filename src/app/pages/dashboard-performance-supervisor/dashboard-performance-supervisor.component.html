@@ -12,7 +12,7 @@
     <div class="row my-4">
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Ciudad</label>
+                <label class="non-margin" for="Ciudad">CIUDAD</label>
                 <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
                     <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
                 </select>
@@ -20,8 +20,8 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Regional</label>
-                <select (change)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" [(ngModel)]="regional" class="form-control" id="Regional">
+                <label class="non-margin" for="Ciudad">REGIONAL</label>
+                <select [(ngModel)]="regional" class="form-control" id="Regional">
                     <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
                     </option>
                 </select>
@@ -29,11 +29,11 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaInicial">Fechas</label>
+                <label for="fechaInicial">FECHAS</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
-                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                        />
                 </div>
             </div>
         </div>
@@ -43,9 +43,15 @@
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"
-                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                         />
                 </div>
             </div>
+        </div>
+        <div class="col-md-3 align-center">
+          <br/>
+          <button  (click)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+            BUSCAR
+          </button>
         </div>
     </div>
     <!--TARJETAS-->
@@ -100,7 +106,7 @@
                 </div>
                 <div class="col-12 my-2">
                   <div class="text-center">
-                    <span class="card_porcentage">{{ data.averageEvaluation }} <i
+                    <span class="card_porcentage">{{ data.averageEvaluation | number: '.1-2'}} <i
                       class="bi bi-star-fill text-warning"></i>
                     </span>
                   </div>
@@ -161,11 +167,11 @@
             <table class="table table-hover">
                 <thead class="thead-warning header_table">
                     <tr>
-                        <th scope="col-4">Sucursal</th>
-                        <th scope="col-2">Completado</th>
-                        <th scope="col-2">No completado</th>
-                        <th scope="col-2">Evaluación Promedio</th>
-                        <th scope="col-2">Detalle</th>
+                        <th scope="col-4">SUCURSAL</th>
+                        <th scope="col-2">COMPLETADO</th>
+                        <th scope="col-2">NO COMPLETADO</th>
+                        <th scope="col-2">EVALUACION PROMEDIO</th>
+                        <th scope="col-2">DETALLE</th>
                     </tr>
                 </thead>
                 <tbody>

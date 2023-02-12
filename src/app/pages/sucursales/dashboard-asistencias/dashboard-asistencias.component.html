@@ -18,7 +18,7 @@
     <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <label class="non-margin" for="Sucursal"></label>
           <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo)" [(ngModel)]="sucursal"
             class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
@@ -29,7 +29,7 @@
     <ng-template #AdminSectionB>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <label class="non-margin" for="Ciudad">CIUDAD</label>
           <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
             <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
           </select>
@@ -37,7 +37,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Regional</label>
+          <label class="non-margin" for="Ciudad">REGIONAL</label>
           <select (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
             <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
           </select>
@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal2">Sucursal</label>
+          <label class="non-margin" for="Sucursal2">SUCURSAL</label>
           <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -54,7 +54,7 @@
     </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaInicial">Fecha Inicio</label>
+        <label for="fechaInicial">FECHA INICIO</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo)" />
@@ -63,7 +63,7 @@
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaFinal">Fecha Final</label>
+        <label for="fechaFinal">FECHA FINAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo)" />
@@ -78,7 +78,7 @@
       <img class="img-fluid" src="./assets/icon/sucursal.png" alt="" />
     </div>
     <div class="col-8 col-md-3 col-sm-8 align-center">
-      <h5 class="subtitle-negro">SUCURSAL {{nameBranch}}</h5>
+      <h5 class="subtitle-negro">{{nameBranch}}</h5>
     </div>
     <div class="col-12 col-md-4 col-sm-12 align-center">
       <span class="date-grey">
@@ -98,7 +98,7 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Asistencias</h5>
+                <h5>ASISTENCIAS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
@@ -119,7 +119,7 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Retardos</h5>
+                <h5>RETARDOS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
@@ -176,12 +176,12 @@
           <table class="table">
             <thead class="thead-warning header_table">
               <tr>
-                <th scope="col">Vendedores</th>
-                <th scope="col">Cajeros</th>
-                <th scope="col">Cocineros</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Asistencia</th>
-                <th scope="col">Detalle</th>
+                <th scope="col">VENDEDORES</th>
+                <th scope="col">CAJEROS</th>
+                <th scope="col">COCINEROS</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">ASISTENCIA</th>
+                <th scope="col">DETALLE</th>
               </tr>
             </thead>
             <tbody>
@@ -209,12 +209,12 @@
           <table class="table">
             <thead class="thead-warning header_table">
               <tr>
-                <th scope="col">Vendedores</th>
-                <th scope="col">Cajeros</th>
-                <th scope="col">Cocineros</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Asistencia</th>
-                <th scope="col">Detalle</th>
+                <th scope="col">VENDEDORES</th>
+                <th scope="col">CAJEROS</th>
+                <th scope="col">COCINEROS</th>
+                <th scope="col">FECHA</th>
+                <th scope="col">ASISTENCIA</th>
+                <th scope="col">DETALLE</th>
               </tr>
             </thead>
             <tbody>

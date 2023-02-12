@@ -42,7 +42,7 @@
         <div class="col-3">
             <div class="form-group">
                 <label class="non-margin" for="SucursalAdmin">Sucursal</label>
-                <select [disabled]="regional == undefined" (change)="getMermas(ciudad, sucursal, dateInit, dateEnd)"
+                <select [disabled]="regional == undefined" 
                     [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
                     <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
                 </select>
@@ -54,7 +54,7 @@
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateInit"
-                        (ngModelChange)="getMermas(ciudad, sucursal, dateInit, dateEnd)" />
+                        />
                 </div>
             </div>
         </div>
@@ -64,10 +64,16 @@
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateEnd"
-                        (ngModelChange)="getMermas(ciudad, sucursal, dateInit, dateEnd)" />
+                        />
                 </div>
             </div>
         </div>
+        <div class="col-md-3 align-center">
+            <br/>
+            <button  (click)="getMermas(ciudad, sucursal, dateInit, dateEnd)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+              BUSCAR
+            </button>
+          </div>
     </div>
     <!-- TABLE -->
     <br />

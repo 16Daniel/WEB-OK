@@ -18,7 +18,7 @@
     <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <label class="non-margin" for="Sucursal">SUCURSAL</label>
           <select [disabled]="ciudad == undefined"  [(ngModel)]="sucursal"
             class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
@@ -29,7 +29,7 @@
     <ng-template #AdminSectionB>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <label class="non-margin" for="Ciudad">CIUDAD</label>
           <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
             <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
           </select>
@@ -37,7 +37,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Regional</label>
+          <label class="non-margin" for="Ciudad">REGIONAL</label>
           <select (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
             <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
           </select>
@@ -45,7 +45,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal2">Sucursal</label>
+          <label class="non-margin" for="Sucursal2">SUCURSAL</label>
           <select [disabled]="ciudad == undefined" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -54,7 +54,7 @@
     </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label class="non-margin" for="Sucursal">Completado</label>
+        <label class="non-margin" for="Sucursal">COMPLETADO</label>
         <select (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="isDone" class="form-control" id="Sucursal">
           <option [value]="item.id" *ngFor="let item of catCompletado">{{item.text}}</option>
         </select>
@@ -62,7 +62,7 @@
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaInicial">Fechas</label>
+        <label for="fechaInicial">FECHAS</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateDash" />
@@ -118,7 +118,7 @@
             <div class="col-12 my-2">
               <div class="text-center">
                 <span class="card_porcentage">
-                  {{100 - data.omissionsActivities | number: '.1-2' }}%
+                  {{(data.omissionsActivities) | number: '.0' }}
                 </span>
               </div>
             </div>
@@ -138,7 +138,7 @@
             </div>
             <div class="col-12 my-2">
               <div class="text-center">
-                <span class="card_porcentage">{{data.omissionsActivities | number : '.1-2'}}%</span>
+                <span class="card_porcentage">{{this.totalTareas - data.omissionsActivities | number : '.0'}}</span>
               </div>
             </div>
           </div>
@@ -152,12 +152,33 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Tickets levantados</h5>
+                <h5>TIKETS PENDIENTES</h5>
               </div>
             </div>
             <div class="col-12 my-2">
               <div class="text-center">
                 <span class="card_porcentage">{{data.tickets}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- EVALUACION -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>EVALUACIÓN PROMEDIO</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">{{ (data.omissionsActivities * 5)/(this.totalTareas) | number : '.1-2'}} <i
+                  class="bi bi-star-fill text-warning"></i>
+                </span>
               </div>
             </div>
           </div>
