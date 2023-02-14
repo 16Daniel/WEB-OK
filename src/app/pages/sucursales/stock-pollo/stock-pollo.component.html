@@ -15,7 +15,7 @@
     <div class="col-2 align-center">
       <br><br>
       <span class="date-grey">
-        {{ today | date: "dd/MM/yyy" }}
+        <!-- {{ today | date: "dd/MM/yyy" }} -->
       </span>
     </div>
   </div>
@@ -24,7 +24,7 @@
     <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
       <div class="col-4">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <label class="non-margin" for="Sucursal">SUCURSAL</label>
           <select [disabled]="ciudad == undefined" (change)="getdataStock(ciudad, sucursal)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -34,7 +34,7 @@
     <ng-template #AdminSectionB>
       <div class="col-3">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <label class="non-margin" for="Ciudad">CIUDAD</label>
           <select (change)="getdataRegional(ciudad, null)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
             <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
           </select>
@@ -42,7 +42,7 @@
       </div>
       <div class="col-3">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Regional</label>
+          <label class="non-margin" for="Ciudad">REGIONAL</label>
           <select [disabled]="ciudad == undefined" (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
             <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
           </select>
@@ -50,7 +50,7 @@
       </div>
       <div class="col-3">
         <div class="form-group">
-          <label class="non-margin" for="SucursalAdmin">Sucursal</label>
+          <label class="non-margin" for="SucursalAdmin">SUCURSAL</label>
           <select [disabled]="regional == undefined" (change)="getdataStock(ciudad, sucursal)" [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -59,7 +59,7 @@
     </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaInicial">Fechas</label>
+        <label for="fechaInicial">FECHA INICIAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateInit"  />
@@ -68,7 +68,7 @@
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaFinal"></label>
+        <label for="fechaFinal">FECHA FINAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateEnd"  />
@@ -88,8 +88,11 @@
 <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row my-3" tabindex="0">
   <div class="col-12">
     <table class="table table-hover col-12" >
-      <thead class="thead-warning header_table">
-        <tr>
+      <thead >
+        <tr class="mi_celda">
+          <th colspan="12"><h5 class="subtitle-negro-2">ALA DE POLLO</h5></th>
+        </tr>
+        <tr class="thead-warning header_table">
           <th scope="col-2">ARTICULO</th>
           <th scope="col-2">INV. ICG</th>
           <th scope="col-2">INV. REAL</th>
@@ -101,7 +104,97 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of data">
+        <tr *ngFor="let item of filtrarArt('ALA DE POLLO FRESCA KG')">
+          <td class="col-2">
+            {{ item.articulo }}
+          </td>
+          <td class="col-2">
+            {{ item.invInicial }} KG
+          </td>
+          <td class="col-2">
+            {{item.invReg}} KG
+          </td>
+          <td class="col-2">
+            {{item.diferencia}} KG
+          </td>
+          <td class="col-1">
+            {{item.intentos}}
+          </td>
+          <td class="col-1">
+            {{item.createdDate  | date: "dd/MM/yyy"}}
+          </td>
+          <!-- <td class="col-1">
+            {{item.createdDate  | date: "hh:mm:ss"}}
+          </td> -->
+          <td class="col-2">
+            {{item.branchName}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover col-12" >
+      <thead >
+        <tr class="mi_celda">
+          <th colspan="12"><h5 class="subtitle-negro-2">BONELESS</h5></th>
+        </tr>
+        <tr class="thead-warning header_table">
+          <th scope="col-2">ARTICULO</th>
+          <th scope="col-2">INV. ICG</th>
+          <th scope="col-2">INV. REAL</th>
+          <th scope="col-2">DIFERENCIA</th>
+          <th scope="col-1">INTENTOS</th>
+          <th scope="col-1">FECHA</th>
+          <!-- <th scope="col-1">Hora</th> -->
+          <th scope="col-2">SUCURSAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filtrarArt('BONELESS EMPANIZADOS')">
+          <td class="col-2">
+            {{ item.articulo }}
+          </td>
+          <td class="col-2">
+            {{ item.invInicial }} KG
+          </td>
+          <td class="col-2">
+            {{item.invReg}} KG
+          </td>
+          <td class="col-2">
+            {{item.diferencia}} KG
+          </td>
+          <td class="col-1">
+            {{item.intentos}}
+          </td>
+          <td class="col-1">
+            {{item.createdDate  | date: "dd/MM/yyy"}}
+          </td>
+          <!-- <td class="col-1">
+            {{item.createdDate  | date: "hh:mm:ss"}}
+          </td> -->
+          <td class="col-2">
+            {{item.branchName}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <table class="table table-hover col-12" >
+      <thead >
+        <tr class="mi_celda">
+          <th colspan="12"><h5 class="subtitle-negro-2">PAPAS</h5></th>
+        </tr>
+        <tr class="thead-warning header_table">
+          <th scope="col-2">ARTICULO</th>
+          <th scope="col-2">INV. ICG</th>
+          <th scope="col-2">INV. REAL</th>
+          <th scope="col-2">DIFERENCIA</th>
+          <th scope="col-1">INTENTOS</th>
+          <th scope="col-1">FECHA</th>
+          <!-- <th scope="col-1">Hora</th> -->
+          <th scope="col-2">SUCURSAL</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of filtrarArt('PAPAS DE LA CASA')">
           <td class="col-2">
             {{ item.articulo }}
           </td>

@@ -5,7 +5,7 @@
             <img class="img-fluid" src="./assets/icon/ilustracion-regionales.png" alt="" />
         </div>
         <div class="col-md-11 align-center">
-            <h4 class="title align-center">VISTA GENERAL SUPERVISOR</h4>
+            <h4 class="title align-center">VISTA GENERAL SUPERVISORES</h4>
         </div>
     </div>
     <!--FILTROS-->
@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaInicial">FECHAS</label>
+                <label for="fechaInicial">FECHA INICIAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
@@ -39,7 +39,7 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaFinal"></label>
+                <label for="fechaFinal">FECHA FINAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"
@@ -101,7 +101,7 @@
               <div class="row">
                 <div class="col-12 my-2">
                   <div class="text-center">
-                    <h5>EVALUACIÓN PROMEDIO</h5>
+                    <h5>ENCUESTAS PROMEDIO</h5>
                   </div>
                 </div>
                 <div class="col-12 my-2">
@@ -122,7 +122,7 @@
       <div class="col-12 col-md-12 ">
         <div class="card my-4">
           <div class="card-header ">
-            <h5 class="card-title">ACTIVIDADES OMITIDAS Y NO OMITIDAS POR SUCURSAL</h5>
+            <h5 class="card-title">ACTIVIDADES COMPLETAS Y OMITIDAS POR SUCURSAL</h5>
             <ngx-charts-bar-vertical-normalized
               [view]="view"
               scheme="cool"
@@ -170,7 +170,7 @@
                         <th scope="col-4">SUCURSAL</th>
                         <th scope="col-2">COMPLETADO</th>
                         <th scope="col-2">NO COMPLETADO</th>
-                        <th scope="col-2">EVALUACION PROMEDIO</th>
+                        <th scope="col-2">ENCUESTAS PROMEDIO</th>
                         <th scope="col-2">DETALLE</th>
                     </tr>
                 </thead>

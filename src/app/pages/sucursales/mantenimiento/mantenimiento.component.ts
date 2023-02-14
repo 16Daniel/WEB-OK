@@ -119,7 +119,8 @@ export class MantenimientoComponent implements OnInit {
           },
           width: "350px",
         });
-        this.ngOnInit();
+        //this.ngOnInit();
+        this.getDataDash(this.sucursal,this.dateDash,this.dateDash2, this.ciudad);
       } else if (result == 3) {
         const dialog2 = this._dialog.open(DialogGeneralMessageComponent, {
           data: {
@@ -128,7 +129,8 @@ export class MantenimientoComponent implements OnInit {
           },
           width: "350px",
         });
-        this.ngOnInit();
+        //this.ngOnInit();
+        this.getDataDash(this.sucursal,this.dateDash,this.dateDash2, this.ciudad);
       }
     });
   }

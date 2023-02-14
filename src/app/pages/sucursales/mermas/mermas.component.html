@@ -15,7 +15,7 @@
         <div class="col-2 align-center">
             <br><br>
             <span class="date-grey">
-                {{ today | date: "dd MMM yyy" }}
+                <!-- {{ today | date: "dd MMM yyy" }} -->
             </span>
         </div>
     </div>
@@ -23,7 +23,7 @@
     <div class="row my-4">
         <div class="col-3">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Ciudad</label>
+                <label class="non-margin" for="Ciudad">CIUDAD</label>
                 <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
                     <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
                 </select>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-3">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Regional</label>
+                <label class="non-margin" for="Ciudad">REGIONAL</label>
                 <select [disabled]="ciudad == undefined" (change)="getdataSucursal(regional)" [(ngModel)]="regional"
                     class="form-control" id="Regional">
                     <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
@@ -41,7 +41,7 @@
         </div>
         <div class="col-3">
             <div class="form-group">
-                <label class="non-margin" for="SucursalAdmin">Sucursal</label>
+                <label class="non-margin" for="SucursalAdmin">SUCURSAL</label>
                 <select [disabled]="regional == undefined" 
                     [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
                     <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
@@ -50,7 +50,7 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaInicial">Fechas</label>
+                <label for="fechaInicial">FECHA INICIAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateInit"
@@ -60,7 +60,7 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaFinal"></label>
+                <label for="fechaFinal">FECHA FINAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateEnd"
@@ -82,10 +82,11 @@
             <table class="table table-hover col-12" >
                 <thead class="thead-warning header_table">
                     <tr>
-                        <th scope="col-4">Articulo</th>
-                        <th scope="col-2">Unidad</th>
-                        <th scope="col-2">Unidad de Medida</th>
-                        <th scope="col-2">Precio</th>
+                        <th scope="col-3">ARTICULO</th>
+                        <th scope="col-2">UDS</th>
+                        <th scope="col-2">UNIDAD DE MEDIDA</th>
+                        <th scope="col-2">COSTO</th>
+                        <th scope="col-2">TOTAL</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -101,6 +102,9 @@
                         </td>
                         <td class="col-2">
                             {{item.price}}
+                        </td>
+                        <td class="col-2">
+                            $ {{ item.price * item.unity | number: '.1-2' }}
                         </td>
                     </tr>
                 </tbody>

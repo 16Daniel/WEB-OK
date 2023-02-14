@@ -36,7 +36,7 @@ export const ROUTES: RouteInfo[] = [
     },
     {
       path: "/vista-general-supervisor",
-      title: "Vista general supervisor",
+      title: "Vista general supervisores",
       icon: "supervisor-inactivo",
       class: "",
       access: [3]
@@ -58,7 +58,8 @@ export const ROUTES: RouteInfo[] = [
     ]
   },
   {
-    path: "/asistencias",
+    path: "",
+    //path: "/asistencias",
     // path: "/sucursales",
     title: "Sucursales",
     icon: "sucursales-inactivo",
@@ -67,7 +68,8 @@ export const ROUTES: RouteInfo[] = [
     id: "colapseSucursales",
     children: [
       {
-        path: "/asistencias",
+        path: "",
+        //path: "/asistencias",
         title: "Asistencias",
         icon: "asistencias-inactivo",
         class: "",

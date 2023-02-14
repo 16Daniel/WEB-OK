@@ -58,6 +58,7 @@ export class DasboardRegionalComponent implements OnInit {
   public isDone;
   // obj temp para mandar las fotos al modal
   public photosTemp;
+  public totalTareas;
 
   public ciudad;
   public catState: any[] = [];
@@ -125,6 +126,8 @@ export class DasboardRegionalComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log('data dash', this.data);
+          this.totalTareas = this.data.tasksBathroomsCollection.length + this.data.tasksKitchenCollection.length + this.data.tasksSalonCollection.length + this.data.tasksSystemCollection.length;
+          console.log('data dash', this.totalTareas);
         }
       });
       this.getNameBranch();

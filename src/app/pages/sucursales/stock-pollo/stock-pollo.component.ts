@@ -122,4 +122,15 @@ export class StockPolloComponent implements OnInit {
       }
     });
   }
+  filtrarArt( tipoArt) {
+
+    // Podemos filtrarlos mediante JavaScript
+    // y retornar un nuevo arreglo filtrado
+    // el cual es el que usará el ngFor
+    let articulo = this.data.filter( art => {
+      return art.articulo === tipoArt
+    });
+
+    return articulo;
+  }
 }

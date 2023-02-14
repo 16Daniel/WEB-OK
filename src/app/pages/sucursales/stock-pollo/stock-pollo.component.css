@@ -25,3 +25,16 @@
 .header_table {
   background-color: #ffb819;
 }
+.mi_celda {
+  text-align: center;
+  font-weight: bold;
+  background-color: #ffb819;
+  margin: 0;
+  border: 1.5px solid black;
+}
+.subtitle-negro-2 {
+  color: black;
+  font-weight: bold;
+  font-size: x-large;
+  margin: 0;
+}

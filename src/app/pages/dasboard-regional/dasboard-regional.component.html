@@ -18,7 +18,7 @@
     <ng-container *ngIf="user.roleId === 2; else AdminSectionB">
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal">Sucursal</label>
+          <label class="non-margin" for="Sucursal">SUCURSAL</label>
           <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -28,7 +28,7 @@
     <ng-template #AdminSectionB>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Ciudad</label>
+          <label class="non-margin" for="Ciudad">CIUDAD</label>
           <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
             <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
           </select>
@@ -36,7 +36,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Ciudad">Regional</label>
+          <label class="non-margin" for="Ciudad">REGIONAL</label>
           <select (change)="getdataSucursal(regional)" [(ngModel)]="regional" class="form-control" id="Regional">
             <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}</option>
           </select>
@@ -44,7 +44,7 @@
       </div>
       <div class="col-md-3 align-center">
         <div class="form-group">
-          <label class="non-margin" for="Sucursal2">Sucursal</label>
+          <label class="non-margin" for="Sucursal2">SUCURSAL</label>
           <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
@@ -53,7 +53,7 @@
     </ng-template>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label class="non-margin" for="Sucursal">Completado</label>
+        <label class="non-margin" for="Sucursal">COMPLETADO</label>
         <select (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="isDone" class="form-control" id="Sucursal">
           <option [value]="item.id" *ngFor="let item of catCompletado">{{item.text}}</option>
         </select>
@@ -61,7 +61,7 @@
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaInicial">Fechas</label>
+        <label for="fechaInicial">FECHA INICIAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
@@ -70,7 +70,7 @@
     </div>
     <div class="col-md-3 align-center">
       <div class="form-group">
-        <label for="fechaFinal"></label>
+        <label for="fechaFinal">FECHA FINAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
             [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
@@ -85,11 +85,11 @@
       <img class="img-fluid" src="./assets/icon/sucursal.png" alt="" />
     </div>
     <div class="col-8 col-md-3 col-sm-8 align-center">
-      <h5 class="subtitle-negro">SUCURSAL {{nameBranch}}</h5>
+      <h5 class="subtitle-negro">{{nameBranch}}</h5>
     </div>
     <div class="col-12 col-md-4 col-sm-12 align-center">
       <span class="date-grey">
-        {{ dateDash | date: "dd MMM yyy" }}
+        
       </span>
     </div>
     <div class="col-4 align-center">
@@ -105,12 +105,31 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Omisión de Actividades</h5>
+                <h5>OMISION DE TAREAS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
               <div class="text-center">
-                <span class="card_porcentage">{{data.omissionsActivities | number: '.1-2'}}%</span>
+                <span class="card_porcentage">{{(data.omissionsActivities * (this.totalTareas))/100  | number: '.0'}} | {{data.omissionsActivities | number: '.1-2'}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- completas -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>TAREAS COMPLETADAS</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">{{((100 - data.omissionsActivities)*(this.totalTareas))/100 | number: '.0'}} | {{100 - data.omissionsActivities | number: '.1-2'}}%</span>
               </div>
             </div>
           </div>
@@ -124,7 +143,7 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Tickets levantados</h5>
+                <h5>TICKETS ABIERTOS</h5>
               </div>
             </div>
             <div class="col-12 my-2">
@@ -143,7 +162,7 @@
           <div class="row">
             <div class="col-12 my-2">
               <div class="text-center">
-                <h5>Evaluación promedio</h5>
+                <h5>ENCUESTA PROMEDIO</h5>
               </div>
             </div>
             <div class="col-12 my-2">
@@ -177,10 +196,10 @@
           <a class="nav-link px-5" id="sistema-tab" data-toggle="tab" href="#sistema" role="tab" aria-controls="sistema"
             aria-selected="false">SISTEMA Y CAJA</a>
         </li>
-        <li class="nav-item cocina-ul">
+        <!-- <li class="nav-item cocina-ul">
           <a class="nav-link px-5" id="mantenimiento-tab" data-toggle="tab" href="#mantenimiento" role="tab"
             aria-controls="mantenimiento" aria-selected="false">MANTENIMIENTO</a>
-        </li>
+        </li> -->
       </ul>
     </div>
     <div class="col-12">
@@ -306,7 +325,7 @@
           </table>
         </div>
         <!-- mantenimiento 5-->
-        <div class="tab-pane fade" id="mantenimiento" role="tabpanel" aria-labelledby="mantenimiento-tab">
+        <!-- <div class="tab-pane fade" id="mantenimiento" role="tabpanel" aria-labelledby="mantenimiento-tab">
           <table class="table">
             <thead class="thead-warning header_table">
               <tr>
@@ -336,7 +355,7 @@
               </tr>
             </tbody>
           </table>
-        </div>
+        </div> -->
       </div>
     </div>
   </div>
