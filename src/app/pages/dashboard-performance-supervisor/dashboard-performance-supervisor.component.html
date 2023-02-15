@@ -29,31 +29,36 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaInicial">FECHA INICIAL</label>
+                <label class="non-margin" for="fechaInicial">FECHA INICIAL</label>
                 <div class="input-group">
-                    <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
-                        placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
-                        />
+                    <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"/>
                 </div>
             </div>
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaFinal">FECHA FINAL</label>
+                <label class="non-margin" for="fechaFinal">FECHA FINAL</label>
                 <div class="input-group">
-                    <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
-                        placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"
-                         />
+                    <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"/>
                 </div>
             </div>
         </div>
         <div class="col-md-3 align-center">
-          <br/>
           <button  (click)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
             BUSCAR
           </button>
         </div>
     </div>
+
+    <div class="text-center" *ngIf="this.carga == true">
+      <h4 style="color:#ad182d;text-align:center;">
+        CARGANDO
+      </h4>
+      <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
     <!--TARJETAS-->
     <div class="row my-4" *ngIf="data">
         <!-- Task Completed -->
@@ -125,16 +130,18 @@
             <h5 class="card-title">ACTIVIDADES COMPLETAS Y OMITIDAS POR SUCURSAL</h5>
             <ngx-charts-bar-vertical-normalized
               [view]="view"
-              scheme="cool"
+              [scheme]="colorScheme"
               [results]="multi"
               [gradient]="gradient"
               [xAxis]="showXAxis"
               [yAxis]="showYAxis"
               [legend]="showLegend"
+              [legendTitle]="legendTitle"
               [showXAxisLabel]="showXAxisLabel"
               [showYAxisLabel]="showYAxisLabel"
               [xAxisLabel]="xAxisLabel"
               [yAxisLabel]="yAxisLabel"
+              [animations]="animation"
               (select)="onSelect($event)">
             </ngx-charts-bar-vertical-normalized>
           </div>
@@ -148,9 +155,10 @@
             <h5 class="card-title">TOP 5 ACTIVIDADES MÁS OMITIDAS</h5>
             <ngx-charts-advanced-pie-chart
               [view]="view"
-              scheme="cool"
+              scheme="picnic"
               [results]="singleDounut"
               [gradient]="gradient"
+              [animations]="animation"
               (select)="onSelect($event)"
               (activate)="onActivate($event)"
               (deactivate)="onDeactivate($event)"
@@ -165,7 +173,7 @@
     <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
         <div class="col-12">
             <table class="table table-hover">
-                <thead class="thead-warning header_table">
+                <thead class="thead-warning header_table" *ngIf="data">
                     <tr>
                         <th scope="col-4">SUCURSAL</th>
                         <th scope="col-2">COMPLETADO</th>

@@ -46,6 +46,7 @@ export class DasboardRegionalComponent implements OnInit {
   // variables
   public user: any;
   public data: any;
+  public data2: any;
   public dataBranch: any[] = [];
   public sucursal;
   public nameBranch;
@@ -59,6 +60,9 @@ export class DasboardRegionalComponent implements OnInit {
   // obj temp para mandar las fotos al modal
   public photosTemp;
   public totalTareas;
+  public sinvisita = false;
+
+  public carga = false;
 
   public ciudad;
   public catState: any[] = [];
@@ -121,13 +125,23 @@ export class DasboardRegionalComponent implements OnInit {
       return
     }
     else {
+      this.carga = true;
+      this.data = null;
       console.log(dateOne, dateTwo);
       this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
         if (resp.success) {
-          this.data = resp.result;
-          console.log('data dash', this.data);
-          this.totalTareas = this.data.tasksBathroomsCollection.length + this.data.tasksKitchenCollection.length + this.data.tasksSalonCollection.length + this.data.tasksSystemCollection.length;
-          console.log('data dash', this.totalTareas);
+          this.data2 = resp.result;
+          console.log('data dash', this.data2);
+          this.totalTareas = this.data2.tasksBathroomsCollection.length + this.data2.tasksKitchenCollection.length + this.data2.tasksSalonCollection.length + this.data2.tasksSystemCollection.length;
+          console.log('total de tareas', this.totalTareas);
+          if(this.totalTareas != 0){
+            this.data = this.data2;
+            this.sinvisita = false;
+          }
+          else{
+            this.sinvisita = true;
+          }
+          this.carga = false;
         }
       });
       this.getNameBranch();

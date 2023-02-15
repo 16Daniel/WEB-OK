@@ -75,8 +75,28 @@
             </button>
           </div>
     </div>
-    <!-- TABLE -->
+
     <br />
+        <!-- total mermas -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <h5>TOTAL EN MERMAS</h5>
+                    </div>
+                  </div>
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <span class="card_porcentage">{{this.mermastotal | currency}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- TABLE -->
     <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
         <div class="col-12">
             <table class="table table-hover col-12" >
@@ -104,7 +124,7 @@
                             {{item.price}}
                         </td>
                         <td class="col-2">
-                            $ {{ item.price * item.unity | number: '.1-2' }}
+                            {{ item.price * item.unity | currency }}
                         </td>
                     </tr>
                 </tbody>

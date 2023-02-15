@@ -31,6 +31,8 @@ export class DasboardSupervisorComponent implements OnInit {
   // obj temp para mandar las fotos al modal
   public photosTemp;
 
+  public carga = false;
+
   public ciudad;
   public catState: any[] = [];
   public catSucursal: any[] = [];
@@ -92,6 +94,8 @@ export class DasboardSupervisorComponent implements OnInit {
       return
     }
     else {
+      this.carga = true;
+      this.data = null;
       console.log(dateOne);
       this.services.serviceGeneralGet(`Dashboard/${branch
         }/Supervisor?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
@@ -100,6 +104,7 @@ export class DasboardSupervisorComponent implements OnInit {
             console.log('data dash', this.data);
             this.totalTareas = this.data.tasksMorningsCollection.length + this.data.tasksEveningsCollection.length;
             console.log('Total Tareas: ', this.totalTareas);
+            this.carga = false;
           }
         });
       this.getNameBranch();

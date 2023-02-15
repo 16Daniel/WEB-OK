@@ -19,6 +19,7 @@ export class MermasComponent implements OnInit {
   public regional;
   public dateInit;
   public dateEnd;
+  public mermastotal;
   
   constructor(
     public service: ServiceGeneralService,) { }
@@ -75,9 +76,19 @@ export class MermasComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log("data", this.data);
+          this.getTotalmermas();
         }
       });
     // StockChicken/Admin/All-Branch?dataBase=DB2
+  }
+  getTotalmermas(){
+        //Calculamos el TOTAL 
+        this.mermastotal = this.data.reduce((
+          acc,
+          obj,
+        ) => acc + (obj.price * obj.unity),
+        0);
+        console.log("Total: ", this.mermastotal)
   }
 
 }

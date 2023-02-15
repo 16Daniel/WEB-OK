@@ -21,6 +21,7 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
   public dateDashTwo;
   public data: any;
   public chartOptions: any;
+  public carga = false;
 
   // Charts Dounut
   singleDounut = [];
@@ -39,9 +40,15 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
   showXAxis: boolean = true;
   showYAxis: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Sucursal';
+  xAxisLabel: string = 'SUCURSALES';
   showYAxisLabel: boolean = true;
-  yAxisLabel: string = 'Actividades';
+  yAxisLabel: string = 'TAREAS';
+  legendTitle: string = 'TAREAS';
+  animation: boolean = true;
+
+  colorScheme = {
+    domain: ['#00C24F','#FF9C2A']
+  };
 
   constructor(public services: ServiceGeneralService,private router: Router) { }
 
@@ -77,6 +84,7 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
       return
     }
     else {
+      this.carga = true;
       this.data = null;
       this.services.serviceGeneralGet(`Dashboard/performance-general/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
         if (resp.success) {
@@ -84,6 +92,7 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
           console.log('data dash', this.data);
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;
+          this.carga=false;
         }
       });
     }

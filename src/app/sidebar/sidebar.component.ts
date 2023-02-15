@@ -21,7 +21,7 @@ export interface child {
 
 export const ROUTES: RouteInfo[] = [
   {
-    path: "",
+    path: "/vista-general-regional",
     title: "Dashboard",
     icon: "dashboard-inactivo",
     class: "",
@@ -41,7 +41,16 @@ export const ROUTES: RouteInfo[] = [
       class: "",
       access: [3]
     },
-    {
+    ]
+  },
+  {
+    path: "/regionales",
+    title: "Tareas",
+    icon: "dashboard-inactivo",
+    class: "",
+    target: "#colapseTareas",
+    id: "colapseTareas",
+    children: [{
       path: "/regionales",
       title: "Regionales",
       icon: "regional-inactivo",
@@ -56,9 +65,9 @@ export const ROUTES: RouteInfo[] = [
       access: [1,2,3]
     },
     ]
-  },
+  },,
   {
-    path: "",
+    path: "/stock-pollo",
     //path: "/asistencias",
     // path: "/sucursales",
     title: "Sucursales",
@@ -67,14 +76,14 @@ export const ROUTES: RouteInfo[] = [
     target: "#colapseSucursales",
     id: "colapseSucursales",
     children: [
-      {
-        path: "",
-        //path: "/asistencias",
-        title: "Asistencias",
-        icon: "asistencias-inactivo",
-        class: "",
-        access: [1,2,3]
-      },
+      // {
+      //   path: "",
+      //   //path: "/asistencias",
+      //   title: "Asistencias",
+      //   icon: "asistencias-inactivo",
+      //   class: "",
+      //   access: [1,2,3]
+      // },
       {
         path: "/stock-pollo",
         title: "Inventario",
@@ -84,17 +93,10 @@ export const ROUTES: RouteInfo[] = [
       },
       {
         path: "/mantenimiento",
-        title: "Mantenimiento",
+        title: "Tickets",
         icon: "mantenimiento-inactivo",
         class: "",
         access: [1,2,3]
-      },
-       {
-         path: "/usuarios",
-        title: "Usuarios",
-         icon: "regional-inactivo",
-        class: "",
-        access: [3]
       },
       {
         path: "/mermas",
@@ -102,6 +104,25 @@ export const ROUTES: RouteInfo[] = [
         icon: "tareas-inactivo",
         class: "",
         access: [1,2,3]
+      },
+    ],
+  },
+  {
+    path: "/usuarios",
+    //path: "/asistencias",
+    // path: "/sucursales",
+    title: "Configuracion",
+    icon: "tareas-inactivo",
+    class: "",
+    target: "#colapseTareas",
+    id: "colapseTareas",
+    children: [
+       {
+         path: "/usuarios",
+        title: "Usuarios",
+         icon: "regional-inactivo",
+        class: "",
+        access: [3]
       },
     ],
   },

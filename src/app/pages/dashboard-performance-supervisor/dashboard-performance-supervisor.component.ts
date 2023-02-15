@@ -20,12 +20,14 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   public data: any;
   public chartOptions: any;
 
+  public carga = false;
+
   // Charts Dounut
   singleDounut = [];
   view: [number, number] = [900, 400];
 
   // options
-  gradient: boolean = true;
+  gradient: boolean = false;
   showLegend: boolean = true;
   showLabels: boolean = true;
   isDoughnut: boolean = false;
@@ -37,9 +39,15 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   showXAxis: boolean = true;
   showYAxis: boolean = true;
   showXAxisLabel: boolean = true;
-  xAxisLabel: string = 'Sucursal';
+  xAxisLabel: string = 'SUCURSALES';
   showYAxisLabel: boolean = true;
-  yAxisLabel: string = 'Actividades';
+  yAxisLabel: string = 'TAREAS';
+  legendTitle: string = 'TAREAS';
+  animation: boolean = true;
+
+  colorScheme = {
+    domain: ['#00C24F','#FF9C2A']
+  };
 
   constructor(public services: ServiceGeneralService,private router: Router) { }
 
@@ -75,6 +83,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
       return
     }
     else {
+      this.carga = true;
       this.data = null;
       this.services.serviceGeneralGet(`Dashboard/performance-general-supervisor/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
         if (resp.success) {
@@ -82,6 +91,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;
           console.log('data dash', this.data);
+          this.carga = false;
         }
       });
     }

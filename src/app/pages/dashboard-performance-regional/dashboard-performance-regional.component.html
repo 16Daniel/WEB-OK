@@ -8,11 +8,13 @@
             <h4 class="title align-center">VISTA GENERAL REGIONAL</h4>
         </div>
     </div>
+    <div class="col-12 logo mt-4">
+    </div>
     <!--FILTROS-->
     <div class="row my-4">
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Ciudad</label>
+                <label class="non-margin" for="Ciudad">CIUDAD</label>
                 <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
                     <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
                 </select>
@@ -20,8 +22,8 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label class="non-margin" for="Ciudad">Regional</label>
-                <select (change)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" [(ngModel)]="regional" class="form-control" id="Regional">
+                <label class="non-margin" for="Ciudad">REGIONAL</label>
+                <select [(ngModel)]="regional" class="form-control" id="Regional">
                     <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
                     </option>
                 </select>
@@ -29,25 +31,40 @@
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaInicial">Fechas</label>
+                <label class="non-margin" for="fechaInicial">FECHA INICIAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDash"
-                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                        />
                 </div>
             </div>
         </div>
         <div class="col-md-3 align-center">
             <div class="form-group">
-                <label for="fechaFinal"></label>
+                <label class="non-margin" for="fechaFinal">FECHA FINAL</label>
                 <div class="input-group">
                     <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
                         placeholder="yyyy-mm-dd" [(ngModel)]="dateDashTwo"
-                        (ngModelChange)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" />
+                        />
                 </div>
             </div>
         </div>
+        <div class="col-md-3 align-center">
+          <button  (click)="getDataDash(ciudad, regional, dateDash, dateDashTwo)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+            BUSCAR
+          </button>
+        </div>
     </div>
+
+    <div class="text-center" *ngIf="this.carga == true">
+      <h4 style="color:#ad182d;text-align:center;">
+        CARGANDO
+      </h4>
+      <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
     <!--TARJETAS-->
     <div class="row my-4" *ngIf="data">
         <!-- Task Completed -->
@@ -95,7 +112,7 @@
               <div class="row">
                 <div class="col-12 my-2">
                   <div class="text-center">
-                    <h5>EVALUACIÓN PROMEDIO</h5>
+                    <h5>ENCUESTAS PROMEDIO</h5>
                   </div>
                 </div>
                 <div class="col-12 my-2">
@@ -120,16 +137,18 @@
             <h5 class="card-title">ACTIVIDADES OMITIDAS Y NO OMITIDAS POR SUCURSAL</h5>
             <ngx-charts-bar-vertical-normalized
               [view]="view"
-              scheme="cool"
+              [scheme]="colorScheme"
               [results]="multi"
               [gradient]="gradient"
               [xAxis]="showXAxis"
               [yAxis]="showYAxis"
               [legend]="showLegend"
+              [legendTitle]="legendTitle"
               [showXAxisLabel]="showXAxisLabel"
               [showYAxisLabel]="showYAxisLabel"
               [xAxisLabel]="xAxisLabel"
               [yAxisLabel]="yAxisLabel"
+              [animations]="animation"
               (select)="onSelect($event)">
             </ngx-charts-bar-vertical-normalized>
           </div>
@@ -143,9 +162,10 @@
             <h5 class="card-title">TOP 5 ACTIVIDADES MÁS OMITIDAS</h5>
             <ngx-charts-advanced-pie-chart
               [view]="view"
-              scheme="cool"
+              scheme="picnic"
               [results]="singleDounut"
               [gradient]="gradient"
+              [animations]="animation"
               (select)="onSelect($event)"
               (activate)="onActivate($event)"
               (deactivate)="onDeactivate($event)"
@@ -160,7 +180,7 @@
     <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
         <div class="col-12">
             <table class="table table-hover">
-                <thead class="thead-warning header_table">
+                <thead class="thead-warning header_table" *ngIf="data">
                     <tr>
                         <th scope="col-4">Sucursal</th>
                         <th scope="col-2">Completado</th>

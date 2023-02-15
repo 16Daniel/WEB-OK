@@ -19,7 +19,7 @@
       <div class="col-md-3 align-center">
         <div class="form-group">
           <label class="non-margin" for="Sucursal">SUCURSAL</label>
-          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
+          <select [disabled]="ciudad == undefined" [(ngModel)]="sucursal" class="form-control" id="Sucursal">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
         </div>
@@ -45,7 +45,7 @@
       <div class="col-md-3 align-center">
         <div class="form-group">
           <label class="non-margin" for="Sucursal2">SUCURSAL</label>
-          <select [disabled]="ciudad == undefined" (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
+          <select [disabled]="ciudad == undefined" [(ngModel)]="sucursal" class="form-control" id="Sucursal2">
             <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
           </select>
         </div>
@@ -54,7 +54,7 @@
     <div class="col-md-3 align-center">
       <div class="form-group">
         <label class="non-margin" for="Sucursal">COMPLETADO</label>
-        <select (change)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" [(ngModel)]="isDone" class="form-control" id="Sucursal">
+        <select [(ngModel)]="isDone" class="form-control" id="Sucursal">
           <option [value]="item.id" *ngFor="let item of catCompletado">{{item.text}}</option>
         </select>
       </div>
@@ -64,7 +64,7 @@
         <label for="fechaInicial">FECHA INICIAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaInicial" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDash" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
+            [(ngModel)]="dateDash" />
         </div>
       </div>
     </div>
@@ -73,9 +73,24 @@
         <label for="fechaFinal">FECHA FINAL</label>
         <div class="input-group">
           <input onkeydown="return false" id="fechaFinal" class="form-control" type="date" placeholder="yyyy-mm-dd"
-            [(ngModel)]="dateDashTwo" (ngModelChange)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" />
+            [(ngModel)]="dateDashTwo" />
         </div>
       </div>
+    </div>
+    <div class="col-md-3 align-center">
+      <br>
+      <button  (click)="getDataDash(sucursal, dateDash, dateDashTwo, isDone)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+        BUSCAR
+      </button>
+    </div>
+  </div>
+
+  <div class="text-center" *ngIf="this.carga == true">
+    <h4 style="color:#ad182d;text-align:center;">
+      CARGANDO
+    </h4>
+    <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+      <span class="sr-only">Loading...</span>
     </div>
   </div>
 
@@ -98,25 +113,6 @@
 
   <!-- tarjetas de informacion -->
   <div class="row my-4" *ngIf="data">
-    <!-- omision -->
-    <div class="col-lg-3 col-md-6 col-sm-6">
-      <div class="card card-stats">
-        <div class="card-body ">
-          <div class="row">
-            <div class="col-12 my-2">
-              <div class="text-center">
-                <h5>OMISION DE TAREAS</h5>
-              </div>
-            </div>
-            <div class="col-12 my-2">
-              <div class="text-center">
-                <span class="card_porcentage">{{(data.omissionsActivities * (this.totalTareas))/100  | number: '.0'}} | {{data.omissionsActivities | number: '.1-2'}}%</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!-- completas -->
     <div class="col-lg-3 col-md-6 col-sm-6">
       <div class="card card-stats">
@@ -130,6 +126,25 @@
             <div class="col-12 my-2">
               <div class="text-center">
                 <span class="card_porcentage">{{((100 - data.omissionsActivities)*(this.totalTareas))/100 | number: '.0'}} | {{100 - data.omissionsActivities | number: '.1-2'}}%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- omision -->
+    <div class="col-lg-3 col-md-6 col-sm-6">
+      <div class="card card-stats">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <h5>OMISION DE TAREAS</h5>
+              </div>
+            </div>
+            <div class="col-12 my-2">
+              <div class="text-center">
+                <span class="card_porcentage">{{(data.omissionsActivities * (this.totalTareas))/100  | number: '.0'}} | {{data.omissionsActivities | number: '.1-2'}}%</span>
               </div>
             </div>
           </div>
@@ -176,6 +191,11 @@
       </div>
     </div>
   </div>
+
+  <div class="col-md-11 align-center" *ngIf="this.sinvisita == true">
+    <h4 class="title align-center">SIN REGISTRO DE VISITA</h4>
+  </div>
+
   <!-- menu seccionado -->
   <div class="row my4" *ngIf="data" >
     <div class="col-12">
