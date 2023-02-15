@@ -37,9 +37,10 @@ export class DasboardSupervisorComponent implements OnInit {
   public catState: any[] = [];
   public catSucursal: any[] = [];
   public catCompletado: any[] = [ 
-    { id: 2, text: 'Todo'},
-    { id: 1, text: 'Si'}, 
-    { id: 0, text: 'No'}
+    { id: 2, text: 'Todo'}
+    // ,
+    // { id: 1, text: 'Si'}, 
+    // { id: 0, text: 'No'}
     ];
   public isDone;
   public db;
