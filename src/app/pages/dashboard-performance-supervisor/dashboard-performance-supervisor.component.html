@@ -148,6 +148,54 @@
         </div>
       </div>
     </div>
+
+    <div class="row my-6" *ngIf="data">
+      <div class="col-12 col-md-12 ">
+        <div class="card my-4">
+          <div class="card-header ">
+            <h5 class="card-title">TIEMPOS EN COCINA</h5>
+            <ngx-charts-bar-vertical-normalized
+              [view]="view"
+              [scheme]="colorScheme2"
+              [results]="multi2"
+              [gradient]="gradient"
+              [xAxis]="showXAxis2"
+              [yAxis]="showYAxis2"
+              [legend]="showLegend"
+              [legendTitle]="legendTitle2"
+              [showXAxisLabel]="showXAxisLabel2"
+              [showYAxisLabel]="showYAxisLabel2"
+              [xAxisLabel]="xAxisLabel2"
+              [yAxisLabel]="yAxisLabel2"
+              [animations]="animation2"
+              (select)="onSelect($event)">
+            </ngx-charts-bar-vertical-normalized>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row my-6" *ngIf="data">
+      <div class="col-12 col-md-12 ">
+        <div class="card my-4">
+          <div class="card-header ">
+            <h5 class="card-title">INCIDENCIAS 25 PTS</h5>
+            <ngx-charts-advanced-pie-chart
+              [view]="view"
+              scheme="picnic"
+              [results]="singleDounut2"
+              [gradient]="gradient"
+              [animations]="animation"
+              (select)="onSelect($event)"
+              (activate)="onActivate($event)"
+              (deactivate)="onDeactivate($event)"
+              >
+            </ngx-charts-advanced-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="row my-6" *ngIf="data">
       <div class="col-12 col-md-12 ">
         <div class="card my-4">

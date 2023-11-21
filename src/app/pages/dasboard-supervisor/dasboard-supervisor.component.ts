@@ -7,6 +7,7 @@ import { DialogDetalleProductoRiesgoComponent } from '../sucursales/dialog/dialo
 import { DialogVoladoEfectivoComponent } from '../sucursales/dialog/dialog-volado-efectivo/dialog-volado-efectivo.component';
 import { DialogDetalleStockPolloComponent } from '../sucursales/dialog/dialog-detalle-stock-pollo/dialog-detalle-stock-pollo.component';
 import { DialogDetalleAperturaComponent } from '../sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
+import { DialogDetalleAceiteComponent } from '../sucursales/dialog/dialog-detalle-aceite/dialog-detalle-aceite.component';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -149,7 +150,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -174,10 +175,11 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: '70vw', //sets width of dialog
-                  height:'70vh', //sets width of dialog
-                  maxWidth: '100vw', //overrides default width of dialog
-                  maxHeight: '100vh', //overrides default height of dialog
+                  // width: '70vw', //sets width of dialog
+                  // height:'70vh', //sets width of dialog
+                  // maxWidth: '100vw', //overrides default width of dialog
+                  // maxHeight: '100vh', //overrides default height of dialog
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -201,16 +203,16 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                     photos: this.photosTemp
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
             });
 
           break;
-        case 'BAÑOS':
+        case 'BAÑOS HOMBRES':
 
-          console.log('BAÑOS');
+          console.log('BAÑOS HOMBRES');
           this.services
             .serviceGeneralGet(`BanosMatutino/${data.detail}`)
             .subscribe((resp) => {
@@ -225,7 +227,55 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                     photos: this.photosTemp
                   },
-                  width: "30rem",
+                  width: "50rem",
+                });
+                dialog.afterClosed().subscribe();
+              }
+            });
+
+          break;
+
+          case 'ACEITE':
+            console.log('ACEITE');
+            this.services
+              .serviceGeneralGet('Alarm/' + data.detail)
+              .subscribe((resp) => {
+                if (resp.success) {
+                  this.dataTask = resp.result;
+                  this.photosTemp = this.dataTask.photoAlarms;
+                  console.log('get data', this.dataTask);
+                  const dialog = this.dialog.open(DialogDetalleAceiteComponent, {
+                    data: {
+                      data: this.dataTask,
+                      photos: this.photosTemp,
+                      name: data.nameTask,
+                      baseDatos: this.db,
+                    },
+                    width: "50rem",
+                  });
+                  dialog.afterClosed().subscribe();
+                }
+              });
+            break;
+
+          case 'BAÑOS MUJERES':
+
+          console.log('BAÑOS MUJERES');
+          this.services
+            .serviceGeneralGet(`BanosMatutino/${data.detail}`)
+            .subscribe((resp) => {
+              if (resp.success) {
+                this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoBanosMatutinos;
+                console.log('get data', this.dataTask);
+                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                  data: {
+                    data: this.dataTask,
+                    name: data.nameTask,
+                    baseDatos: this.db,
+                    photos: this.photosTemp
+                  },
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -250,7 +300,7 @@ export class DasboardSupervisorComponent implements OnInit {
                       baseDatos: this.db,
                       photos: this.photosTemp
                     },
-                    width: "30rem",
+                    width: "50rem",
                   });
                   dialog.afterClosed().subscribe();
                 }
@@ -283,7 +333,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     data: this.dataTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -304,7 +354,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -327,11 +377,60 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
             });
+          break;
+        case 'BAÑOS HOMBRES':
+
+          console.log('BAÑOS HOMBRES');
+          this.services
+            .serviceGeneralGet(`BanosMatutino/${data.detail}`)
+            .subscribe((resp) => {
+              if (resp.success) {
+                this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoBanosMatutinos;
+                console.log('get data', this.dataTask);
+                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                  data: {
+                    data: this.dataTask,
+                    name: data.nameTask,
+                    baseDatos: this.db,
+                    photos: this.photosTemp
+                  },
+                  width: "50rem",
+                });
+                dialog.afterClosed().subscribe();
+              }
+            });
+
+          break;
+
+          case 'BAÑOS MUJERES':
+
+          console.log('BAÑOS MUJERES');
+          this.services
+            .serviceGeneralGet(`BanosMatutino/${data.detail}`)
+            .subscribe((resp) => {
+              if (resp.success) {
+                this.dataTask = resp.result;
+                this.photosTemp = this.dataTask.photoBanosMatutinos;
+                console.log('get data', this.dataTask);
+                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
+                  data: {
+                    data: this.dataTask,
+                    name: data.nameTask,
+                    baseDatos: this.db,
+                    photos: this.photosTemp
+                  },
+                  width: "50rem",
+                });
+                dialog.afterClosed().subscribe();
+              }
+            });
+
           break;
         case 'LIMPIEZA':
           console.log('LIMPIEZA');
@@ -349,7 +448,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -372,7 +471,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -380,28 +479,7 @@ export class DasboardSupervisorComponent implements OnInit {
 
           break;
 
-        case 'Alarmas':
-          console.log('Alarmas');
-          this.services
-            .serviceGeneralGet('Alarm/' + data.detail)
-            .subscribe((resp) => {
-              if (resp.success) {
-                this.dataTask = resp.result;
-                this.photosTemp = this.dataTask.photoAlarms;
-                console.log('get data', this.dataTask);
-                const dialog = this.dialog.open(DialogDetalleTareaComponent, {
-                  data: {
-                    data: this.dataTask,
-                    photos: this.photosTemp,
-                    name: data.nameTask,
-                    baseDatos: this.db,
-                  },
-                  width: "30rem",
-                });
-                dialog.afterClosed().subscribe();
-              }
-            });
-          break;
+
         case 'EN ESPERA':
           console.log('EN ESPERA');
           this.services
@@ -417,7 +495,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -443,7 +521,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     name: data.nameTask,
                     baseDatos: this.db,
                   },
-                  width: "30rem",
+                  width: "50rem",
                 });
                 dialog.afterClosed().subscribe();
               }

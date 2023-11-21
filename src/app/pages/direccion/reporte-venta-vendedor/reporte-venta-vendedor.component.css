@@ -1,0 +1,53 @@
+.title {
+    color: #ad182d;
+    font-weight: bold;
+  }
+  
+  .align-center {
+    align-self: center;
+  }
+  .img-size{
+    width: 45%;
+  }
+  .img-size-min{
+    width: 12%;
+  }
+  .date-grey {
+    font-weight: 500;
+    color: grey;
+  }
+  .subtitle-negro {
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+  }
+  .header_table {
+    background-color: #ffb819;
+  }
+  .card_porcentage {
+    font-size: 2.1rem;
+    text-transform: capitalize;
+    font-weight: 400;
+    color: #9a9a9a;
+  }
+  .mat-table {
+    font-family: "oswald" !important;
+  }
+  th {
+    color: black !important;
+    background-color: #ffb819 !important;
+  }
+  .example-container {
+    height: 500px;
+    width: 100%;
+    overflow: auto;
+    
+  }
+  .mi_celda {
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffb819;
+    margin: 0;
+    border: 0px solid black;
+  }

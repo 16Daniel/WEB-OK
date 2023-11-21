@@ -1,0 +1,209 @@
+<div class="container">
+    <!-- HEADER -->
+    <div class="row" id="idscroll">
+        <div class="col-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion_mesas_en_espera.png" alt="" />
+        </div>
+        <div class="col-11 align-center">
+            <h4 class="title align-center">REPORTE INVENTARIOS MATUTINO</h4>
+        </div>
+        <div class="col-2 align-center">
+            <br />
+            <br />
+            <h5 class="subtitle-negro">SUCURSALES</h5>
+        </div>
+        <div class="col-2 align-center">
+            <br><br>
+            <span class="date-grey">
+                <!-- {{ today | date: "dd MMM yyy" }} -->
+            </span>
+        </div>
+    </div>
+    <!-- FILTERS -->
+    <div class="row my-4">
+        <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">CIUDAD</label>
+                <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+                    <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+                </select>
+            </div>
+        </div>
+        <!-- <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">REGIONAL</label>
+                <select [disabled]="ciudad == undefined" (change)="getdataSucursal(regional)" [(ngModel)]="regional"
+                    class="form-control" id="Regional">
+                    <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="SucursalAdmin">SUCURSAL</label>
+                <select [disabled]="regional == undefined" 
+                    [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
+                    <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+                </select>
+            </div>
+        </div> -->
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaInicial">FECHA</label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateInit"
+                        />
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaFinal">FECHA FINAL</label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateEnd"
+                        />
+                </div>
+            </div>
+        </div> -->
+        <div class="col-md-3 align-center">
+            <br/>
+            <button  (click)="getReporte(ciudad, dateInit)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+              BUSCAR
+            </button>
+            &nbsp;&nbsp;
+            <button  (click)="exportToExcel(ciudad)" style="background-color: #009b00; border-radius: 16px; color: rgb(255, 255, 255);" type="button" class="btn" *ngIf="data.length > 0">
+            EXCEL
+            </button>
+        </div>
+    
+    </div>
+
+        <!-- total mermas -->
+        <!-- <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <h5>TOTAL EN MERMAS</h5>
+                    </div>
+                  </div>
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <span class="card_porcentage">{{this.mermastotal | currency}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+    <!-- TABLE -->
+    <!-- <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+        <div class="col-12">
+            <div class="example-container mat-elevation-z8">
+            <table class="table table-hover col-12" >
+                
+                <thead class="thead-warning header_table">
+                    <tr >
+                        <th scope="col-3" >SUCURSAL</th>
+                        <th scope="col-3" >ARTICULO</th>
+                        <th scope="col-1" >INVENTARIO AYER</th>
+                        <th scope="col-1" >TRASPASO AYER</th>
+                        <th scope="col-1" >CONSUMO AYER</th>
+                        <th scope="col-1" >INVENTARIO HOY</th>
+                        <th scope="col-1" >INVENTARIO FORMULA</th>
+                        <th scope="col-1" >DIFERENCIA</th>
+                        
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let item of data; index as position" (click)="clickTable(position)" [ngStyle]="{'background-color':position==this.selectFila?'#5CAAFD':'','color':position==this.selectFila?'white':''}">
+                        <td class="col-3">{{ item.sucursal }}</td>
+                        <td class="col-3">{{ item.articulo }}</td>
+                        <td class="col-1" [ngStyle]="{'background-color':item.invAyer=='SIN CAPTURA'?'#AD182D':'','color':item.invAyer=='SIN CAPTURA'?'white':''}">{{ item.invAyer }}</td>
+                        <td class="col-1">{{ item.traspasoAyer | number: '.1-2'}}</td>
+                        <td class="col-1">{{ item.consumoAyer | number: '.1-2'}}</td>
+                        <td class="col-1" [ngStyle]="{'background-color':item.invHoy=='SIN CAPTURA'?'#AD182D':'','color':item.invHoy=='SIN CAPTURA'?'white':''}">{{ item.invHoy }}</td>
+                        <td class="col-1">{{ item.invFormula | number: '.1-2'}}</td>
+                        <td class="col-1">{{ item.diferencia | number: '.1-2'}}</td>
+                        
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+        </div>
+    </div> -->
+
+    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+    <div class="example-container mat-elevation-z8">
+        
+        <div class="col-12">
+        <table mat-table [dataSource]="data" class="table table-hover col-12" id="reporte-tble">
+            
+          <!-- Name Column -->
+          <ng-container matColumnDef="sucursal">
+            <th scope="col-3" mat-header-cell *matHeaderCellDef> SUCURSAL </th>
+            <td class="col-3" mat-cell *matCellDef="let element"> {{element.sucursal}} </td>
+          </ng-container>
+      
+          <!-- Weight Column -->
+          <ng-container matColumnDef="articulo">
+            <th scope="col-3" mat-header-cell *matHeaderCellDef> ARTICULO </th>
+            <td class="col-3" mat-cell *matCellDef="let element"> {{element.articulo}} </td>
+          </ng-container>
+      
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="invAyer">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO AYER</th>
+            <td class="col-1" mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.invAyer=='SIN CAPTURA'?'#AD182D':'','color':element.invAyer=='SIN CAPTURA'?'white':''}"> {{element.invAyer}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="traspasoAyer">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> TRASPASO AYER</th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.traspasoAyer | number: '.1-2'}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="consumoAyer">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> CONSUMO AYER</th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.consumoAyer | number: '.1-2'}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="invHoy">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO HOY</th>
+            <td class="col-1" mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.invHoy=='SIN CAPTURA'?'#AD182D':'','color':element.invHoy=='SIN CAPTURA'?'white':''}"> {{element.invHoy}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="captura">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> HRS CAPTURA</th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.captura | date:'shortTime'}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="invFormula">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO FORMULADO</th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.invFormula | number: '.1-2'}} </td>
+          </ng-container>
+
+          <!-- Symbol Column -->
+          <ng-container matColumnDef="diferencia">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> DIFERENCIA</th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.diferencia | number: '.1-2'}} </td>
+          </ng-container>
+      
+          
+          <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns; index as position" (click)="clickTable(position)" [ngStyle]="{'background-color':position==this.selectFila?'#5CAAFD':'','color':position==this.selectFila?'white':''}"></tr>
+        </table>
+       </div>
+    </div>
+    </div>
+</div>

@@ -22,6 +22,7 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
   public data: any;
   public chartOptions: any;
   public carga = false;
+  public hayDatos = true;
 
   // Charts Dounut
   singleDounut = [];
@@ -86,13 +87,20 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
     else {
       this.carga = true;
       this.data = null;
+      this.hayDatos = true;
       this.services.serviceGeneralGet(`Dashboard/performance-general/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
-        if (resp.success) {
+        if (resp.success && resp.message != 'SIN DATOS') {
+          
           this.data = resp.result;
           console.log('data dash', this.data);
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;
           this.carga=false;
+        }
+        else{
+          console.log('data dash', resp);
+          this.carga=false;
+          this.hayDatos = false;
         }
       });
     }

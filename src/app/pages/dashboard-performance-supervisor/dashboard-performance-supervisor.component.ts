@@ -18,12 +18,15 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   public dateDash;
   public dateDashTwo;
   public data: any;
+  public dataT: any;
   public chartOptions: any;
-
+  public dataR: RangosDataModel []= [];
+  public dat:[];
   public carga = false;
 
   // Charts Dounut
   singleDounut = [];
+  singleDounut2 = [];
   view: [number, number] = [900, 400];
 
   // options
@@ -33,6 +36,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   isDoughnut: boolean = false;
 
   // Chart Staked
+  multi2: [];
   multi: [];
 
   // options
@@ -45,8 +49,21 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   legendTitle: string = 'TAREAS';
   animation: boolean = true;
 
+  // options2
+  showXAxis2: boolean = true;
+  showYAxis2: boolean = true;
+  showXAxisLabel2: boolean = true;
+  xAxisLabel2: string = 'SUCURSALES';
+  showYAxisLabel2: boolean = true;
+  yAxisLabel2: string = 'RANGOS';
+  legendTitle2: string = 'RANGOS';
+  animation2: boolean = true;
+
   colorScheme = {
     domain: ['#00C24F','#FF9C2A']
+  };
+  colorScheme2 = {
+    domain: ['#00C24F','#FF9C2A','#E96B56']
   };
 
   constructor(public services: ServiceGeneralService,private router: Router) { }
@@ -90,9 +107,16 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
           this.data = resp.result;
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;
+          this.multi2 = resp.result.multi2;
+          this.singleDounut2 = resp.result.topOmittedTask2;
+          console.log('cir', this.singleDounut);
+          console.log('cir2', this.singleDounut2);
+          console.log('multi', this.multi);
+          console.log('multi2', this.multi2);
           console.log('data dash', this.data);
           this.carga = false;
         }
+        this.getdataSucursal(regional);
       });
     }
   }
@@ -120,5 +144,34 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
   onDeactivate(data): void {
     console.log('Deactivate', JSON.parse(JSON.stringify(data)));
   }
+  
+  getdataSucursal(id) {
+    this.catSucursal = [];
+    let endpoint = this.user.roleId !== 2 ? 
+      `User/Branches/${id}/${this.ciudad}` : `User/Branches/${this.user.id}/${this.user.stateId}`;  
+    this.services.serviceGeneralGet(endpoint).subscribe((resp) => {
+      if (resp.success) {
+        this.catSucursal = resp.result;
+        console.log("resp sucursal", this.catSucursal);
+       
+      }
+    });
+  }
 
+
+  
+}
+class RangosDataModel {
+  rango: string;
+  comandas: number;
+  porcentaje: string;
+  sucursal: string;
+}
+class MultiDataModel {
+  name: string;
+  series: SerieTableModel[];
+}
+class SerieTableModel {
+  name: string;
+  value: number;
 }

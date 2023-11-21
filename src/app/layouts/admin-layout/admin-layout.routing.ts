@@ -19,6 +19,11 @@ import { UsuariosComponent } from 'app/pages/admon-user/usuarios/usuarios.compon
 import { MermasComponent } from 'app/pages/sucursales/mermas/mermas.component';
 import { DashboardPerformanceRegionalComponent } from "app/pages/dashboard-performance-regional/dashboard-performance-regional.component";
 import { DashboardPerformanceSupervisorComponent } from 'app/pages/dashboard-performance-supervisor/dashboard-performance-supervisor.component';
+import { TiemposComponent } from 'app/pages/sucursales/tiempos/tiempos.component';
+import { AuditoriaComponent } from 'app/pages/sucursales/auditoria/auditoria.component';
+import { ReporteInventariosComponent } from 'app/pages/compras/reporte-inventarios/reporte-inventarios.component';
+import { ReporteVentaVendedorComponent } from 'app/pages/direccion/reporte-venta-vendedor/reporte-venta-vendedor.component';
+import { ReporteInventariosSComponent } from 'app/pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -37,6 +42,11 @@ export const AdminLayoutRoutes: Routes = [
   { path: "asistencias", component: DashboardAsistenciasComponent},
   { path: "usuarios", component: UsuariosComponent},
   { path: "mermas", component: MermasComponent },
+  { path: "tiempos", component: TiemposComponent },
+  { path: "auditoria", component: AuditoriaComponent },
+  { path: "compras", component: ReporteInventariosComponent },
+  { path: "compras-s", component: ReporteInventariosSComponent },
+  { path: "direccion", component: ReporteVentaVendedorComponent },
   { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
   { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
 ];

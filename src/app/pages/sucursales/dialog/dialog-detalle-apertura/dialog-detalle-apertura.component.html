@@ -16,23 +16,23 @@
           <img src="./assets/icon/sucursal.png" alt="" />
         </div>
         <div class="col-10 subtitle">
-          <span>Sucursal {{ nameBranch }}</span>
+          <span>{{ nameBranch }}</span>
         </div>
       </div>
       <div class="row mb-4">
         <div class="col-12">
-          <span class="date-grey ">{{data.data.createdDate | date: "dd MMM yyy" }}</span>
+          <span class="date-grey ">{{data.data.createdDate | date: "dd/MM/yyy" }}</span>
         </div>
       </div>
 
       <div class="row mb-4">
         <div class="col-6">
-          <label class="title" for="">Comentario Salon</label>
+          <label class="title" for="">COMENTARIOS SALON</label>
           <br />
           <span>{{ data.data.commentSalon }}</span>
         </div>
         <div class="col-6">
-            <label class="title" for="">Fotografías</label>
+            <label class="title" for="">FOTOGRAFIAS SALON</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo1; index as position">
                 <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
@@ -43,12 +43,12 @@
 
       <div class="row mb-4">
         <div class="col-6">
-          <label class="title" for="">Comentario Cocina</label>
+          <label class="title" for="">COMENTARIOS COCINA</label>
           <br />
           <span>{{ data.data.commentCocina }}</span>
         </div>
         <div class="col-6">
-        <label class="title" for="">Fotografías</label>
+        <label class="title" for="">FOTOGRAFIAS COCINA</label>
         <div class="row">
             <div class="col-6" *ngFor="let photo of photo2; index as position">
             <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
@@ -57,7 +57,7 @@
         </div>
       </div>
 
-      <div class="row mb-4">
+      <!-- <div class="row mb-4">
         <div class="col-6">
           <label class="title" for="">Numero de cajeros</label>
           <br />
@@ -103,16 +103,16 @@
               </div>
             </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="row mb-4">
         <div class="col-6">
-          <label class="title" for="">Comentario Meeting</label>
+          <label class="title" for="">COMENTARIOS MEETING</label>
           <br />
           <span>{{ data.data.commentMeet }}</span>
         </div>
         <div class="col-6">
-            <label class="title" for="">Fotografías</label>
+            <label class="title" for="">FOTOGRAFIAS MEETING</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo6; index as position">
                 <img *ngIf="photo.type === 6" src="{{ url }}{{ photo.photo }}" alt="">

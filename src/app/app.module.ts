@@ -62,6 +62,14 @@ import { DashboardPerformanceSupervisorComponent } from './pages/dashboard-perfo
 import { NgxChartsModule } from "@swimlane/ngx-charts";
 import { MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
+import { TiemposComponent } from './pages/sucursales/tiempos/tiempos.component';
+import { AuditoriaComponent } from './pages/sucursales/auditoria/auditoria.component';
+import { DialogDetalleAceiteComponent } from './pages/sucursales/dialog/dialog-detalle-aceite/dialog-detalle-aceite.component';
+import { ReporteInventariosComponent } from './pages/compras/reporte-inventarios/reporte-inventarios.component';
+import { ReporteVentaVendedorComponent } from './pages/direccion/reporte-venta-vendedor/reporte-venta-vendedor.component';
+import { MultiSelectDropdownComponent } from './multi-select-dropdown/multi-select-dropdown/multi-select-dropdown.component';
+import { ReporteInventariosSComponent } from './pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
+
 
 @NgModule({
   declarations: [
@@ -108,6 +116,14 @@ import { MatInputModule } from "@angular/material/input";
     MermasComponent,
     DashboardPerformanceRegionalComponent,
     DashboardPerformanceSupervisorComponent,
+    TiemposComponent,
+    AuditoriaComponent,
+    DialogDetalleAceiteComponent,
+    ReporteInventariosComponent,
+    ReporteVentaVendedorComponent,
+    MultiSelectDropdownComponent,
+    ReporteInventariosSComponent,
+
   ],
   imports: [
     MatTableModule,

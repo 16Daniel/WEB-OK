@@ -129,6 +129,7 @@ export class DasboardRegionalComponent implements OnInit {
       this.carga = true;
       this.data = null;
       console.log(dateOne, dateTwo);
+      this.sinvisita = false;
       this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
         if (resp.success) {
           this.data2 = resp.result;

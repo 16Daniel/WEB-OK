@@ -7,7 +7,7 @@
 
   <ul id="accordionExample" class="nav flex-column">
     <li *ngFor="let menuItem of menuItems; index as i;" routerLinkActive="active" class="nav-item">
-      <a class="nav-link" [routerLink]="[menuItem.path]" data-toggle="collapse" [attr.data-target]="'#' + menuItem.id"
+      <a class="nav-link" [routerLink]="[menuItem.access.indexOf(user.roleId) !== -1 ? menuItem.path : null]" data-toggle="collapse" [attr.data-target]="'#' + menuItem.id"
         aria-expanded="true" [attr.aria-controls]="menuItem.id">
         <img alt="" src="./assets/icon/{{menuItem.icon}}.svg" />
         <span>{{ menuItem.title }}</span>

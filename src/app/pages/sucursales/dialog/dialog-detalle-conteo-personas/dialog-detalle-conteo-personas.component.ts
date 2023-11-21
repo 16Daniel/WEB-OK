@@ -20,7 +20,7 @@ export class DialogDetalleConteoPersonasComponent implements OnInit {
   public taskId;
   public dataBranch: any[] = [];
   public nameBranch = '';
-  public url = 'http://operamx.mooo.com/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
   constructor(public dialogRef: MatDialogRef<DialogDetalleConteoPersonasComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
     public services: ServiceGeneralService,

@@ -18,7 +18,7 @@ export class DialogDetalleTemperaturaBebidasSalonComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://operamx.mooo.com/back/api_rebel_wings/';
+  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
 
   constructor(public dialogRef: MatDialogRef<DialogDetalleTemperaturaBebidasSalonComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,

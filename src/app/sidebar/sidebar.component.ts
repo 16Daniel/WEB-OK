@@ -8,7 +8,9 @@ export interface RouteInfo {
   class: string;
   target: string;
   id: string;
+  access: any;
   children: child[];
+  
 }
 export interface child {
   path: string;
@@ -27,6 +29,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     target: "#colapseDashboard",
     id: "colapseDashboard",
+    access: [3],
     children: [{
       path: "/vista-general-regional",
       title: "Vista general regional",
@@ -50,6 +53,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     target: "#colapseTareas",
     id: "colapseTareas",
+    access: [1,2,3],
     children: [{
       path: "/regionales",
       title: "Regionales",
@@ -75,6 +79,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     target: "#colapseSucursales",
     id: "colapseSucursales",
+    access: [1,2,3],
     children: [
       // {
       //   path: "",
@@ -105,6 +110,20 @@ export const ROUTES: RouteInfo[] = [
         class: "",
         access: [1,2,3]
       },
+      {
+        path: "/tiempos",
+        title: "Tiempos",
+        icon: "tareas-inactivo",
+        class: "",
+        access: [1,2,3]
+      },
+      {
+        path: "/auditoria",
+        title: "Auditoria",
+        icon: "tareas-inactivo",
+        class: "",
+        access: [1,2,3]
+      },
     ],
   },
   {
@@ -114,12 +133,60 @@ export const ROUTES: RouteInfo[] = [
     title: "Configuracion",
     icon: "tareas-inactivo",
     class: "",
-    target: "#colapseTareas",
-    id: "colapseTareas",
+    target: "#colapseConfiguracion",
+    id: "colapseConfiguracion",
+    access: [3],
     children: [
        {
          path: "/usuarios",
         title: "Usuarios",
+         icon: "regional-inactivo",
+        class: "",
+        access: [3]
+      },
+    ],
+  },
+  {
+    path: "/compras",
+    //path: "/asistencias",
+    // path: "/sucursales",
+    title: "Compras",
+    icon: "tareas-inactivo",
+    class: "",
+    target: "#colapseCompras",
+    id: "colapseCompras",
+    access: [3],
+    children: [
+       {
+         path: "/compras",
+        title: "Inventario Matutino",
+         icon: "tareas-inactivo",
+        class: "",
+        access: [3,4]
+      },
+      {
+        path: "/compras-s",
+       title: "Inventario Vespertino",
+        icon: "tareas-inactivo",
+       class: "",
+       access: [3,4]
+     },
+    ],
+  },
+  {
+    path: "/direccion",
+    //path: "/asistencias",
+    // path: "/sucursales",
+    title: "Informes",
+    icon: "tareas-inactivo",
+    class: "",
+    target: "#colapseDireccion",
+    id: "colapseDireccion",
+    access: [3],
+    children: [
+       {
+         path: "/direccion",
+        title: "Venta por Vendedores",
          icon: "regional-inactivo",
         class: "",
         access: [3]
