@@ -87,6 +87,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     this.services.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
       if (resp.success) {
         this.catRegionales = resp.result;
+        this.catRegionales.unshift({id: -1,name:"TODOS"});
         console.log("resp regionales", this.catRegionales);
       }
     });
@@ -96,6 +97,14 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
+    debugger
+    if(this.user.roleId == 7 )
+    {
+      let datetemp = new Date(dateTwo);
+      dateOne = datetemp.getFullYear()+"-"+(datetemp.getMonth()+1)+'-01'
+    }
+      
+    
     if (ciudad == undefined || dateOne == undefined || dateTwo == undefined || regional == undefined) {
       return
     }
