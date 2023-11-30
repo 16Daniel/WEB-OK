@@ -87,6 +87,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     this.services.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
       if (resp.success) {
         this.catRegionales = resp.result;
+        this.catRegionales.unshift({id: -1,name:"TODOS"});
         console.log("resp regionales", this.catRegionales);
       }
     });
