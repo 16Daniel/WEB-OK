@@ -193,6 +193,40 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
+  {
+    path: "/vista-general-supervisor",
+    //path: "/asistencias",
+    // path: "/sucursales",
+    title: "Monitorista",
+    icon: "tareas-inactivo",
+    class: "",
+    target: "#colapseMotorista",
+    id: "colapseMonitorista",
+    access: [3],
+    children: [
+      {
+        path: "/vista-general-supervisor",
+        title: "Vista general supervisores",
+        icon: "supervisor-inactivo",
+        class: "",
+        access: [1,3,7]
+      },
+      {
+        path: "/tiempos",
+        title: "Auditoria Cocina",
+        icon: "tareas-inactivo",
+        class: "",
+        access: [1,3,7]
+      },
+      {
+        path: "/auditoria",
+        title: "Auditoria 25 PTS",
+        icon: "tareas-inactivo",
+        class: "",
+        access: [1,3,7]
+      },
+    ],
+  },
 
   {
     path: "/monitorista",

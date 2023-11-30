@@ -20,7 +20,7 @@ export class AuditoriaComponent implements OnInit {
   public regional;
   public dateInit;
   public dateEnd;
-  public mermastotal;
+  public incidenciastotal;
 
   constructor(public service: ServiceGeneralService,) { }
 
@@ -76,7 +76,11 @@ export class AuditoriaComponent implements OnInit {
         if (resp.success) {
           this.data = resp.result;
           console.log("data", this.data);
-          
+          var cont = 0;
+          this.data.forEach(element =>{
+                 cont++;
+          });
+          this.incidenciastotal = cont;
         }
       });
     // StockChicken/Admin/All-Branch?dataBase=DB2

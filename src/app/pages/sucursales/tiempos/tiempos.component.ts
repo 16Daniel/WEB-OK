@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServiceGeneralService } from 'app/core/services/service-general/service-general.service';
+import { element } from 'protractor';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-tiempos',
@@ -9,6 +11,7 @@ import { ServiceGeneralService } from 'app/core/services/service-general/service
 export class TiemposComponent implements OnInit {
 
   public today = new Date();
+  public empieza = new Date();
   public DB;
   public data: any[] = [];
   public user;
@@ -22,8 +25,9 @@ export class TiemposComponent implements OnInit {
   public dateEnd;
   public mermastotal;
   public dataR: RangosDataModel []= [];
+  public dataC: UltimaDataModel []= [];
 
-  constructor(public service: ServiceGeneralService,) { }
+  constructor(public service: ServiceGeneralService,public datepipe: DatePipe,) { }
 
   ngOnInit(): void {
     this.getdataState();
@@ -78,6 +82,7 @@ export class TiemposComponent implements OnInit {
           this.data = resp.result;
           console.log("data", this.data);
           this.getRangos();
+          this.getComanda();
         }
       });
     // StockChicken/Admin/All-Branch?dataBase=DB2
@@ -107,10 +112,53 @@ export class TiemposComponent implements OnInit {
       // console.log("RANGO Total:",rangoT)
 
   }
+  getComanda(){
+    
+         this.dataC = [];
+         var randay = new Date(this.dateInit.toString("dd/MM/yyyy"));
+         var randayf = new Date(this.dateEnd.toString("dd/MM/yyyy"));
+         randayf.setDate(randayf.getDate()+2);
+         randay.setDate(randay.getDate()+1);
+         console.log("randay: ",randay);
+         console.log("randayf: ",randayf);
+         var datei = this.datepipe.transform(randay, 'yyyy-MM-dd');
+         var datef = this.datepipe.transform(randayf, 'yyyy-MM-dd');
+         console.log("pipe: ",datei.toString());
+         console.log("pipe: ",datef.toString());
+
+         console.log("1",this.dateInit.toString("dd/MM/yyyy"));
+         console.log("2",datei);
+         while(datei.toString() != datef.toString()){
+
+           const result = this.data.filter((fechas) => fechas.hora.includes(datei));
+      
+           //console.log("fechasss: ",result);
+      
+           if(result.length > 0){
+             const rultima = result.reduce((prev,curr)=>{
+           
+              return curr.idComanda > prev.idComanda ? curr : prev;
+           
+             });
+             //console.log("fechas: ",rultima);
+             this.dataC.push({idComanda : rultima.idComanda, minutos : rultima.minutos, sucursal : ''+rultima.sucursal, hora : ''+rultima.hora});
+           }
+          
+          randay.setDate(randay.getDate()+1);
+          datei = this.datepipe.transform(randay, 'yyyy-MM-dd');
+         }
+         console.log(" ",this.dataC);
+  }
 
 }
 class RangosDataModel {
   rango: string;
   comandas: number;
   porcentaje: string;
+}
+class UltimaDataModel {
+  idComanda: number;
+  minutos: number;
+  sucursal: string;
+  hora: string;
 }

@@ -31,3 +31,10 @@
     font-weight: 400;
     color: #9a9a9a;
   }
+  .mi_celda {
+    text-align: center;
+    font-weight: bold;
+    background-color: #ffb819;
+    margin: 0;
+    border: 0px solid black;
+  }

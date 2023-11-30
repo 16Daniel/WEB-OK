@@ -69,6 +69,7 @@ import { ReporteInventariosComponent } from './pages/compras/reporte-inventarios
 import { ReporteVentaVendedorComponent } from './pages/direccion/reporte-venta-vendedor/reporte-venta-vendedor.component';
 import { MultiSelectDropdownComponent } from './multi-select-dropdown/multi-select-dropdown/multi-select-dropdown.component';
 import { ReporteInventariosSComponent } from './pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -145,7 +146,7 @@ import { ReporteInventariosSComponent } from './pages/compras/reporte-inventario
     NgRatingBarModule,
     NgxChartsModule
   ],
-  providers: [],
+  providers: [DatePipe,],
   schemas: [],
 
   bootstrap: [AppComponent]
