@@ -5,7 +5,7 @@
             <img class="img-fluid" src="./assets/icon/ilustracion_mesas_en_espera.png" alt="" />
         </div>
         <div class="col-11 align-center">
-            <h4 class="title align-center">TIEMPOS</h4>
+            <h4 class="title align-center">AUDITORIA COCINA</h4>
         </div>
         <div class="col-2 align-center">
             <br />
@@ -101,6 +101,9 @@
         <div class="col-12">
             <table class="table table-hover col-12" >
                 <thead class="thead-warning header_table">
+                    <tr class="mi_celda">
+                        <th colspan="12"><h5 class="subtitle-negro-2">TIEMPOS EN COCINA</h5></th>
+                    </tr>
                     <tr>
                         <th scope="col-2"></th>
                         <th scope="col-2">RANGO</th>
@@ -124,6 +127,47 @@
                         <td class="col-2"></td>
                         <td class="col-2">
                             {{item.porcentaje}}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <br/>
+    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+        <div class="col-12">
+            <table class="table table-hover col-12" >
+                <thead class="thead-warning header_table">
+                    <tr class="mi_celda">
+                        <th colspan="12"><h5 class="subtitle-negro-2">ULTIMA COMANDA</h5></th>
+                    </tr>
+                    <tr>
+                        <th scope="col-2">IDCOMANDA</th>
+                        <th scope="col-2">MINUTOS</th>
+                        <th scope="col-2"></th>
+                        <th scope="col-4">SUCURSAL</th>
+                        <th scope="col-2">HORA</th>
+                        <th scope="col-4">FECHA</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of dataC">
+                        <td class="col-2">
+                            {{ item.idComanda }}
+                        </td>
+                        <td class="col-2">
+                            {{ item.minutos }}
+                        </td>
+                        <td class="col-2"></td>
+                        <td class="col-2">
+                            {{ item.sucursal }}
+                        </td>
+                        <td class="col-2">
+                            {{item.hora | date:'shortTime'}} 
+                        </td>
+                        <td class="col-2">
+                            {{item.hora | date: "dd/MM/yyy"}}
                         </td>
                     </tr>
                 </tbody>
