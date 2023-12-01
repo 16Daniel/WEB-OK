@@ -227,29 +227,7 @@ export const ROUTES: RouteInfo[] = [
       },
     ],
   },
-
-  {
-    path: "/monitorista",
-    //path: "/asistencias",
-    // path: "/sucursales",
-    title: "MONITORISTA",
-    icon: "tareas-inactivo",
-    class: "",
-    target: "#colapseMonitorista",
-    id: "colapseMonitorista",
-    access: [3],
-    children: [
-      {
-        path: "/vista-general-supervisor",
-        title: "Vista general supervisores",
-        icon: "supervisor-inactivo",
-        class: "",
-        access: [1,3,7]
-      },
-    ],
-  },
-
-
+  
 ];
 
 @Component({
