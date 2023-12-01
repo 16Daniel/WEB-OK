@@ -27,7 +27,7 @@
                 </select>
             </div>
         </div>
-        <div class="col-md-3 align-center" *ngIf="user.roleId !=7 && user.roleId !=1  && user.roleId !=3">
+        <div class="col-md-3 align-center" [ngStyle]="{'display': user.roleId == 7 ? 'none' :''}">
             <div class="form-group">
                 <label class="non-margin" for="fechaInicial">FECHA INICIAL</label>
                 <div class="input-group">
@@ -218,7 +218,7 @@
     </div>
     <!-- TABLE -->
     <br />
-    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0" *ngIf="user.roleId != 7">
+    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0" [ngStyle]="{'display': user.roleId == 7 ? 'none' :''}">
         <div class="col-12">
             <table class="table table-hover">
                 <thead class="thead-warning header_table" *ngIf="data">
