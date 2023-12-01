@@ -97,6 +97,14 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
+
+    if(this.user.roleId == 7 )
+    {
+      let datetemp = new Date(dateTwo);
+      dateOne = datetemp.getFullYear()+"-"+(datetemp.getMonth()+1)+'-01'
+    }
+
+    
     if (ciudad == undefined || dateOne == undefined || dateTwo == undefined || regional == undefined) {
       return
     }

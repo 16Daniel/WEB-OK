@@ -202,7 +202,7 @@ export const ROUTES: RouteInfo[] = [
     class: "",
     target: "#colapseMotorista",
     id: "colapseMonitorista",
-    access: [3],
+    access: [1,3,7],
     children: [
       {
         path: "/vista-general-supervisor",
