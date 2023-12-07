@@ -24,6 +24,7 @@ import { AuditoriaComponent } from 'app/pages/sucursales/auditoria/auditoria.com
 import { ReporteInventariosComponent } from 'app/pages/compras/reporte-inventarios/reporte-inventarios.component';
 import { ReporteVentaVendedorComponent } from 'app/pages/direccion/reporte-venta-vendedor/reporte-venta-vendedor.component';
 import { ReporteInventariosSComponent } from 'app/pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
+import { ReporteAppsComponent } from 'app/pages/direccion/reporte-apps/reporte-apps.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -49,4 +50,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "direccion", component: ReporteVentaVendedorComponent },
   { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
   { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
+  { path: "reporte-apps", component: ReporteAppsComponent},
+  
 ];

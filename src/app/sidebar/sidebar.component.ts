@@ -225,6 +225,13 @@ export const ROUTES: RouteInfo[] = [
         class: "",
         access: [1,3,7]
       },
+      {
+        path: "/reporte-apps",
+       title: "Venta Apps",
+        icon: "regional-inactivo",
+       class: "",
+       access: [1,3,7]
+     },
     ],
   },
 
