@@ -63,7 +63,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     domain: ['#00C24F','#FF9C2A']
   };
   colorScheme2 = {
-    domain: ['#00C24F','#FF9C2A','#E96B56']
+    domain: ['#00C24F','#FF9C2A','#E96B56','#6525BE']
   };
 
   constructor(public services: ServiceGeneralService,private router: Router) { }
@@ -113,6 +113,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
       this.data = null;
       this.services.serviceGeneralGet(`Dashboard/performance-general-supervisor/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
         if (resp.success) {
+          debugger
           this.data = resp.result;
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;
