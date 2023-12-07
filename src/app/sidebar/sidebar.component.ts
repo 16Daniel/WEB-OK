@@ -234,8 +234,7 @@ export const ROUTES: RouteInfo[] = [
      },
     ],
   },
-
-
+  
 ];
 
 @Component({
