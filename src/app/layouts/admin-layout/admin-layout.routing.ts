@@ -25,6 +25,7 @@ import { ReporteInventariosComponent } from 'app/pages/compras/reporte-inventari
 import { ReporteVentaVendedorComponent } from 'app/pages/direccion/reporte-venta-vendedor/reporte-venta-vendedor.component';
 import { ReporteInventariosSComponent } from 'app/pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
 import { ReporteAppsComponent } from 'app/pages/direccion/reporte-apps/reporte-apps.component';
+import { ReporteRankingComponent } from 'app/pages/direccion/reporte-ranking/reporte-ranking.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -51,5 +52,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
   { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
   { path: "reporte-apps", component: ReporteAppsComponent},
+  { path: "reporte-ranking", component: ReporteRankingComponent}
   
 ];

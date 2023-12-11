@@ -232,6 +232,13 @@ export const ROUTES: RouteInfo[] = [
        class: "",
        access: [1,3,7]
      },
+     {
+      path: "/reporte-ranking",
+     title: "Ranking Articulos",
+      icon: "regional-inactivo",
+     class: "",
+     access: [1,3,7]
+   },
     ],
   },
 
