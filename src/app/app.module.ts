@@ -72,6 +72,8 @@ import { ReporteInventariosSComponent } from './pages/compras/reporte-inventario
 import { DatePipe } from '@angular/common';
 import { ReporteAppsComponent } from './pages/direccion/reporte-apps/reporte-apps.component';
 import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/reporte-ranking.component';
+import { MermasComponentC } from "./pages/compras/mermas/mermas.component";
+
 
 
 @NgModule({
@@ -128,6 +130,7 @@ import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/repor
     ReporteInventariosSComponent,
     ReporteAppsComponent,
     ReporteRankingComponent,
+    MermasComponentC,
 
   ],
   imports: [

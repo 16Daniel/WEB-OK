@@ -1,0 +1,159 @@
+<div class="container">
+    <!-- HEADER -->
+    <div class="row" id="idscroll">
+        <div class="col-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
+        </div>
+        <div class="col-11 align-center">
+            <h4 class="title align-center">MERMAS</h4>
+        </div>
+        <div class="col-2 align-center">
+            <br />
+            <br />
+            <h5 class="subtitle-negro">SUCURSALES</h5>
+        </div>
+        <div class="col-2 align-center">
+            <br><br>
+            <span class="date-grey">
+                <!-- {{ today | date: "dd MMM yyy" }} -->
+            </span>
+        </div>
+    </div>
+    <!-- FILTERS -->
+    <div class="row my-4">
+        <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">CIUDAD</label>
+                <select (change)="getdataRegional(ciudad)" [(ngModel)]="ciudad" class="form-control" id="Ciudad">
+                    <option [value]="item.id" *ngFor="let item of catState">{{item.state}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="Ciudad">REGIONAL</label>
+                <select [disabled]="ciudad == undefined" (change)="getdataSucursal(regional)" [(ngModel)]="regional"
+                    class="form-control" id="Regional">
+                    <option [value]="item.id" *ngFor="let item of catRegionales">{{item.name}} {{item.lastName}}
+                    </option>
+                </select>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="form-group">
+                <label class="non-margin" for="SucursalAdmin">SUCURSAL</label>
+                <select [disabled]="regional == undefined" 
+                    [(ngModel)]="sucursal" class="form-control" id="SucursalAdmin">
+                    <option [value]="item.idfront" *ngFor="let item of catSucursal">{{item.titulo}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaInicial">FECHA INICIAL</label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaInicial" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateInit"
+                        />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <div class="form-group">
+                <label for="fechaFinal">FECHA FINAL</label>
+                <div class="input-group">
+                    <input onkeydown="return false" id="fechaFinal" class="form-control" type="date"
+                        placeholder="yyyy-mm-dd" [(ngModel)]="dateEnd"
+                        />
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3 align-center">
+            <br/>
+            <button  (click)="getMermas(ciudad, sucursal, dateInit, dateEnd)" style="background-color: #3b88fb; border-radius: 16px" type="button" class="btn">
+              BUSCAR
+            </button>
+            <button  (click)="exportToExcel(ciudad)" style="background-color: #009b00; border-radius: 16px; color: rgb(255, 255, 255);" type="button" class="btn" *ngIf="data.length > 0">
+                EXCEL
+                </button>
+          </div>
+    </div>
+
+    <div class="col-md-4 align-center">
+    </div>
+
+    <div style="display: flex; justify-content: center;">
+        
+    <div class="col-md-3 align-center">
+        <div class="text-center" *ngIf="this.carga == true">
+         <h4 style="color:#ad182d;text-align:center;">
+           CARGANDO
+         </h4>
+         <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+           <span class="sr-only">Loading...</span>
+         </div>
+        </div>
+       </div>
+    </div>
+
+
+    <br />
+        <!-- total mermas -->
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <div class="card card-stats">
+              <div class="card-body ">
+                <div class="row">
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <h5>TOTAL EN MERMAS</h5>
+                    </div>
+                  </div>
+                  <div class="col-12 my-2">
+                    <div class="text-center">
+                      <span class="card_porcentage">{{this.mermastotal | currency}}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    <!-- TABLE -->
+    <div data-bs-spy="scroll" data-bs-target="#idscroll" data-bs-offset="0" class="scrollspy-example row" tabindex="0">
+        <div class="col-12">
+            <table class="table table-hover col-12" id="reporte-tble">
+                <thead class="thead-warning header_table">
+                    <tr>
+                        <th scope="col-3">FECHA</th>
+                        <th scope="col-3">ARTICULO</th>
+                        <th scope="col-2">UDS</th>
+                        <th scope="col-2">UNIDAD DE MEDIDA</th>
+                        <th scope="col-2">COSTO</th>
+                        <th scope="col-2">TOTAL</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of data">
+                        <td class="col-3">
+                            {{ item.fecha | date:'short'  }}
+                        </td>
+                        <td class="col-3">
+                            {{ item.description }}
+                        </td>
+                        <td class="col-2">
+                            {{ item.unity }}
+                        </td>
+                        <td class="col-2">
+                            {{item.unitMeasure}}
+                        </td>
+                        <td class="col-2">
+                            {{item.price}}
+                        </td>
+                        <td class="col-2">
+                            {{ item.price * item.unity | currency }}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

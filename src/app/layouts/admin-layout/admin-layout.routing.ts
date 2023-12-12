@@ -26,6 +26,8 @@ import { ReporteVentaVendedorComponent } from 'app/pages/direccion/reporte-venta
 import { ReporteInventariosSComponent } from 'app/pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
 import { ReporteAppsComponent } from 'app/pages/direccion/reporte-apps/reporte-apps.component';
 import { ReporteRankingComponent } from 'app/pages/direccion/reporte-ranking/reporte-ranking.component';
+import { MermasComponentC } from 'app/pages/compras/mermas/mermas.component';
+
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -52,6 +54,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
   { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
   { path: "reporte-apps", component: ReporteAppsComponent},
-  { path: "reporte-ranking", component: ReporteRankingComponent}
+  { path: "reporte-ranking", component: ReporteRankingComponent},
+  { path: "compras-m", component: MermasComponentC },
   
 ];

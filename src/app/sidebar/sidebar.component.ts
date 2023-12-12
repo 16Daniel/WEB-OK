@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-
 export interface RouteInfo {
   path: string;
   title: string;
@@ -171,6 +170,13 @@ export const ROUTES: RouteInfo[] = [
        class: "",
        access: [3,4]
      },
+     {
+      path: "/compras-m",
+     title: "Mermas",
+      icon: "tareas-inactivo",
+     class: "",
+     access: [3,4]
+   },
     ],
   },
   {
