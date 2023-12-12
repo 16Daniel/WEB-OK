@@ -245,6 +245,13 @@ export const ROUTES: RouteInfo[] = [
      class: "",
      access: [1,3,7]
    },
+   {
+    path: "/compras-m",
+   title: "Mermas",
+    icon: "tareas-inactivo",
+   class: "",
+   access: [1,3,7]
+ }
     ],
   },
   
