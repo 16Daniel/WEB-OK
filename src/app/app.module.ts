@@ -71,6 +71,7 @@ import { MultiSelectDropdownComponent } from './multi-select-dropdown/multi-sele
 import { ReporteInventariosSComponent } from './pages/compras/reporte-inventarios-s/reporte-inventarios-s.component';
 import { DatePipe } from '@angular/common';
 import { ReporteAppsComponent } from './pages/direccion/reporte-apps/reporte-apps.component';
+import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/reporte-ranking.component';
 
 
 @NgModule({
@@ -126,6 +127,7 @@ import { ReporteAppsComponent } from './pages/direccion/reporte-apps/reporte-app
     MultiSelectDropdownComponent,
     ReporteInventariosSComponent,
     ReporteAppsComponent,
+    ReporteRankingComponent,
 
   ],
   imports: [
