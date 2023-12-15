@@ -73,6 +73,7 @@ import { DatePipe } from '@angular/common';
 import { ReporteAppsComponent } from './pages/direccion/reporte-apps/reporte-apps.component';
 import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/reporte-ranking.component';
 import { MermasComponentC } from "./pages/compras/mermas/mermas.component";
+import { ReporteChecadasComponent } from './pages/direccion/reporte-checadas/reporte-checadas.component';
 
 
 
@@ -131,6 +132,7 @@ import { MermasComponentC } from "./pages/compras/mermas/mermas.component";
     ReporteAppsComponent,
     ReporteRankingComponent,
     MermasComponentC,
+    ReporteChecadasComponent,
 
   ],
   imports: [

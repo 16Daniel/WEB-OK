@@ -5,12 +5,12 @@
             <img class="img-fluid" src="./assets/icon/ilustracion_asistencias.png" alt="" />
         </div>
         <div class="col-11 align-center">
-            <h4 class="title align-center">REPORTE VENTA APPS</h4>
+            <h4 class="title align-center">REPORTE CHECADAS</h4>
         </div>
         <div class="col-2 align-center">
             <br />
             <br />
-            <h5 class="subtitle-negro">SUCURSALES</h5>
+            <h5 class="subtitle-negro">CHECADAS</h5>
         </div>
         <div class="col-2 align-center">
             <br><br>
@@ -185,39 +185,27 @@
         <table mat-table [dataSource]="data" class="table table-hover col-12" id="reporte-tble">
             
           <!-- Name Column -->
-          <ng-container matColumnDef="sucursal">
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> SUCURSAL </th>
-            <td class="col-2" mat-cell *matCellDef="let element"> {{element.sucursal}} </td>
+          <ng-container matColumnDef="empleado">
+            <th scope="col-2" mat-header-cell *matHeaderCellDef> EMPLEADO </th>
+            <td class="col-2" mat-cell *matCellDef="let element"> {{element.empleado}} </td>
           </ng-container>
       
           <!-- Weight Column -->
-          <ng-container matColumnDef="cliente">
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> CLIENTE </th>
-            <td class="col-2" mat-cell *matCellDef="let element"> {{element.app}} </td>
+          <ng-container matColumnDef="reloj">
+            <th scope="col-2" mat-header-cell *matHeaderCellDef> RELOJ </th>
+            <td class="col-2" mat-cell *matCellDef="let element"> {{element.reloj}} </td>
           </ng-container>
 
           <!-- Symbol Column -->
-          <ng-container matColumnDef="total" >
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> TOTAL </th>
-            <td class="col-2" mat-cell *matCellDef="let element"> {{element.total | number: '.1-2'}} </td>
+          <ng-container matColumnDef="fecha" >
+            <th scope="col-2" mat-header-cell *matHeaderCellDef> FECHA </th>
+            <td class="col-2" mat-cell *matCellDef="let element"> {{element.fecha | date:'dd/MM/yyyy'}} </td>
           </ng-container>
 
           <!-- Symbol Column -->
-          <ng-container matColumnDef="mes">
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> MES </th>
-            <td class="col-2" mat-cell *matCellDef="let element" > {{element.mes}} </td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="marca">
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> MARCA </th>
-            <td class="col-2" mat-cell *matCellDef="let element" > {{element.marca}} </td>
-          </ng-container>
-
-          <!-- Symbol Column -->
-          <ng-container matColumnDef="app">
-            <th scope="col-2" mat-header-cell *matHeaderCellDef> APP </th>
-            <td class="col-2" mat-cell *matCellDef="let element" > {{element.nom}} </td>
+          <ng-container matColumnDef="hora">
+            <th scope="col-2" mat-header-cell *matHeaderCellDef> HORA </th>
+            <td class="col-2" mat-cell *matCellDef="let element" > {{element.fecha | date:'shortTime'}} </td>
           </ng-container>
           
           <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true" ></tr>

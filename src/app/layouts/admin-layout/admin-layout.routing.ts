@@ -27,6 +27,7 @@ import { ReporteInventariosSComponent } from 'app/pages/compras/reporte-inventar
 import { ReporteAppsComponent } from 'app/pages/direccion/reporte-apps/reporte-apps.component';
 import { ReporteRankingComponent } from 'app/pages/direccion/reporte-ranking/reporte-ranking.component';
 import { MermasComponentC } from 'app/pages/compras/mermas/mermas.component';
+import { ReporteChecadasComponent } from 'app/pages/direccion/reporte-checadas/reporte-checadas.component';
 
 
 export const AdminLayoutRoutes: Routes = [
@@ -56,5 +57,6 @@ export const AdminLayoutRoutes: Routes = [
   { path: "reporte-apps", component: ReporteAppsComponent},
   { path: "reporte-ranking", component: ReporteRankingComponent},
   { path: "compras-m", component: MermasComponentC },
+  { path: "checadas", component: ReporteChecadasComponent}
   
 ];

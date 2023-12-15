@@ -5,12 +5,11 @@ import * as XLSX from 'xlsx';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-reporte-apps',
-  templateUrl: './reporte-apps.component.html',
-  styleUrls: ['./reporte-apps.component.css']
+  selector: 'app-reporte-checadas',
+  templateUrl: './reporte-checadas.component.html',
+  styleUrls: ['./reporte-checadas.component.css']
 })
-export class ReporteAppsComponent implements OnInit {
-
+export class ReporteChecadasComponent implements OnInit {
   public today = new Date();
     public DB;
     public data: any[] = [];
@@ -26,7 +25,7 @@ export class ReporteAppsComponent implements OnInit {
     public mermastotal;
     public selectFila =null;
     
-    public displayedColumns = ['sucursal', 'cliente', 'total', 'mes', 'marca', 'app'];
+    public displayedColumns = ['empleado', 'reloj', 'fecha', 'hora'];
   
     public carga = false;
   
@@ -102,7 +101,7 @@ export class ReporteAppsComponent implements OnInit {
       }
       this.carga = true;
       this.service
-        .serviceGeneralGet(`Dashboard/performance-reporte-apps?initDate=${dateInit}&endDate=${dateEnd}`)
+        .serviceGeneralGet(`Dashboard/performance-reporte-regional?initDate=${dateInit}&endDate=${dateEnd}`)
         .subscribe((resp) => {
           if (resp.success) {
             this.data = resp.result;
@@ -121,15 +120,16 @@ export class ReporteAppsComponent implements OnInit {
     public name; 
     exportToExcel(): void {
       
-        this.name = 'RW  REPORTE VENTAS APPS.xlsx';
+        this.name = 'CHECADAS REGIONALES.xlsx';
       
       let element = document.getElementById('reporte-tble');
       const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
   
       const book: XLSX.WorkBook = XLSX.utils.book_new();
-      XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
+      XLSX.utils.book_append_sheet(book, worksheet, 'CHECADAS');
   
       XLSX.writeFile(book, this.name);
     }
   
   }
+

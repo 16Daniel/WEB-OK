@@ -244,14 +244,21 @@ export const ROUTES: RouteInfo[] = [
       icon: "regional-inactivo",
      class: "",
      access: [1,3,7]
-   },
-   {
-    path: "/compras-m",
-   title: "Mermas",
-    icon: "tareas-inactivo",
-   class: "",
-   access: [1,3,7]
- }
+     },
+     {
+      path: "/compras-m",
+     title: "Mermas",
+      icon: "tareas-inactivo",
+     class: "",
+     access: [1,3,7]
+     },
+     {
+      path: "/checadas",
+     title: "Checadas Regionales",
+      icon: "tareas-inactivo",
+     class: "",
+     access: [1,3,7]
+     },
     ],
   },
   
