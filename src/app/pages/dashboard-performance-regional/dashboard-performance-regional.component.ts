@@ -11,7 +11,7 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
 })
 export class DashboardPerformanceRegionalComponent implements OnInit {
   public user: any;
-  public ciudad;
+  public ciudad = 1;
   public catState: any[] = [];
   public catSucursal: any[] = [];
   public catRegionales: any[] = [];
@@ -55,7 +55,7 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("userData"));
-    this.getdataState();
+    this.getdataRegional(1);
   }
 
   getdataState() {
@@ -78,17 +78,18 @@ export class DashboardPerformanceRegionalComponent implements OnInit {
   }
 
   getDataDash(ciudad, regional, dateOne, dateTwo) {
+    ciudad = 1;
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
-    if (ciudad == undefined || dateOne == undefined || dateTwo == undefined || regional == undefined) {
+    if ( dateOne == undefined || dateTwo == undefined || regional == undefined) {
       return
     }
     else {
       this.carga = true;
       this.data = null;
       this.hayDatos = true;
-      this.services.serviceGeneralGet(`Dashboard/performance-general/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
+      this.services.serviceGeneralGet(`Dashboard/performance-general/1/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
         if (resp.success && resp.message != 'SIN DATOS') {
           
           this.data = resp.result;

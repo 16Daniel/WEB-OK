@@ -28,7 +28,8 @@ export class StockPolloComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.getdataState();
+    this.ciudad = 1; 
+    this.getdataRegional(1);
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
     if (this.user.roleId === 2) {

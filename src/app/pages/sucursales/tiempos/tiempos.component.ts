@@ -30,11 +30,12 @@ export class TiemposComponent implements OnInit {
   constructor(public service: ServiceGeneralService,public datepipe: DatePipe,) { }
 
   ngOnInit(): void {
-    this.getdataState();
+    this.ciudad = 1; 
+    this.getdataRegional(1);
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
     if (this.user.roleId === 2) {
-      this.ciudad = (this.user.stateId).toString();
+      this.ciudad = 1;
       console.log('City', this.ciudad);
       this.getdataSucursal(this.ciudad);
     }

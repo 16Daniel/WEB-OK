@@ -86,13 +86,14 @@ export class DasboardRegionalComponent implements OnInit {
 
 
   ngOnInit() {
+    this.ciudad =1;
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getdataState();
+    this.getdataRegional(1);
     if (this.user.roleId === 2) {
-      this.ciudad = (this.user.stateId).toString();
+      this.ciudad = 1;
       console.log('City', this.ciudad);
-      this.getdataSucursal(this.ciudad);
+      this.getdataSucursal(1);
     }
     const p1 = this.route.snapshot.paramMap.get('city');
     const p2 = this.route.snapshot.paramMap.get('regional');
@@ -104,6 +105,7 @@ export class DasboardRegionalComponent implements OnInit {
       console.log('Enter Query params');
       
       this.ciudad = (p1).toString();
+      this.ciudad = 1; 
       this.getdataRegional(this.ciudad);
       
       this.regional = (p2).toString();
@@ -130,7 +132,7 @@ export class DasboardRegionalComponent implements OnInit {
       this.data = null;
       console.log(dateOne, dateTwo);
       this.sinvisita = false;
-      this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
+      this.services.serviceGeneralGet(`Dashboard/${branch}/Regional?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=1`).subscribe(resp => {
         if (resp.success) {
           this.data2 = resp.result;
           console.log('data dash', this.data2);
@@ -784,7 +786,7 @@ export class DasboardRegionalComponent implements OnInit {
   getdataSucursal(id) {
     this.catSucursal = [];
     let endpoint = this.user.roleId !== 2 ? 
-      `User/Branches/${id}/${this.ciudad}` : `User/Branches/${this.user.id}/${this.user.stateId}`;  
+      `User/Branches/${id}/1` : `User/Branches/${this.user.id}/1`;  
     this.services.serviceGeneralGet(endpoint).subscribe((resp) => {
       if (resp.success) {
         this.catSucursal = resp.result;

@@ -57,9 +57,10 @@ export class DasboardSupervisorComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    this.ciudad = 1; 
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getdataState();
+    this.getdataRegional(1);
     if (this.user.roleId === 2) {
       this.ciudad = (this.user.stateId).toString();
       this.getdataSucursal(this.ciudad);
@@ -100,7 +101,7 @@ export class DasboardSupervisorComponent implements OnInit {
       this.data = null;
       console.log(dateOne);
       this.services.serviceGeneralGet(`Dashboard/${branch
-        }/Supervisor?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=${this.ciudad}`).subscribe(resp => {
+        }/Supervisor?timeOne=${dateOne}&timeTwo=${dateTwo}&isDone=${isDone}&city=1`).subscribe(resp => {
           if (resp.success) {
             this.data = resp.result;
             console.log('data dash', this.data);

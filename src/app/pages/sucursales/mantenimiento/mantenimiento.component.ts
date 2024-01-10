@@ -37,7 +37,8 @@ export class MantenimientoComponent implements OnInit {
     //     console.log("data", this.data);
     //   }
     // });
-    this.getdataState();
+    this.ciudad=1;
+    this.getdataSucursal(1)
   }
   getDataDash(branch, date, date2, city) {
     console.log('sucursal', branch);

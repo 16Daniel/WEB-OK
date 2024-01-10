@@ -9,7 +9,7 @@ import { ServiceGeneralService } from 'app/core/services/service-general/service
 })
 export class DashboardPerformanceSupervisorComponent implements OnInit {
   public user: any;
-  public ciudad;
+  public ciudad = 1;
   public catState: any[] = [];
   public catSucursal: any[] = [];
   public catRegionales: any[] = [];
@@ -70,7 +70,7 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("userData"));
-    this.getdataState();
+    this.getdataRegional(1);
   }
 
   getdataState() {
@@ -87,13 +87,13 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     this.services.serviceGeneralGet(`User/Regionals/${id}`).subscribe((resp) => {
       if (resp.success) {
         this.catRegionales = resp.result;
-        this.catRegionales.unshift({id: -1,name:"TODOS"});
         console.log("resp regionales", this.catRegionales);
       }
     });
   }
 
   getDataDash(ciudad, regional, dateOne, dateTwo) {
+    ciudad=1;
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
