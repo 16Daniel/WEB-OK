@@ -97,11 +97,12 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
-
+debugger
     if(this.user.roleId == 7 )
     {
-      let datetemp = new Date(dateTwo);
-      dateOne = datetemp.getFullYear()+"-"+(datetemp.getMonth()+1)+'-01'
+      let datetemp = new Date(String(dateTwo));
+      //dateOne = datetemp.getFullYear()+"-"+(datetemp.getMonth())+'-01'
+      dateOne = dateTwo.substring(0, 7)+"-01";
     }
 
     
