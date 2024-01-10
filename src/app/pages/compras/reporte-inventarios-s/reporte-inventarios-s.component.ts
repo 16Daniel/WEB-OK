@@ -26,7 +26,7 @@ export class ReporteInventariosSComponent implements OnInit {
     public mermastotal;
     public selectFila =null;
     // displayedColumns = ['sucursal', 'articulo', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
-    public displayedColumns = ['sucursal', 'articulo', 'seccion', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
+    public displayedColumns = ['region','sucursal', 'articulo', 'seccion', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
   
     public carga = false;
   
@@ -40,6 +40,7 @@ export class ReporteInventariosSComponent implements OnInit {
         this.ciudad = (this.user.stateId).toString();
         console.log('City', this.ciudad);
         this.getdataSucursal(this.ciudad);
+        
       }
     }
 
@@ -97,7 +98,8 @@ export class ReporteInventariosSComponent implements OnInit {
     }
   
     getReporte(ciudad, dateInit) {
-      if (ciudad == undefined || dateInit == undefined) {
+      // if (ciudad == undefined || dateInit == undefined) {
+      if (dateInit == undefined) {
         return
       }
       this.carga = true;
@@ -121,10 +123,10 @@ export class ReporteInventariosSComponent implements OnInit {
     public name; 
     exportToExcel(city): void {
       if(city == 1){
-        this.name = 'RW CDMX INVENTARIO SEMANAL: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+        this.name = 'RW CDMX INVENTARIO VESPERTINO: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
       }
       else{
-        this.name = 'RW QRO INVENTARIO SEMANAL: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+        this.name = 'RW QRO INVENTARIO VESPERTINO: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
       }
       let element = document.getElementById('reporte-tble');
       const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);

@@ -35,6 +35,8 @@ export class MermasComponentC implements OnInit {
       console.log('City', this.ciudad);
       this.getdataSucursal(this.ciudad);
     }
+    this.ciudad = 1;
+    this.getdataRegional(this.ciudad);
   }
   
   getdataSucursal(id) {
@@ -77,7 +79,7 @@ export class MermasComponentC implements OnInit {
     this.service
       .serviceGeneralGet(`Dashboard/performance-regionalD/${ciudad}/${sucursal}/?initDate=${dateInit}&endDate=${dateEnd}`)
       .subscribe((resp) => {
-        debugger
+       
         if (resp.success) {
           this.data = resp.result;
           console.log("data", this.data);

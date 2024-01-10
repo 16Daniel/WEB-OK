@@ -70,6 +70,8 @@ export class ReporteVentaVendedorComponent implements OnInit {
       console.log('City', this.ciudad);
       this.getdataSucursal(this.ciudad);
     }
+    this.ciudad = 1;
+    this.getdataRegional(this.ciudad);
   }
 
   public name; 

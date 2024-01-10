@@ -26,7 +26,7 @@ export class ReporteAppsComponent implements OnInit {
     public mermastotal;
     public selectFila =null;
     
-    public displayedColumns = ['sucursal', 'cliente', 'total', 'mes', 'marca', 'app'];
+    public displayedColumns = ['region','sucursal', 'cliente', 'total', 'mes', 'marca', 'app'];
   
     public carga = false;
   

@@ -42,6 +42,8 @@ export class ReporteRankingComponent implements OnInit {
         console.log('City', this.ciudad);
         this.getdataSucursal(this.ciudad);
       }
+      this.ciudad=1;
+      this.getdataSucursal(this.ciudad);
     }
 
     form = new FormGroup({

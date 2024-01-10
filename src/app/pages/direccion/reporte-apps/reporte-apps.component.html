@@ -183,7 +183,13 @@
         
         <div class="col-12">
         <table mat-table [dataSource]="data" class="table table-hover col-12" id="reporte-tble">
-            
+          
+          <!-- Name Column -->
+          <ng-container matColumnDef="region">
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> REGION </th>
+            <td class="col-1" mat-cell *matCellDef="let element"> {{element.reg}} </td>
+          </ng-container>
+          
           <!-- Name Column -->
           <ng-container matColumnDef="sucursal">
             <th scope="col-2" mat-header-cell *matHeaderCellDef> SUCURSAL </th>

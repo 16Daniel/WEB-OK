@@ -24,7 +24,7 @@ export class ReporteInventariosComponent implements OnInit {
   public dateEnd;
   public mermastotal;
   public selectFila =null;
-  displayedColumns = ['sucursal', 'articulo', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
+  displayedColumns = ['region','sucursal', 'articulo', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
 
 
 
@@ -37,7 +37,7 @@ export class ReporteInventariosComponent implements OnInit {
     if (this.user.roleId === 2) {
       this.ciudad = (this.user.stateId).toString();
       console.log('City', this.ciudad);
-      this.getdataSucursal(this.ciudad);
+      //this.getdataSucursal(this.ciudad);
     }
   }
   
@@ -96,10 +96,10 @@ export class ReporteInventariosComponent implements OnInit {
   public name; 
   exportToExcel(city): void {
     if(city == 1){
-      this.name = 'RW CDMX INVENTARIOS: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+      this.name = 'RW CDMX INVENTARIOS MATUTINOS: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
     }
     else{
-      this.name = 'RW QRO INVENTARIOS: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+      this.name = 'RW QRO INVENTARIOS MATUTINOS: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
     }
     let element = document.getElementById('reporte-tble');
     const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
