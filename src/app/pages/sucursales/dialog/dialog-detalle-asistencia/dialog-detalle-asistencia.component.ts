@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { ServiceGeneralService } from 'app/core/services/service-general/service-general.service';
 import { DialogDetalleTareaComponent } from '../dialog-detalle-tarea/dialog-detalle-tarea.component';
+import { DialogViewImageComponent } from "../dialog-view-image/dialog-view-image.component";
 
 @Component({
   selector: 'app-dialog-detalle-asistencia',
@@ -15,7 +16,7 @@ export class DialogDetalleAsistenciaComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public url = 'https://opera.no-ip.net/back/api_rebel_wings/';
   
   constructor(public dialogRef: MatDialogRef<DialogDetalleTareaComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
@@ -35,7 +36,7 @@ export class DialogDetalleAsistenciaComponent implements OnInit {
   }
 
   // get  name sucursal
-  getBranch() {
+ getBranch() {
 
     this.services.serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${this.data.baseDatos}`).subscribe(resp => {
       if (resp.success) {
@@ -59,6 +60,19 @@ export class DialogDetalleAsistenciaComponent implements OnInit {
         });
       }
     });
+  }
+
+  imgviewer(url)
+  {
+    const dialog = this._dialog.open(DialogViewImageComponent, {
+      data: {
+        urlimg: url
+      },
+      width: "80%",
+      height: "90%",
+      panelClass: 'mi-clase-de-tema'
+    });
+    dialog.afterClosed().subscribe();
   }
 
 }

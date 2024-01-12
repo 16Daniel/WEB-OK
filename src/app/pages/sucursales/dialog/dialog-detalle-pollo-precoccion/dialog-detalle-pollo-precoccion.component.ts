@@ -5,6 +5,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialog,
 } from "@angular/material/dialog";
+import { DialogViewImageComponent } from "../dialog-view-image/dialog-view-image.component";
 @Component({
   selector: 'app-dialog-detalle-pollo-precoccion',
   templateUrl: './dialog-detalle-pollo-precoccion.component.html',
@@ -20,7 +21,7 @@ export class DialogDetallePolloPrecoccionComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public url = 'https://opera.no-ip.net/back/api_rebel_wings/';
 
   constructor(public dialogRef: MatDialogRef<DialogDetallePolloPrecoccionComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
@@ -64,6 +65,19 @@ export class DialogDetallePolloPrecoccionComponent implements OnInit {
         });
       }
     });
+  }
+
+  imgviewer(url)
+  {
+    const dialog = this._dialog.open(DialogViewImageComponent, {
+      data: {
+        urlimg: url
+      },
+      width: "80%",
+      height: "90%",
+      panelClass: 'mi-clase-de-tema'
+    });
+    dialog.afterClosed().subscribe();
   }
 
 }

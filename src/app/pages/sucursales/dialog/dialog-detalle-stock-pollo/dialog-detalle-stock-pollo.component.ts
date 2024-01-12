@@ -37,7 +37,7 @@ export class DialogDetalleStockPolloComponent implements OnInit {
 
 
   // get  name sucursal
-  getBranch() {
+ getBranch() {
 
     this.services.serviceGeneralGet(`StockChicken/Admin/All-Branch?dataBase=${this.data.baseDatos}`).subscribe(resp => {
       if (resp.success) {

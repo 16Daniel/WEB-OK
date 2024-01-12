@@ -2,7 +2,7 @@
   <div class="modal-header">
     <div class="row">
       <div class="col-10">
-        <h4 class="title">{{data.name}}</h4>
+        <h4 class="title">{{data.name | uppercase }}</h4>
       </div>
       <div class="col-2 align-btn">
         <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
@@ -16,7 +16,7 @@
         <img src="./assets/icon/sucursal.png" alt="" />
       </div>
       <div class="col-10 subtitle">
-        <span>{{ nameBranch }}</span>
+        <span>{{ nameBranch | uppercase  }}</span>
       </div>
     </div>
     <div class="row mb-4">
@@ -28,13 +28,13 @@
       <div class="col-12">
         <label class="title" for="">Tiempo</label>
         <br />
-        <span>{{ data.data.averageTime }}</span>
+        <span>{{ data.data.averageTime | uppercase  }}</span>
       </div>
     </div>
     <!-- este solo es para cantidaddes -->
     <div *ngIf="data.data.amount"  class="row mb-4">
       <div class="col-12">
-        <label class="title" for="">Cantidad o porcentaje {{data.name}}</label>
+        <label class="title" for="">Cantidad o porcentaje {{data.name | uppercase }}</label>
         <br />
         <span>{{ data.data.amount }}</span>
       </div>
@@ -43,7 +43,7 @@
       <div class="col-12">
         <label class="title" for="">Comentario</label>
         <br />
-        <span>{{ data.data.comment }}</span>
+        <span>{{ data.data.comment | uppercase  }}</span>
       </div>
     </div>
     <div  class="row mb-4">
@@ -51,7 +51,7 @@
         <label class="title" for="">Fotografías</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of data.photos; index as position">
-            <img src="{{ url }}{{ photo.photo }}" alt="">
+            <img src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>

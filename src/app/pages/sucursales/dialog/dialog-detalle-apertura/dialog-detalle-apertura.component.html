@@ -5,7 +5,7 @@
           <h4 class="title">{{data.name}}</h4>
         </div>
         <div class="col-2 align-btn">
-          <i style="cursor: pointer; color: #cf3c4f" (click)="close()" class="nc-icon nc-simple-remove"></i>
+          <i style="cursor: pointer; color: #cf3c4f; position: absolute; top: 10px; right: 10px;" (click)="close()" class="nc-icon nc-simple-remove"></i>
         </div>
       </div>
   
@@ -35,7 +35,7 @@
             <label class="title" for="">FOTOGRAFIAS SALON</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo1; index as position">
-                <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+                <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)" (click)="imgviewer(url+photo.photo)">
               </div>
             </div>
           </div>
@@ -51,7 +51,7 @@
         <label class="title" for="">FOTOGRAFIAS COCINA</label>
         <div class="row">
             <div class="col-6" *ngFor="let photo of photo2; index as position">
-            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)" (click)="imgviewer(url+photo.photo)">
             </div>
         </div>
         </div>
@@ -67,7 +67,7 @@
             <label class="title" for="">Fotografías</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo3; index as position">
-                <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="">
+                <img *ngIf="photo.type === 3" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
               </div>
             </div>
           </div>
@@ -83,7 +83,7 @@
             <label class="title" for="">Fotografías</label>
         <div class="row">
             <div class="col-6" *ngFor="let photo of photo4; index as position">
-            <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 4" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
             </div>
         </div>
         </div>
@@ -99,7 +99,7 @@
             <label class="title" for="">Fotografías</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo5; index as position">
-                <img *ngIf="photo.type === 5" src="{{ url }}{{ photo.photo }}" alt="">
+                <img *ngIf="photo.type === 5" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
               </div>
             </div>
         </div>
@@ -115,7 +115,7 @@
             <label class="title" for="">FOTOGRAFIAS MEETING</label>
             <div class="row">
               <div class="col-6" *ngFor="let photo of photo6; index as position">
-                <img *ngIf="photo.type === 6" src="{{ url }}{{ photo.photo }}" alt="">
+                <img *ngIf="photo.type === 6" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)" (click)="imgviewer(url+photo.photo)">
               </div>
             </div>
           </div>

@@ -1,6 +1,7 @@
 .title {
   font-weight: bold;
   margin: 0;
+  text-transform: uppercase;
 }
 .subtitle {
   color: #1d1d1b;
@@ -22,7 +23,7 @@
 }
 .scroll {
   display: block;
-  height: 20rem;
+  height: 67vh;
   overflow-y: scroll;
   scroll-behavior: smooth;
 }
@@ -73,4 +74,10 @@
   left: 16px;
   top: 9px;
   color: #fff;
+}
+
+span,label
+{
+  text-transform: uppercase;
+  font-size: 18px;
 }

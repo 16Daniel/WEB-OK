@@ -74,6 +74,7 @@ import { ReporteAppsComponent } from './pages/direccion/reporte-apps/reporte-app
 import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/reporte-ranking.component';
 import { MermasComponentC } from "./pages/compras/mermas/mermas.component";
 import { ReporteChecadasComponent } from './pages/direccion/reporte-checadas/reporte-checadas.component';
+import { DialogViewImageComponent } from './pages/sucursales/dialog/dialog-view-image/dialog-view-image.component';
 
 
 
@@ -133,6 +134,7 @@ import { ReporteChecadasComponent } from './pages/direccion/reporte-checadas/rep
     ReporteRankingComponent,
     MermasComponentC,
     ReporteChecadasComponent,
+    DialogViewImageComponent,
 
   ],
   imports: [

@@ -94,7 +94,7 @@
         <label class="title" for="">Fotografías</label>
         <div class="row">
           <div class="col-12" *ngFor="let photo of data.photos; index as position">
-            <img src="{{ url }}{{ photo.photo }}" alt="">
+            <img src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>

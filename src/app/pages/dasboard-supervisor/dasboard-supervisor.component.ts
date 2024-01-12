@@ -9,6 +9,7 @@ import { DialogDetalleStockPolloComponent } from '../sucursales/dialog/dialog-de
 import { DialogDetalleAperturaComponent } from '../sucursales/dialog/dialog-detalle-apertura/dialog-detalle-apertura.component';
 import { DialogDetalleAceiteComponent } from '../sucursales/dialog/dialog-detalle-aceite/dialog-detalle-aceite.component';
 import { ActivatedRoute } from '@angular/router';
+import { DialogViewImageComponent } from '../sucursales/dialog/dialog-view-image/dialog-view-image.component';
 
 @Component({
   selector: 'app-dasboard-supervisor',
@@ -62,7 +63,7 @@ export class DasboardSupervisorComponent implements OnInit {
     console.log('user', this.user);
     this.getdataRegional(1);
     if (this.user.roleId === 2) {
-      this.ciudad = (this.user.stateId).toString();
+      this.ciudad = 1
       this.getdataSucursal(this.ciudad);
     }
     const p1 = this.route.snapshot.paramMap.get('city');
@@ -74,7 +75,7 @@ export class DasboardSupervisorComponent implements OnInit {
     if (p2 != undefined || p3 != undefined || p4 != undefined || p1 != undefined || p5 != undefined) {
       console.log('Enter Query params');
       
-      this.ciudad = (p1).toString();
+      this.ciudad = 1
       this.getdataRegional(this.ciudad);
       
       this.regional = (p2).toString();
@@ -90,6 +91,20 @@ export class DasboardSupervisorComponent implements OnInit {
       this.getDataDash(this.sucursal, this.dateDash, this.dateDashTwo, this.isDone);
     }
   }
+
+  imgviewer()
+  {
+    const dialog = this.dialog.open(DialogViewImageComponent, {
+      data: {
+        urlimg: 'assets/img/angular.png'
+      },
+      width: "80%",
+      height: "90%"
+    });
+    dialog.afterClosed().subscribe();
+  }
+
+
   getDataDash(branch, dateOne, dateTwo, isDone) {
     console.log('sucursal', branch);
     console.log('dateDash', dateOne);
@@ -114,14 +129,15 @@ export class DasboardSupervisorComponent implements OnInit {
     }
   }
   detail(data: any, area: number, city) {
+    debugger
     this.dataTask = [];
     console.log('city', city);
     // id 1 cdmx DB2
-    if (city === '1') {
+    if (city == '1') {
       this.db = 'DB2';
     }
     // id 2 queretaro DB1
-    else if (city === '2') {
+    else if (city == '2') {
       this.db = 'DB1';
     }
     console.log(`DB ${this.db}`);
@@ -152,6 +168,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -181,6 +198,7 @@ export class DasboardSupervisorComponent implements OnInit {
                   // maxWidth: '100vw', //overrides default width of dialog
                   // maxHeight: '100vh', //overrides default height of dialog
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -205,6 +223,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     photos: this.photosTemp
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -229,6 +248,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     photos: this.photosTemp
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -253,6 +273,7 @@ export class DasboardSupervisorComponent implements OnInit {
                       baseDatos: this.db,
                     },
                     width: "50rem",
+                    height: "80%"
                   });
                   dialog.afterClosed().subscribe();
                 }
@@ -277,6 +298,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     photos: this.photosTemp
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -302,6 +324,7 @@ export class DasboardSupervisorComponent implements OnInit {
                       photos: this.photosTemp
                     },
                     width: "50rem",
+                    height: "80%"
                   });
                   dialog.afterClosed().subscribe();
                 }
@@ -335,6 +358,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -356,6 +380,7 @@ export class DasboardSupervisorComponent implements OnInit {
 
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -379,6 +404,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -402,6 +428,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     photos: this.photosTemp
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -427,6 +454,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     photos: this.photosTemp
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -450,6 +478,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -473,6 +502,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -497,6 +527,7 @@ export class DasboardSupervisorComponent implements OnInit {
 
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -523,6 +554,7 @@ export class DasboardSupervisorComponent implements OnInit {
                     baseDatos: this.db,
                   },
                   width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }

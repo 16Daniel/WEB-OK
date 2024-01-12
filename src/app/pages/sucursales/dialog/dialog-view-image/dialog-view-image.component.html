@@ -1,0 +1,10 @@
+<div style="position: absolute; float: right; width: 75%;">
+    <div style="position: relative; z-index: 4; float: right;">
+        <button class="btn-grad" (click)="zooming()">zoom +</button>
+    <button class="btn-grad" (click)="shrinking()">zoom -</button>
+    <button (click)="close()" class="btn-grad2"> x </button>
+</div>
+</div>
+<div style="display: flex; justify-content: center; align-items: center; padding: 50px; height: 100%;">
+    <img [src]="urlimg" [ngStyle]="{'transform': 'scale(' + zoom + ') rotate(' + rotate + 'deg)'}">
+</div>

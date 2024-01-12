@@ -6,6 +6,7 @@ import {
   MatDialog,
 } from "@angular/material/dialog";
 import { Pipe, PipeTransform } from '@angular/core';
+import { DialogViewImageComponent } from "../dialog-view-image/dialog-view-image.component";
 
 
 @Component({
@@ -20,7 +21,7 @@ export class DialogVoladoEfectivoComponent implements OnInit {
   public dataBranch: any[] = [];
   public nameBranch = '';
   public status;
-  public url = 'http://opera.no-ip.net/back/api_rebel_wings/';
+  public url = 'https://opera.no-ip.net/back/api_rebel_wings/';
 
   constructor(public dialogRef: MatDialogRef<DialogVoladoEfectivoComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
@@ -62,6 +63,19 @@ export class DialogVoladoEfectivoComponent implements OnInit {
         });
       }
     });
+  }
+  
+  imgviewer(url)
+  {
+    const dialog = this._dialog.open(DialogViewImageComponent, {
+      data: {
+        urlimg: url
+      },
+      width: "80%",
+      height: "90%",
+      panelClass: 'mi-clase-de-tema'
+    });
+    dialog.afterClosed().subscribe();
   }
 
 }

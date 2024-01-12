@@ -186,7 +186,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -210,7 +211,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -234,7 +236,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -258,7 +261,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -282,7 +286,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -310,7 +315,8 @@ export class DasboardRegionalComponent implements OnInit {
                     data: this.dataTask,
                     baseDatos: this.db
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -334,7 +340,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
                     photos: this.photosTemp
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -358,7 +365,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -382,7 +390,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -406,7 +415,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -428,7 +438,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -450,7 +461,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -474,7 +486,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -498,7 +511,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -529,7 +543,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
                     photos: this.photosTemp
                   },
-                  width: '30rem'
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -553,7 +568,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -585,7 +601,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -609,7 +626,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -633,7 +651,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -655,7 +674,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -688,7 +708,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -712,7 +733,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -736,7 +758,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }
@@ -760,7 +783,8 @@ export class DasboardRegionalComponent implements OnInit {
                     baseDatos: this.db,
 
                   },
-                  width: "30rem",
+                  width: "50rem",
+                  height: "80%"
                 });
                 dialog.afterClosed().subscribe();
               }

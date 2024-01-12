@@ -6626,7 +6626,7 @@ a[data-toggle="collapse"][aria-expanded="true"] .caret,
     position: absolute;
     width: 100%;
     padding-top: 10px;
-    z-index: 1029; }
+    z-index: 1; }
   .documentation .navbar.fixed-top {
     left: 0;
     width: initial; }
@@ -8982,7 +8982,7 @@ img {
     width: calc(100% - 80px); }
   .sidebar-mini .sidebar {
     display: block;
-    z-index: 1030; }
+    z-index: 1; }
     .sidebar-mini .sidebar .logo a.logo-normal {
       opacity: 0;
       -webkit-transform: translate3d(-25px, 0, 0);

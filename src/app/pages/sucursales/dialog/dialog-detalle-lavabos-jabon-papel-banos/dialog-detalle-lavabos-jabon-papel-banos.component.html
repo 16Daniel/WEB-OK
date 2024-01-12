@@ -48,7 +48,7 @@
         <label class="title" for="">Fotografías</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of data.data.photoWashBasinWithSoapPapers; index as position">
-            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>
@@ -77,7 +77,7 @@
         <label class="title" for="">Fotografías</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of data.data.photoWashBasinWithSoapPapers; index as position">
-            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>

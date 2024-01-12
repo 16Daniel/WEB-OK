@@ -88,7 +88,7 @@
         <label class="title" for="">Fotografías Cont. A</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of photoAudioVideosA; index as position">
-            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 1" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>
@@ -96,7 +96,7 @@
         <label class="title" for="">Fotografías Cont. B</label>
         <div class="row">
           <div class="col-4" *ngFor="let photo of photoAudioVideosB; index as position">
-            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="">
+            <img *ngIf="photo.type === 2" src="{{ url }}{{ photo.photo }}" alt="" (click)="imgviewer(url+photo.photo)">
           </div>
         </div>
       </div>
