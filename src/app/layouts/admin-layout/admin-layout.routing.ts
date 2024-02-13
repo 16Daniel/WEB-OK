@@ -28,7 +28,9 @@ import { ReporteAppsComponent } from 'app/pages/direccion/reporte-apps/reporte-a
 import { ReporteRankingComponent } from 'app/pages/direccion/reporte-ranking/reporte-ranking.component';
 import { MermasComponentC } from 'app/pages/compras/mermas/mermas.component';
 import { ReporteChecadasComponent } from 'app/pages/direccion/reporte-checadas/reporte-checadas.component';
-
+import { EditItemComponent } from 'app/pages/compras/edit-item/edit-item.component';
+import { SolicitudCambiosComponent } from 'app/pages/compras/solicitud-cambios/solicitud-cambios.component';
+import { HistorialCambiosItemsComponent } from 'app/pages/compras/historial-cambios-items/historial-cambios-items.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -57,6 +59,8 @@ export const AdminLayoutRoutes: Routes = [
   { path: "reporte-apps", component: ReporteAppsComponent},
   { path: "reporte-ranking", component: ReporteRankingComponent},
   { path: "compras-m", component: MermasComponentC },
-  { path: "checadas", component: ReporteChecadasComponent}
-  
+  { path: "checadas", component: ReporteChecadasComponent},
+  { path: "edit-item", component: EditItemComponent },
+  { path: "solicitudes-edicion", component: SolicitudCambiosComponent },
+  { path: "historial-cambios-art", component: HistorialCambiosItemsComponent },
 ];

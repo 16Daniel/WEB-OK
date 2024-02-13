@@ -1,0 +1,77 @@
+<div class="container">
+    <!-- HEADER -->
+    <div class="row" id="idscroll">
+        <div class="col-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
+        </div>
+        <div class="col-11 align-center">
+            <h4 class="title align-center">HISTORIAL DE CAMBIOS EN ÁRTICULOS</h4>
+        </div>
+        <div class="col-2 align-center">
+            <br />
+            <br />
+            <h5 class="subtitle-negro">LISTA DE CAMBIOS</h5>
+        </div>
+    </div>
+
+    <div class="row m-0 mt-3">
+        <div class="col-sm-4">
+            <input type="month"  class="form-control" [(ngModel)]="mesF">
+        </div>
+        <div class="col-auto">
+            <button class="btn mt-0" style="background-color: #3b88fb; border-radius: 20px;" (click)="filtrar()">FILTRAR</button>
+        </div>
+        <div class="col-auto">
+            <button class="btn mt-0" style="background-color: #3b88fb; border-radius: 20px;" (click)="mostrartodo()">MOSTRAR TODO</button>
+        </div>
+        <div class="col-auto">
+            <button class="btn mt-0" style="background-color: #06c000; border-radius: 20px;" (click)="exportToExcel()" [disabled]="showbtn">EXCEL</button>
+        </div>
+    </div>
+
+    <table class="table table-hover col-12 mt-3">
+        <thead class="thead-warning header_table">
+            <tr>
+                <th>USUARIO</th>
+                <th>ACCIÓN</th>
+                <th>JUSTIFICACIÓN</th>
+                <th>FECHA</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data  let i=index;">
+                <td>{{item.username}}</td>
+                <td>{{item.accion}}</td>
+                <td>{{item.justificacion}}</td>
+                <td>{{item.fecha | date}}</td>
+                <td><button style="border-radius: 16px;" class="btn btn-info" (click)="openVD(item.jsondata,item.accion)">VER DETALLES</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <table class="table table-hover col-12 mt-3" id="reporte-tble" style="display: none;">
+        <thead class="thead-warning header_table">
+            <tr>
+                <th>USUARIO</th>
+                <th>ACCIÓN</th>
+                <th>JUSTIFICACIÓN</th>
+                <th>FECHA</th>
+
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data  let i=index;">
+                <td>{{item.username}}</td>
+                <td>{{item.accion}}</td>
+                <td>{{item.justificacion}}</td>
+                <td>{{item.fecha | date}}</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+</div>

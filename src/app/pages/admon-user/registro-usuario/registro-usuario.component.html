@@ -59,11 +59,7 @@
           <label for="turno">Rol</label>
           <select type="number" [(ngModel)]="data.roleId" class="form-control" id="turno" (focus)="activeTurno = false"
             required>
-            <option [ngValue]="1">Supervisor</option>
-            <option [ngValue]="2">Regional</option>
-            <option [ngValue]="3">Administrador</option>
-            <option [ngValue]="4">Compras</option>
-
+            <option *ngFor="let elemento of catRoles" [ngValue]="elemento.id">{{elemento.descripcion}}</option>
           </select>
         </div>
         <!-- <span style="color: #ad182d; font-size: 12px" *ngIf="activeTurno">Campo requerido</span> -->

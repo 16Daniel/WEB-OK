@@ -40,10 +40,7 @@
             </div>
           </td>
           <td class="col-3">
-            <span *ngIf="item.roleId === 3">Administrador</span>
-            <span *ngIf="item.roleId === 4">Compras</span>
-            <span *ngIf="item.roleId === 2">Regional</span>
-            <span *ngIf="item.roleId === 1">Supervisor</span>
+            <span>{{getNameRol(item.roleId)}}</span>
           </td>
           <td class="col-3">{{item.email}}</td>
           <td class="col-2">

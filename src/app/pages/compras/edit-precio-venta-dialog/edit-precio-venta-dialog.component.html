@@ -1,0 +1,76 @@
+<div style="position: relative; height: 95%; margin: 0;">
+
+
+    <h4>PRECIOS DE VENTA</h4>
+    
+    <h5 class="mt-3 mb-3">{{nombrearticulo}}</h5>
+
+    <div style="overflow: auto;" class="mt-3">
+    
+     <div class="row m-0">
+
+        <div class="col-6">
+            <label>COSTE MEDIO</label>
+            <input class="form-control" type="number" [(ngModel)]="costemedio"/>
+        </div>
+        <div class="col-6">
+            <label>COSTE STOCK</label>
+            <input class="form-control" type="number" [(ngModel)]="costestock"/>
+        </div>
+
+     </div>
+
+     <div class="row m-0 mt-3">
+
+        <div class="col-6">
+            <label>ÚLTIMO COSTE</label>
+            <input class="form-control" type="number" [(ngModel)]="ultimocoste" />
+        </div>
+        <div class="col-6">
+            <label>PRECIO COMPRA</label>
+            <input class="form-control" type="number" [(ngModel)]="preciocompra"/>
+        </div>
+
+     </div>
+
+     <div class="d-felx w-100 justify-content-center">
+
+        <div class="card p-3 m-3 shadow" *ngFor="let item of preciosventa  let i=index;">
+            <p class="text-center">{{item.descripcion}}</p>
+            <div class="row m-0">
+                <div class="col-4">
+                    <label>ID TARIFAV</label>
+                    <input type="text" class="form-control" [value]="item.idtarifav" disabled>
+                </div>
+                <div class="col-4">
+                    <label>COD ÁRTICULO</label>
+                    <input type="text" class="form-control" [value]="item.codarticulo" disabled>
+                </div>
+                <div class="col-4">
+                    <label>PRECIO NETO</label>
+                    <input type="number" class="form-control" [(ngModel)]="item.pneto">
+                </div>
+              
+            </div>
+        </div>
+
+     </div>
+    
+     <div class="row m-0 mt-3">
+        <label>JUSTIFICACIÓN</label>
+        <textarea class="form-control p-2" [(ngModel)]="comentario">
+          
+        </textarea>
+      </div>
+
+    </div>
+    
+    <div style=" position: absolute;
+    bottom: 10px;
+    right: 10px;">
+    <button class="btn-grad" (click)="guardar()">GUARDAR</button>
+    <button class="btn-grad2" (click)="close()">CANCELAR</button>
+    </div>
+
+
+</div>

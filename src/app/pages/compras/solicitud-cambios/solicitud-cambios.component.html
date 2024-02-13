@@ -1,0 +1,49 @@
+<div class="container">
+    <!-- HEADER -->
+    <div class="row" id="idscroll">
+        <div class="col-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
+        </div>
+        <div class="col-11 align-center">
+            <h4 class="title align-center">SOLICITUD DE CAMBIOS EN ÁRTICULOS</h4>
+        </div>
+        <div class="col-2 align-center">
+            <br />
+            <br />
+            <h5 class="subtitle-negro">LISTA DE CAMBIOS</h5>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-end">
+        <button style="border-radius: 16px;" class="btn btn-success" (click)="confirmartodo()" [disabled]="showbtn">CONFIRMAR TODO</button>
+    </div>
+
+    <table class="table table-hover col-12 mt-3" id="reporte-tble">
+        <thead class="thead-warning header_table">
+            <tr>
+                <th>USUARIO</th>
+                <th>ACCIÓN</th>
+                <th>JUSTIFICACIÓN</th>
+                <th>FECHA</th>
+
+
+                
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data  let i=index;">
+                <td>{{item.username}}</td>
+                <td>{{item.accion}}</td>
+                <td>{{item.justificacion}}</td>
+                <td>{{item.fecha | date}}</td>
+                <td><button style="border-radius: 16px;" class="btn btn-success" (click)="confirmarCambios(item.jsondata,item.accion,item.id)">CONFIRMAR</button></td>
+                <td><button style="border-radius: 16px;" class="btn btn-danger" (click)="Descartar(item.id)">DESCARTAR</button></td>
+                <td><button style="border-radius: 16px;" class="btn btn-info" (click)="openVD(item.jsondata,item.accion)">VER DETALLES</button></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>

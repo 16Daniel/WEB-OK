@@ -129,7 +129,6 @@ export class DasboardSupervisorComponent implements OnInit {
     }
   }
   detail(data: any, area: number, city) {
-    debugger
     this.dataTask = [];
     console.log('city', city);
     // id 1 cdmx DB2

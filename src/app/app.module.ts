@@ -75,6 +75,13 @@ import { ReporteRankingComponent } from './pages/direccion/reporte-ranking/repor
 import { MermasComponentC } from "./pages/compras/mermas/mermas.component";
 import { ReporteChecadasComponent } from './pages/direccion/reporte-checadas/reporte-checadas.component';
 import { DialogViewImageComponent } from './pages/sucursales/dialog/dialog-view-image/dialog-view-image.component';
+import { EditItemComponent } from './pages/compras/edit-item/edit-item.component';
+import { EditItemDialogComponent } from './pages/compras/edit-item-dialog/edit-item-dialog.component';
+import { SolicitudCambiosComponent } from './pages/compras/solicitud-cambios/solicitud-cambios.component';
+import { EditPrecioVentaDialogComponent } from './pages/compras/edit-precio-venta-dialog/edit-precio-venta-dialog.component';
+import { EditPrecioProveedorDialogComponent } from './pages/compras/edit-precio-proveedor-dialog/edit-precio-proveedor-dialog.component';
+import { DetallesCambiosDialogComponent } from './pages/compras/detalles-cambios-dialog/detalles-cambios-dialog.component';
+import { HistorialCambiosItemsComponent } from './pages/compras/historial-cambios-items/historial-cambios-items.component';
 
 
 
@@ -135,6 +142,13 @@ import { DialogViewImageComponent } from './pages/sucursales/dialog/dialog-view-
     MermasComponentC,
     ReporteChecadasComponent,
     DialogViewImageComponent,
+    EditItemComponent,
+    EditItemDialogComponent,
+    SolicitudCambiosComponent,
+    EditPrecioVentaDialogComponent,
+    EditPrecioProveedorDialogComponent,
+    DetallesCambiosDialogComponent,
+    HistorialCambiosItemsComponent,
 
   ],
   imports: [

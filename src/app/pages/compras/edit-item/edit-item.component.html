@@ -1,0 +1,79 @@
+<div class="container">
+    <!-- HEADER -->
+    <div class="row" id="idscroll">
+        <div class="col-1 align-center">
+            <img class="img-fluid" src="./assets/icon/ilustracion_stock_de_pollo.png" alt="" />
+        </div>
+        <div class="col-11 align-center">
+            <h4 class="title align-center">EDICIÓN DE ARTICULOS</h4>
+        </div>
+        <div class="col-2 align-center">
+            <br />
+            <br />
+            <h5 class="subtitle-negro">LISTA DE ARTÍCULOS</h5>
+        </div>
+    </div>
+
+<input type="text" placeholder="ESCRIBE PARA FILTRAR" class="i-filter" [(ngModel)]="filtro">
+
+
+<table class="table table-hover col-12" id="reporte-tble" *ngIf="filtro!=''">
+    <thead class="thead-warning header_table">
+        <tr>
+            <th>ARTICULO</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of filtrarDatos();  let i=index;">
+            <td>{{item.descripcion}}</td>
+            <td><button style="background-color: #3b88fb; border-radius: 16px;" class="btn" (click)="openForm(item.codarticulo)">EDITAR ARTICULO</button></td>
+            <td><button style="background-color: #6004ca; border-radius: 16px;" class="btn" (click)="openFormV(item.codarticulo)">EDITAR PRECIOS VENTA</button></td>
+            <td><button style="background-color: #13c2ab; border-radius: 16px;" class="btn" (click)="openFormP(item.codarticulo)">EDITAR PRECIOS PROVEEDOR</button></td>
+        </tr>
+    </tbody>
+</table>
+
+
+<div class="accordion" id="accordionart" *ngIf="filtro==''">
+
+    <div class="card"  *ngFor="let item of catmarcas let i=index;">
+      <div class="card-header">
+        <button class="btn-block text-left mb-3" style="background-color: white; border: none; font-size: 20px;" type="button" data-toggle="collapse" [attr.data-target]="'#collapseone' + i"  aria-expanded="true" aria-controls="collapseone">
+            {{item.descripcion == " " ? 'SIN MARCA': item.descripcion}}
+          </button>
+      </div>
+  
+      <div id="collapseone{{i}}" class="collapse" data-parent="#accordionart">
+        <div class="card-body">
+
+
+            <table class="table table-hover col-12" id="reporte-tble">
+                <thead class="thead-warning header_table">
+                    <tr>
+                        <th>ARTICULO</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of filtrarpormarca(item.codmarca)  let i=index;">
+                        <td>{{item.descripcion}}</td>
+                        <td><button style="background-color: #3b88fb; border-radius: 16px;" class="btn" (click)="openForm(item.codarticulo)">EDITAR ARTICULO</button></td>
+                        <td><button style="background-color: #6004ca; border-radius: 16px;" class="btn" (click)="openFormV(item.codarticulo)">EDITAR PRECIOS VENTA</button></td>
+                        <td><button style="background-color: #13c2ab; border-radius: 16px;" class="btn" (click)="openFormP(item.codarticulo)">EDITAR PRECIOS PROVEEDOR</button></td>
+                    </tr>
+                </tbody>
+            </table>
+
+          
+        </div>
+      </div>
+    </div>
+
+</div>
+
+</div>

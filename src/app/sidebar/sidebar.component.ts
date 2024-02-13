@@ -161,22 +161,43 @@ export const ROUTES: RouteInfo[] = [
         title: "Inventario Matutino",
          icon: "tareas-inactivo",
         class: "",
-        access: [3,4]
+        access: [3,4,9]
       },
       {
         path: "/compras-s",
        title: "Inventario Vespertino",
         icon: "tareas-inactivo",
        class: "",
-       access: [3,4]
+       access: [3,4,9]
      },
      {
       path: "/compras-m",
      title: "Mermas",
       icon: "tareas-inactivo",
      class: "",
-     access: [3,4]
+     access: [3,4,9]
    },
+   {
+    path: "/edit-item",
+   title: "Control De Articulos",
+    icon: "tareas-inactivo",
+   class: "",
+   access: [3,4,9]
+ },
+ {
+  path: "/solicitudes-edicion",
+ title: "Solicitudes de modificación",
+  icon: "tareas-inactivo",
+ class: "",
+ access: [3,4]
+},
+{
+  path: "/historial-cambios-art",
+ title: "AUDITORIA DE ARTÍCULOS",
+  icon: "tareas-inactivo",
+ class: "",
+ access: [3,4]
+},
     ],
   },
   {

@@ -97,7 +97,6 @@ export class DashboardPerformanceSupervisorComponent implements OnInit {
     console.log('regional', regional);
     console.log('ciudad', ciudad);
     console.log('dateDash', dateOne, dateTwo);
-debugger
     if(this.user.roleId == 7 )
     {
       let datetemp = new Date(String(dateTwo));
@@ -114,7 +113,6 @@ debugger
       this.data = null;
       this.services.serviceGeneralGet(`Dashboard/performance-general-supervisor/${ciudad}/${regional}?startDate=${dateOne}&endDate=${dateTwo}`).subscribe(resp => {
         if (resp.success) {
-          debugger
           this.data = resp.result;
           this.singleDounut = resp.result.topOmittedTask;
           this.multi = resp.result.multi;

@@ -22,6 +22,7 @@ export class RegistroUsuarioComponent implements OnInit {
   public today = new Date();
   public catalogState: any[] = [];
   public catalogSucursal: any[] = [];
+  public catRoles:any;
   enctexto;
 
   destexto;
@@ -37,6 +38,7 @@ export class RegistroUsuarioComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.getRoles();
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('params', this.param);
     console.log('user', this.user);
@@ -198,6 +200,20 @@ export class RegistroUsuarioComponent implements OnInit {
     });
 
   }
+
+  getRoles()
+  {
+    this.services
+    .serviceGeneralGet(`User/getRoles`)
+    .subscribe((resp) => {
+     
+      if (resp.success) {
+        this.catRoles = resp.result;
+        console.log(this.catRoles);
+      }
+  
+    });
+  } 
 
 }
 

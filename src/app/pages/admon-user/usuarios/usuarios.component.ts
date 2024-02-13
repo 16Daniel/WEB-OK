@@ -16,13 +16,14 @@ export class UsuariosComponent implements OnInit {
   public dataBranch: any[] = [];
   public sucursal;
   public nameBranch;
+  public catRoles:any;
   constructor(public services: ServiceGeneralService, public _dialog: MatDialog
 ) { }
 
   ngOnInit(): void {
     this.user = JSON.parse(localStorage.getItem("userData"));
     console.log('user', this.user);
-    this.getData();
+    this.getRoles(); 
   }
   getData() {
     this.services
@@ -78,7 +79,30 @@ export class UsuariosComponent implements OnInit {
       }
     });
 
-  }
+  } 
+
+  getRoles()
+{
+  this.services
+  .serviceGeneralGet(`User/getRoles`)
+  .subscribe((resp) => {
+   
+    if (resp.success) {
+      this.catRoles = resp.result;
+    }
+    this.getData();
+
+  });
+} 
+
+getNameRol(idr)
+{
+  let rol = this.catRoles.filter(function(elemento) {
+    return elemento.id == idr;
+});
+ let name = rol[0].descripcion != null ? rol[0].descripcion : '';  
+ return name;
+}
 
 }
 

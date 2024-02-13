@@ -1,0 +1,380 @@
+<div style="position: relative; height: 95%; margin: 0;">
+
+    <h4 class="text-center">DETALLES DE LOS CAMBIOS</h4>
+    
+    <div style="overflow: auto;" class="mt-3">
+    
+        <div class="row m-0">
+
+            <div class="p-3 col-sm-6">
+                <h5 class="text-center">ANTES</h5>
+                <div class="mt-3" *ngIf="idform == 1">
+
+                    <div class="m-1 card p-3 shadow">
+
+                        <div class="row m-0">
+                            <div class="col-12">
+                             <label>DESCRIPCIÓN</label>
+                             <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="dataantes.descripcion">
+                            </div>
+                     
+                            <div class="col-12">
+                             <label>REFERENCIA</label>
+                             <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="dataantes.referencia">
+                            </div>
+                     
+                           </div> 
+                        
+                           <div class="row m-0 mt-3">
+                             <div class="col-12 m-0">
+                                 <label>DEPARTAMENTO</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefDepartamento">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>SECCIÓN</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefSeccion">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>MARCA</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefMarca">
+                               </div>
+                           </div>
+                 
+                           <div class="row m-0 mt-3">
+                             <div class="col-12 m-0">
+                                 <label>FAMILIA</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefFamilia">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>SUBFAMILIA</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefSubfamilia">
+                               </div>
+                 
+                           </div>
+                     
+                     
+                           <div class="row m-0 mt-3">
+                             <div class="col-12">
+                                 <label>TIPO DE IMPUESTO</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefTipoimp">
+                             </div>
+                             <div class="col-12">
+                                 <label>IMPUESTO DE COMPRA</label>
+                                 <input class="form-control p-2 befordata-i border-0" type="text" disabled [value]="datGenBefImpComp">
+                             </div>
+                           </div> 
+                 
+                           <div class="row m-0 mt-3">
+                             <div class="col-12">
+                                 <div class="custom-control custom-switch">
+                                     <input type="checkbox" class="custom-control-input" id="customSwitch1" disabled [ngModel]="dataantes.usaStock == 'T' ? true: false">
+                                     <label class="custom-control-label" for="customSwitch1">EL ÁRTICULO TIENE STOCK</label>
+                                   </div>
+                               </div>
+                 
+                               <div class="col-12">
+                                 <div class="custom-control custom-switch">
+                                     <input type="checkbox" class="custom-control-input" id="customSwitch2" disabled [ngModel]="dataantes.forzarUdsEntreras == 'True' ? true: false">
+                                     <label class="custom-control-label" for="customSwitch2">SE VENDE EN UNIDADES ENTERAS</label>
+                                   </div>
+                               </div>
+                 
+                 
+                           </div>
+                 
+                    </div>
+
+                </div>
+
+                <div class="mt-3" *ngIf="idform == 2">  
+                    
+                    <div class="m-1 p-3 card shadow">
+
+                        <div class="col-12">
+                            <label>ARTÍCULO</label>
+                            <input class="form-control" type="text" disabled [value]="dataitem.descripcion"/>
+                        </div>
+
+                        <div class="row m-0 mt-3">
+
+                            <div class="col-6">
+                                <label>COSTE MEDIO</label>
+                                <input class="form-control" type="number" disabled [value]="dataantes.articulolin[0].costemedio"/>
+                            </div>
+                            <div class="col-6">
+                                <label>COSTE STOCK</label>
+                                <input class="form-control" type="number" disabled  [value]="dataantes.articulolin[0].costestock"/>
+                            </div>
+                    
+                         </div>
+                    
+                         <div class="row m-0 mt-3">
+                    
+                            <div class="col-6">
+                                <label>ULTIMO COSTE</label>
+                                <input class="form-control" type="number" disabled [value]="dataantes.articulolin[0].ultimocoste"/>
+                            </div>
+                            <div class="col-6">
+                                <label>PRECIO COMPRA</label>
+                                <input class="form-control" type="number" disabled [value]="dataantes.articulolin[0].precioultcompra"/>
+                            </div>
+                    
+                         </div>
+                    
+                         <div class="d-felx w-100 justify-content-center">
+                    
+                            <div class="card p-3 m-3 shadow" *ngFor="let item of preciosventaF2A let i=index;">
+                                <p class="text-center">{{item.descripcion}}</p>
+                                <div class="row m-0">
+                                    <div class="col-4">
+                                        <label>ID TARIFAV</label>
+                                        <input type="text" class="form-control" [value]="item.idtarifav" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>COD ÁRTICULO</label>
+                                        <input type="text" class="form-control" [value]="item.codarticulo" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>PRECIO NETO</label>
+                                        <input type="text" class="form-control" [value]="item.pneto" disabled>
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                    
+                         </div>
+
+                    </div>  
+
+                </div>
+
+                <div class="mt-3" *ngIf="idform == 3">
+                    <div class="m-1 p-3 card shadow">
+                        <div class="row m-0">
+                            <div class="col-12">
+                                <label>ARTÍCULO</label>
+                                <input type="text" class="form-control" disabled [value]="datadespues.nameart">
+                            </div>
+                            <div class="col-12 mt-1">
+                                <label>PROVEEDOR</label>
+                                <input type="text" class="form-control" disabled [value]="datadespues.proveedor">
+                            </div>
+                            <div class="col-6 mt-1">
+                                <label>TARIFA</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].idtarifac">
+                            </div>
+                            <div class="col-6 mt-1">
+                                <label>COD ARTICULO</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].codarticulo">
+                            </div>
+                         </div>
+                    
+                         <div class="row m-0 mt-1">
+                            <div class="col-6">
+                                <label>PRECIO BRUTO</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].pbruto">
+                            </div>
+                            <div class="col-6">
+                                <label>PRECIO NETO</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].pneto">
+                            </div>
+                         </div>
+    
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="p-3 col-sm-6">
+                <h5 class="text-center">DESPUÉS</h5>
+
+                <div class="mt-3" *ngIf="idform == 1">
+
+                    <div class="m-1 p-3 card shadow">
+
+                        <div class="row m-0">
+                            <div class="col-12">
+                             <label>DESCRIPCIÓN</label>
+                             <input class="form-control p-2  border-0" type="text" disabled [value]="datadespues.descripcion" [ngClass]="{'afterdata-i': datadespues.descripcion != dataantes.descripcion }">
+                            </div>
+                     
+                            <div class="col-12">
+                             <label>REFERENCIA</label>
+                             <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datadespues.referencia" [ngClass]="{'afterdata-i': datadespues.referencia != dataantes.referencia }">
+                            </div>
+                     
+                           </div> 
+                        
+                           <div class="row m-0 mt-3">
+                             <div class="col-12 m-0">
+                                 <label>DEPARTAMENTO</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftDepartamento" [ngClass]="{'afterdata-i': datadespues.departamento != dataantes.departamento }">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>SECCIÓN</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftSeccion" [ngClass]="{'afterdata-i': datadespues.seccion != dataantes.seccion }">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>MARCA</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftMarca" [ngClass]="{'afterdata-i': datadespues.marca != dataantes.marca }">
+                               </div>
+                           </div>
+                 
+                           <div class="row m-0 mt-3">
+                             <div class="col-12 m-0">
+                                 <label>FAMILIA</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftFamilia" [ngClass]="{'afterdata-i': datadespues.familia != dataantes.familia }">
+                               </div>
+                               <div class="col-12 m-0">
+                                 <label>SUBFAMILIA</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftSubfamilia" [ngClass]="{'afterdata-i': datadespues.subfamilia != dataantes.subfamilia }">
+                               </div>
+                 
+                           </div>
+                     
+                     
+                           <div class="row m-0 mt-3">
+                             <div class="col-12">
+                                 <label>TIPO DE IMPUESTO</label>
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftTipoimp" [ngClass]="{'afterdata-i': datadespues.tipoimpuesto != dataantes.tipoImpuesto }">
+                             </div>
+                             <div class="col-12">
+                                 <label>IMPUESTO DE COMPRA</label> 
+                                 <input class="form-control p-2 afterdata-i border-0" type="text" disabled [value]="datGenaftImpComp" [ngClass]="{'afterdata-i': datadespues.impuestocompra != dataantes.impuestoCompra }">
+                             </div>
+                           </div> 
+                 
+                           <div class="row m-0 mt-3">
+                             <div class="col-12">
+                                 <div class="custom-control custom-switch">
+                                     <input type="checkbox" class="custom-control-input" id="customSwitch3" [ngModel]="datadespues.usastock" disabled>
+                                     <label class="custom-control-label" for="customSwitch3">EL ÁRTICULO TIENE STOCK</label>
+                                   </div>
+                               </div>
+                 
+                               <div class="col-12">
+                                 <div class="custom-control custom-switch">
+                                     <input type="checkbox" class="custom-control-input" id="customSwitch4" [ngModel]="datadespues.udsenteras" disabled>
+                                     <label class="custom-control-label" for="customSwitch4">SE VENDE EN UNIDADES ENTERAS</label>
+                                   </div>
+                               </div>
+                 
+                 
+                           </div>
+                 
+                    </div>
+
+                </div>
+
+                <div class="mt-3" *ngIf="idform == 2">
+                    
+                    <div class="m-1 p-3 card shadow">
+
+                        <div class="col-12">
+                            <label>ARTÍCULO</label>
+                            <input class="form-control" type="text" disabled [value]="dataitem.descripcion"/>
+                        </div>
+
+                        <div class="row m-0 mt-3">
+
+                            <div class="col-6">
+                                <label>COSTE MEDIO</label>
+                                <input class="form-control" type="number" disabled  [value]="datadespues.costemedio" [ngClass]="{'afterdata-i': dataantes.articulolin[0].costemedio != datadespues.costemedio }"/>
+                            </div>
+                            <div class="col-6">
+                                <label>COSTE STOCK</label>
+                                <input class="form-control" type="number" disabled  [value]="datadespues.costestock" [ngClass]="{'afterdata-i': dataantes.articulolin[0].costestock != datadespues.costestock }"/>
+                            </div>
+                    
+                         </div>
+                    
+                         <div class="row m-0 mt-3">
+                    
+                            <div class="col-6">
+                                <label>ULTIMO COSTE</label>
+                                <input class="form-control" type="number" disabled [value]="datadespues.ultimocoste" [ngClass]="{'afterdata-i': dataantes.articulolin[0].ultimocoste != datadespues.ultimocoste }"/>
+                            </div>
+                            <div class="col-6">
+                                <label>PRECIO COMPRA</label>
+                                <input class="form-control" type="number" disabled [value]="datadespues.preciocompra" [ngClass]="{'afterdata-i': dataantes.articulolin[0].precioultcompra != datadespues.preciocompra }"/>
+                            </div>
+                    
+                         </div>
+
+                         
+                         <div class="d-felx w-100 justify-content-center">
+                    
+                            <div class="card p-3 m-3 shadow" *ngFor="let item of preciosventaF2D let i=index;">
+                                <p class="text-center">{{item.descripcion}}</p>
+                                <div class="row m-0">
+                                    <div class="col-4">
+                                        <label>ID TARIFAV</label>
+                                        <input type="text" class="form-control" [value]="item.idtarifav" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>COD ÁRTICULO</label>
+                                        <input type="text" class="form-control" [value]="item.codarticulo" disabled>
+                                    </div>
+                                    <div class="col-4">
+                                        <label>PRECIO NETO</label>
+                                        <input type="text" class="form-control" [value]="item.pneto" disabled [ngClass]="{'afterdata-i': preciosventaF2A[i].pneto != preciosventaF2D[i].pneto }">
+                                    </div>
+                                  
+                                </div>
+                            </div>
+                    
+                         </div>
+
+                    </div>
+
+                </div>
+
+                <div class="mt-3" *ngIf="idform == 3">
+                    <div class="m-1 p-3 card shadow">
+                        <div class="row m-0">
+                            <div class="col-12">
+                                <label>ARTÍCULO</label>
+                                <input type="text" class="form-control" disabled [value]="datadespues.nameart">
+                            </div>
+                            <div class="col-12 mt-1">
+                                <label>PROVEEDOR</label>
+                                <input type="text" class="form-control" disabled [value]="datadespues.proveedor">
+                            </div>
+                            <div class="col-6 mt-1">
+                                <label>TARIFA</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].idtarifac">
+                            </div>
+                            <div class="col-6 mt-1">
+                                <label>COD ARTICULO</label>
+                                <input type="text" class="form-control" disabled [value]="dataantes[0].codarticulo">
+                            </div>
+                         </div>
+                    
+                         <div class="row m-0 mt-1">
+                            <div class="col-6">
+                                <label>PRECIO BRUTO</label>
+                                <input type="text" class="form-control" disabled [value]="datadespues.pbruto" disabled [ngClass]="{'afterdata-i': dataantes[0].pbruto != datadespues.pbruto }"> 
+                            </div>
+                            <div class="col-6">
+                                <label>PRECIO NETO</label>
+                                <input type="text" class="form-control" disabled disabled [value]="datadespues.pbruto" [ngClass]="{'afterdata-i': dataantes[0].pneto != datadespues.pbruto }">
+                            </div>
+                         </div>
+    
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div style=" position: absolute;
+    top: 0px;
+    right: 0px;">
+    <button class="btn btn-danger" (click)="close()">X</button>
+    </div>
+
+
+</div>

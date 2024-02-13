@@ -1,0 +1,176 @@
+         
+                
+         .btn-grad {
+            background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA  51%, #1FA2FF  100%);
+            padding: 15px 25px;
+            margin: 5px;
+            text-align: center;
+            text-transform: uppercase;
+            transition: 0.5s;
+            background-size: 200% auto;
+            color: white;            
+            box-shadow: 0 0 20px #eee;
+            border-radius: 10px;
+            border: none;
+          }
+  
+          .btn-grad:hover {
+            background-position: right center; /* change the direction of the change here */
+            color: #fff;
+            text-decoration: none;
+          }
+         
+           
+            .btn-grad2 {
+              background-image: linear-gradient(to right, #FF512F 0%, #DD2476  51%, #FF512F  100%);
+              padding: 15px 25px;
+              margin: 5px;
+              text-align: center;
+              text-transform: uppercase;
+              transition: 0.5s;
+              background-size: 200% auto;
+              color: white;            
+              box-shadow: 0 0 20px #eee;
+              border-radius: 10px;
+              border: none;
+            }
+  
+            .btn-grad2:hover {
+              background-position: right center; /* change the direction of the change here */
+              color: #fff;
+              text-decoration: none;
+              border: none;
+            }
+           
+  
+            .title {
+              font-weight: bold;
+              margin: 0;
+              text-transform: uppercase;
+            }
+            .subtitle {
+              color: #1d1d1b;
+              font-weight: bold;
+              font-size: large;
+              align-self: center;
+            }
+            .align-btn {
+              align-content: end;
+              text-align: end;
+            }
+            .modal-header {
+              display: block;
+            }
+            
+            .date-grey {
+              font-weight: 500;
+              color: grey;
+            }
+            .scroll {
+              display: block;
+              height: 67vh;
+              overflow-y: scroll;
+              scroll-behavior: smooth;
+            }
+            .titleSucursal {
+              color: #ad182d;
+              font-weight: bold;
+              font-size: large;
+              margin-left: 5px;
+            }
+            
+            .modal-footer {
+              display: flex;
+              flex-wrap: wrap;
+              align-items: center;
+              justify-content: flex-end;
+              padding: 0rem;
+              border-top: 1px solid #dee2e6;
+              border-bottom-right-radius: calc(0.3rem - 1px);
+              border-bottom-left-radius: calc(0.3rem - 1px);
+            }
+            
+            #customSwitch1 {
+              --background: #f3f3f3;
+              --background-checked: #26a844;
+              --handle-background: #ad182d;
+              --handle-background-checked: white;
+            }
+            #customSwitch1[aria-checked="false"]::before {
+              position: absolute;
+              content: "";
+            }
+            #customSwitch1[aria-checked="false"]::after {
+              position: absolute;
+              content: "NO";
+              color: #ad182d;
+              font-size: 10px;
+              left: 33px;
+              top: 8px;
+            }
+            #customSwitch1[aria-checked="true"]::before {
+              position: absolute;
+              content: "";
+            }
+            #customSwitch1[aria-checked="true"]::after {
+              position: absolute;
+              content: "SI";
+              font-size: 10px;
+              left: 16px;
+              top: 9px;
+              color: #fff;
+            }
+            
+            span,label
+            {
+              text-transform: uppercase;
+              font-size: 18px;
+            }
+            
+  
+  
+            #customSwitch1 {
+              --background: #f3f3f3;
+              --background-checked: #26a844;
+              --handle-background: #ad182d;
+              --handle-background-checked: white;
+            }
+            #customSwitch1[aria-checked="false"]::before {
+              position: absolute;
+              content: "";
+            }
+            #customSwitch1[aria-checked="false"]::after {
+              position: absolute;
+              content: "NO";
+              color: #ad182d;
+              font-size: 10px;
+              left: 33px;
+              top: 8px;
+            }
+            #customSwitch1[aria-checked="true"]::before {
+              position: absolute;
+              content: "";
+            }
+            #customSwitch1[aria-checked="true"]::after {
+              position: absolute;
+              content: "SI";
+              font-size: 10px;
+              left: 16px;
+              top: 9px;
+              color: #fff;
+            }
+  
+            input,label,select,textarea
+            {
+              font-size: 18px;
+            }
+  
+.befordata-i
+{
+  background-color: #eee; 
+}
+
+.afterdata-i
+{
+  background-color: rgb(233, 201, 201);
+}
