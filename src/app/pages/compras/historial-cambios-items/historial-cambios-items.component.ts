@@ -11,8 +11,10 @@ import * as XLSX from 'xlsx';
 export class HistorialCambiosItemsComponent implements OnInit {
   public data:any;
   public dataini: any;
-  public mesF:any;
+  public fehcaini:Date;
+  public fechafin:Date;
   public showbtn:boolean = false;
+  public carga:boolean = true; 
   constructor(public service: ServiceGeneralService,
     public dialog: MatDialog) { }
 
@@ -28,9 +30,11 @@ export class HistorialCambiosItemsComponent implements OnInit {
     .subscribe((resp) => {
      
       if (resp.success) {
+        debugger
         this.data = resp.result;
         this.dataini = this.data;
         this.showbtn = this.data.length<1 ? false : true; 
+        this.carga = false; 
       }
 
     });
@@ -66,31 +70,22 @@ export class HistorialCambiosItemsComponent implements OnInit {
 
   filtrar()
   {  this.data = this.dataini;
-      this.data = this.filtrarPorMesYAnio(this.data, this.mesF);
+      this.data = this.filtrarPorMesYAnio(this.data);
+
   }
 
   mostrartodo()
   {
     this.data = this.dataini;
-    this.mesF = null;
   }
   
 
-  filtrarPorMesYAnio(objetos, fechaInput) {
-    // Convertir el valor del input tipo month a un objeto Date
-    let fechaInputDate = new Date(fechaInput + "-10"); // Añadimos "-01" para establecer el día como 01
-    
-    // Obtener el mes y año del objeto Date
-    let mesInput = fechaInputDate.getMonth()+1;
-    let anioInput = fechaInputDate.getFullYear();
-  
-    // Filtrar los objetos por mes y año
-    let objetosFiltrados = objetos.filter(objeto => {
-        let fechaObjeto = new Date(objeto.fecha);
-        return fechaObjeto.getMonth()+1 == mesInput && fechaObjeto.getFullYear() == anioInput;
-    });
-    
-    return objetosFiltrados;
+  filtrarPorMesYAnio(objetos,) {
+let objetosFiltrados = objetos.filter(objeto => {
+  let fechaObjeto = objeto.fecha;
+  return fechaObjeto >= this.fehcaini && fechaObjeto <= this.fechafin;
+});
+return objetosFiltrados; 
 }
 
 public name; 
@@ -106,6 +101,5 @@ XLSX.utils.book_append_sheet(book, worksheet, 'Sheet1');
 
 XLSX.writeFile(book, this.name);
 }
-
 
 }

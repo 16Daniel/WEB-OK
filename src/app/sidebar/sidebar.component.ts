@@ -156,13 +156,13 @@ export const ROUTES: RouteInfo[] = [
     id: "colapseCompras",
     access: [3],
     children: [
-       {
-         path: "/compras",
-        title: "Inventario Matutino",
-         icon: "tareas-inactivo",
-        class: "",
-        access: [3,4,9]
-      },
+      //  {
+      //    path: "/compras",
+      //   title: "Inventario Matutino",
+      //    icon: "tareas-inactivo",
+      //   class: "",
+      //   access: [3,4,9]
+      // },
       {
         path: "/compras-s",
        title: "Inventario Vespertino",

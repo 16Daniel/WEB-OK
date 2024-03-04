@@ -15,17 +15,25 @@
     </div>
 
     <div class="row m-0 mt-3">
-        <div class="col-sm-4">
-            <input type="month"  class="form-control" [(ngModel)]="mesF">
+        <div class="col-sm-3">
+            <p>Fecha inicial</p>
+            <input type="date"  class="form-control" [(ngModel)]="fehcaini">
+        </div>
+        <div class="col-sm-3">
+            <p>Fecha final</p>
+            <input type="date"  class="form-control" [(ngModel)]="fechafin">
         </div>
         <div class="col-auto">
+            <br>
             <button class="btn mt-0" style="background-color: #3b88fb; border-radius: 20px;" (click)="filtrar()">FILTRAR</button>
         </div>
         <div class="col-auto">
+            <br>
             <button class="btn mt-0" style="background-color: #3b88fb; border-radius: 20px;" (click)="mostrartodo()">MOSTRAR TODO</button>
         </div>
         <div class="col-auto">
-            <button class="btn mt-0" style="background-color: #06c000; border-radius: 20px;" (click)="exportToExcel()" [disabled]="showbtn">EXCEL</button>
+            <br>
+            <button class="btn mt-0" style="background-color: #06c000; border-radius: 20px;" (click)="exportToExcel()">EXCEL</button>
         </div>
     </div>
 
@@ -36,7 +44,10 @@
                 <th>ACCIÓN</th>
                 <th>JUSTIFICACIÓN</th>
                 <th>FECHA</th>
-
+                <th>MARCA</th>
+                <th>CAMPO</th>
+                <th>ANTES</th>
+                <th>DESPUÉS</th>
                 <th></th>
             </tr>
         </thead>
@@ -46,11 +57,29 @@
                 <td>{{item.accion}}</td>
                 <td>{{item.justificacion}}</td>
                 <td>{{item.fecha | date}}</td>
+                <td>{{item.marca}}</td>
+                <td>{{item.campo}}</td>
+                <td>{{item.antes}}</td>
+                <td>{{item.despues}}</td>
                 <td><button style="border-radius: 16px;" class="btn btn-info" (click)="openVD(item.jsondata,item.accion)">VER DETALLES</button></td>
             </tr>
         </tbody>
     </table>
 
+    <div style="display: flex; justify-content: center;">
+        
+        <div class="col-md-3 align-center">
+            <div class="text-center" *ngIf="this.carga == true">
+             <h4 style="color:#ad182d;text-align:center;">
+               CARGANDO
+             </h4>
+             <div class="spinner-grow text-danger" role="status" style="width: 3rem; height: 3rem;">
+               <span class="sr-only">Loading...</span>
+             </div>
+            </div>
+           </div>
+        </div>
+        
 
     <table class="table table-hover col-12 mt-3" id="reporte-tble" style="display: none;">
         <thead class="thead-warning header_table">
@@ -59,8 +88,10 @@
                 <th>ACCIÓN</th>
                 <th>JUSTIFICACIÓN</th>
                 <th>FECHA</th>
-
-                <th></th>
+                <th>MARCA</th>
+                <th>CAMPO</th>
+                <th>ANTES</th>
+                <th>DESPUÉS</th>
             </tr>
         </thead>
         <tbody>
@@ -69,6 +100,10 @@
                 <td>{{item.accion}}</td>
                 <td>{{item.justificacion}}</td>
                 <td>{{item.fecha | date}}</td>
+                <td>{{item.marca}}</td>
+                <td>{{item.campo}}</td>
+                <td>{{item.antes}}</td>
+                <td>{{item.despues}}</td>
             </tr>
         </tbody>
     </table>
