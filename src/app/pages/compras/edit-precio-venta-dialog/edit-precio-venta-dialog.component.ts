@@ -17,6 +17,10 @@ export class EditPrecioVentaDialogComponent implements OnInit {
   public articulolin:any; 
   public preciosventa: any; 
   public preciosventaC: any; 
+  public idimpuestoventa:number; 
+  public iduimpuestocompra:number; 
+  public nomimpuestoventa:string; 
+  public nomimpuestocompra:string; 
 
   public costemedio:number|undefined; 
   public costestock:number|undefined; 
@@ -27,6 +31,7 @@ export class EditPrecioVentaDialogComponent implements OnInit {
   public data: any; 
 
   public userdata : any;
+  public catimpuestos:any = []; 
 
   constructor(public dialogRef: MatDialogRef<EditPrecioVentaDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public param: any,
@@ -68,10 +73,31 @@ export class EditPrecioVentaDialogComponent implements OnInit {
      
       if (resp.success) {
         this.data =  resp.result[0];
-        this.nombrearticulo= this.data.descripcion;  
+        this.nombrearticulo= this.data.descripcion; 
+        this.iduimpuestocompra= this.data.tipoImpuesto;
+        this.idimpuestoventa = this.data.impuestoCompra;  
+        this.getImpuestos(); 
       }
 
     });
+  }
+
+  getImpuestos()
+  {
+    this.service
+    .serviceGeneralGet(`Items/getImpuestos`)
+    .subscribe((resp) => {
+     
+      if (resp.success) {
+        this.catimpuestos = resp.result;
+        let objf = this.catimpuestos.filter((impuesto)=> impuesto.tipoiva == this.idimpuestoventa );
+        this.nomimpuestoventa = objf[0].descripcion;  
+       objf = this.catimpuestos.filter((impuesto)=> impuesto.tipoiva == this.iduimpuestocompra );
+        this.nomimpuestocompra = objf[0].descripcion;  
+      }
+
+    });
+
   }
 
   getPreciosventa()

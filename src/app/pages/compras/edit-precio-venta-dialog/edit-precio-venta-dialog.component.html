@@ -6,8 +6,20 @@
     <h5 class="mt-3 mb-3">{{nombrearticulo}}</h5>
 
     <div style="overflow: auto;" class="mt-3">
-    
-     <div class="row m-0">
+      
+
+        <div class="row m-0 mt-3">
+            <div class="col-6">
+                <label class="text-danger">IMPUESTO DE VENTA</label>
+                <input type="text" class="form-control" [value]="nomimpuestoventa" disabled>
+            </div>
+            <div class="col-6">
+                <label class="text-danger">IMPUESTO DE COMPRA</label>
+                <input type="text" class="form-control" [value]="nomimpuestocompra" disabled>
+            </div>
+          </div> 
+
+     <div class="row m-0 mt-3">
 
         <div class="col-6">
             <label>COSTE MEDIO</label>
@@ -65,7 +77,7 @@
 
     </div>
     
-    <div style=" position: absolute;
+    <div class="mt-3 d-flex justify-content-end p-3" style="
     bottom: 10px;
     right: 10px;">
     <button class="btn-grad" (click)="guardar()">GUARDAR</button>
