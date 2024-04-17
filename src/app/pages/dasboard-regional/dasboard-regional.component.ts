@@ -29,7 +29,7 @@ import { DialogDetalleSalonMantenimientoComponent } from '../sucursales/dialog/d
 import { DialogDetalleBanosMantenimientoComponent } from '../sucursales/dialog/dialog-detalle-banos-mantenimiento/dialog-detalle-banos-mantenimiento.component';
 import { DialogDetalleBarraMantenimientoComponent } from '../sucursales/dialog/dialog-detalle-barra-mantenimiento/dialog-detalle-barra-mantenimiento.component';
 import { ActivatedRoute } from '@angular/router';
-
+import * as XLSX from 'xlsx';
 
 @Component({
   selector: 'app-dasboard-regional',
@@ -847,4 +847,33 @@ export class DasboardRegionalComponent implements OnInit {
       }
     });
   }
+
+
+  public name; 
+exportToExcel(): void {
+    
+  this.name = 'REPORTE ACTIVIDADES REGIONAL.xlsx';
+
+let element = document.getElementById('reporte-cocina');
+let worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+const book: XLSX.WorkBook = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(book, worksheet, 'COCINA');
+
+element = document.getElementById('reporte-salon');
+worksheet = XLSX.utils.table_to_sheet(element);
+XLSX.utils.book_append_sheet(book, worksheet, 'SALON');
+
+element = document.getElementById('reporte-baño');
+worksheet = XLSX.utils.table_to_sheet(element);
+XLSX.utils.book_append_sheet(book, worksheet, 'BAÑO');
+
+element = document.getElementById('reporte-sistema');
+worksheet = XLSX.utils.table_to_sheet(element);
+XLSX.utils.book_append_sheet(book, worksheet, 'SISTEMA Y CAJA');
+
+XLSX.writeFile(book, this.name);
+}
+
+
 }

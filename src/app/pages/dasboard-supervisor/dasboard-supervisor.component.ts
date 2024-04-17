@@ -10,7 +10,7 @@ import { DialogDetalleAperturaComponent } from '../sucursales/dialog/dialog-deta
 import { DialogDetalleAceiteComponent } from '../sucursales/dialog/dialog-detalle-aceite/dialog-detalle-aceite.component';
 import { ActivatedRoute } from '@angular/router';
 import { DialogViewImageComponent } from '../sucursales/dialog/dialog-view-image/dialog-view-image.component';
-
+import * as XLSX from 'xlsx';
 @Component({
   selector: 'app-dasboard-supervisor',
   templateUrl: './dasboard-supervisor.component.html',
@@ -622,5 +622,25 @@ export class DasboardSupervisorComponent implements OnInit {
       }
     });
   }
+
+  public name; 
+exportToExcel(): void {
+    
+  this.name = 'REPORTE ACTIVIDADES SUPERVISOR.xlsx';
+
+let element = document.getElementById('reporte-matutino');
+let worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);
+
+const book: XLSX.WorkBook = XLSX.utils.book_new();
+XLSX.utils.book_append_sheet(book, worksheet, 'MATUTINO');
+
+element = document.getElementById('reporte-vespertino');
+worksheet = XLSX.utils.table_to_sheet(element);
+XLSX.utils.book_append_sheet(book, worksheet, 'VESPERTINO');
+
+XLSX.writeFile(book, this.name);
+}
+
+
 }
 
