@@ -224,7 +224,7 @@
               <tr>
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Regional asignado</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -234,7 +234,7 @@
               <tr *ngFor="let item of data.tasksKitchenCollection">
                 <th scope="row">{{item.name}}</th>
                 <td>{{item.regional}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">
@@ -254,7 +254,7 @@
               <tr>
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Regional asignado</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -264,7 +264,7 @@
               <tr *ngFor="let item of data.tasksSalonCollection">
                 <th scope="row">{{item.name}}</th>
                 <td>{{item.regional}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">
@@ -284,7 +284,7 @@
               <tr>
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Regional asignado</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -294,7 +294,7 @@
               <tr *ngFor="let item of data.tasksBathroomsCollection">
                 <th scope="row">{{item.name}}</th>
                 <td>{{item.regional}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">
@@ -314,7 +314,7 @@
               <tr>
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Regional asignado</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -324,7 +324,7 @@
               <tr *ngFor="let item of data.tasksSystemCollection">
                 <th scope="row">{{item.name}}</th>
                 <td>{{item.regional}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === 1" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32" height="32">

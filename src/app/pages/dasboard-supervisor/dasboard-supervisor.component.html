@@ -212,7 +212,7 @@
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Supervisor asignado</th>
                 <th scope="col">Capturo</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -223,7 +223,7 @@
                 <th scope="row">{{item.nameTask}}</th>
                 <td>{{item.supervisor}}</td>
                 <td>{{item.capture}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === true" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
@@ -247,7 +247,7 @@
                 <th scope="col">Nombre de la tarea</th>
                 <th scope="col">Supervisor asignado</th>
                 <th scope="col">Capturo</th>
-                <th scope="col">Fecha</th>
+                <th scope="col">Fecha y Hora</th>
                 <th scope="col">Porcentaje completado</th>
                 <th scope="col">Estatus</th>
                 <th scope="col">Detalle</th>
@@ -258,7 +258,7 @@
                 <th scope="row">{{item.nameTask}}</th>
                 <td>{{item.supervisor}}</td>
                 <td>{{item.capture}}</td>
-                <td>{{ item.date | date: "dd MMM yyy" }}</td>
+                <td>{{ item.date | date: "dd MMM yyy hh:mm a" }}</td>
                 <td>{{item.percentageComplete | number: '.1-2'}}%</td>
                 <td>
                   <img *ngIf="item.status === true" src="./assets/icon/icon-asisti.svg" alt="asistio" width="32"
