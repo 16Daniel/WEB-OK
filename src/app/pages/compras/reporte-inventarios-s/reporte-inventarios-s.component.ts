@@ -26,7 +26,7 @@ export class ReporteInventariosSComponent implements OnInit {
     public mermastotal;
     public selectFila =null;
     // displayedColumns = ['sucursal', 'articulo', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
-    public displayedColumns = ['region','sucursal', 'articulo', 'seccion', 'invAyer', 'traspasoAyer', 'consumoAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
+    public displayedColumns = ['region','sucursal', 'articulo', 'seccion', 'invAyer', 'traspasoAyer', 'consumoAyer', 'MermasAyer', 'invHoy', 'captura', 'invFormula','diferencia'];
   
     public carga = false;
   

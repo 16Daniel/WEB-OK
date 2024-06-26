@@ -225,6 +225,13 @@
             <td class="col-1" mat-cell *matCellDef="let element"> {{element.consumoAyer | number: '.1-2'}} </td>
           </ng-container>
 
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="MermasAyer">
+              <th scope="col-1" mat-header-cell *matHeaderCellDef> MERMAS AYER</th>
+              <td class="col-1" mat-cell *matCellDef="let element"> {{element.mermasayer | number: '.1-2'}} </td>
+            </ng-container>
+  
+
           <!-- Symbol Column -->
           <ng-container matColumnDef="invHoy">
             <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO HOY</th>
