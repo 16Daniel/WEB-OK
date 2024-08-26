@@ -30,7 +30,6 @@ export class HistorialCambiosItemsComponent implements OnInit {
     .subscribe((resp) => {
      
       if (resp.success) {
-        debugger
         this.data = resp.result;
         this.dataini = this.data;
         this.showbtn = this.data.length<1 ? false : true; 
