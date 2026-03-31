@@ -82,6 +82,7 @@ import { EditPrecioVentaDialogComponent } from './pages/compras/edit-precio-vent
 import { EditPrecioProveedorDialogComponent } from './pages/compras/edit-precio-proveedor-dialog/edit-precio-proveedor-dialog.component';
 import { DetallesCambiosDialogComponent } from './pages/compras/detalles-cambios-dialog/detalles-cambios-dialog.component';
 import { HistorialCambiosItemsComponent } from './pages/compras/historial-cambios-items/historial-cambios-items.component';
+import { InventarioArtSemanalComponent } from './pages/compras/inventario-art-semanal/inventario-art-semanal.component';
 
 
 
@@ -149,7 +150,7 @@ import { HistorialCambiosItemsComponent } from './pages/compras/historial-cambio
     EditPrecioProveedorDialogComponent,
     DetallesCambiosDialogComponent,
     HistorialCambiosItemsComponent,
-
+    InventarioArtSemanalComponent,
   ],
   imports: [
     MatTableModule,
