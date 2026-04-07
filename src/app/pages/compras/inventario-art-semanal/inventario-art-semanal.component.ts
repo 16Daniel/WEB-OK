@@ -131,10 +131,10 @@ export class InventarioArtSemanalComponent implements OnInit {
     public name; 
     exportToExcel(city): void {
       if(city == 1){
-        this.name = 'RW CDMX INVENTARIO VESPERTINO: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+        this.name = 'INVENTARIO SEMANAL: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
       }
       else{
-        this.name = 'RW QRO INVENTARIO VESPERTINO: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
+        this.name = 'INVENTARIO SEMANAL: '+this.today.getDate()+''+this.today.getMonth()+''+this.today.getFullYear()+'.xlsx';
       }
       let element = document.getElementById('reporte-tble');
       const worksheet: XLSX.WorkSheet = XLSX.utils.table_to_sheet(element);

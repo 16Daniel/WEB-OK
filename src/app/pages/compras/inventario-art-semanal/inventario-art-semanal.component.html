@@ -5,7 +5,7 @@
             <img class="img-fluid" src="./assets/icon/ilustracion_mesas_en_espera.png" alt="" />
         </div>
         <div class="col-11 align-center">
-            <h4 class="title align-center">REPORTE INVENTARIOS SEMANAL</h4>
+            <h4 class="title align-center">REPORTE INVENTARIO SEMANAL</h4>
         </div>
         <div class="col-2 align-center">
             <br />
@@ -209,25 +209,25 @@
           </ng-container>
           <!-- Symbol Column -->
           <ng-container matColumnDef="invAyer">
-            <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO AYER</th>
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> INVENTARIO ANTERIOR</th>
             <td class="col-1" mat-cell *matCellDef="let element" [ngStyle]="{'background-color':element.invAyer=='SIN CAPTURA'?'#AD182D':'','color':element.invAyer=='SIN CAPTURA'?'white':''}"> {{element.invAyer}} </td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="traspasoAyer" >
-            <th scope="col-1" mat-header-cell *matHeaderCellDef> TRASPASO AYER</th>
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> TRASPASOS</th>
             <td class="col-1" mat-cell *matCellDef="let element"> {{element.traspasoAyer | number: '.1-2'}} </td>
           </ng-container>
 
           <!-- Symbol Column -->
           <ng-container matColumnDef="consumoAyer">
-            <th scope="col-1" mat-header-cell *matHeaderCellDef> CONSUMO AYER</th>
+            <th scope="col-1" mat-header-cell *matHeaderCellDef> CONSUMO</th>
             <td class="col-1" mat-cell *matCellDef="let element"> {{element.consumoAyer | number: '.1-2'}} </td>
           </ng-container>
 
             <!-- Symbol Column -->
             <ng-container matColumnDef="MermasAyer">
-              <th scope="col-1" mat-header-cell *matHeaderCellDef> MERMAS AYER</th>
+              <th scope="col-1" mat-header-cell *matHeaderCellDef> MERMAS</th>
               <td class="col-1" mat-cell *matCellDef="let element"> {{element.mermasayer | number: '.1-2'}} </td>
             </ng-container>
   
