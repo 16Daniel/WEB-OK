@@ -171,6 +171,13 @@ export const ROUTES: RouteInfo[] = [
        access: [3,4,9]
      },
      {
+        path: "/compras-inv-s",
+       title: "Inventario Semanal",
+        icon: "tareas-inactivo",
+       class: "",
+       access: [3,4,9]
+     },
+     {
       path: "/compras-m",
      title: "Mermas",
       icon: "tareas-inactivo",

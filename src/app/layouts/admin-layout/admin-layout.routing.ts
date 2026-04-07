@@ -31,6 +31,7 @@ import { ReporteChecadasComponent } from 'app/pages/direccion/reporte-checadas/r
 import { EditItemComponent } from 'app/pages/compras/edit-item/edit-item.component';
 import { SolicitudCambiosComponent } from 'app/pages/compras/solicitud-cambios/solicitud-cambios.component';
 import { HistorialCambiosItemsComponent } from 'app/pages/compras/historial-cambios-items/historial-cambios-items.component';
+import { InventarioArtSemanalComponent } from 'app/pages/compras/inventario-art-semanal/inventario-art-semanal.component';
 
 export const AdminLayoutRoutes: Routes = [
   { path: "dashboard", component: DashboardComponent },
@@ -53,6 +54,7 @@ export const AdminLayoutRoutes: Routes = [
   { path: "auditoria", component: AuditoriaComponent },
   { path: "compras", component: ReporteInventariosComponent },
   { path: "compras-s", component: ReporteInventariosSComponent },
+  { path: "compras-inv-s", component: InventarioArtSemanalComponent },
   { path: "direccion", component: ReporteVentaVendedorComponent },
   { path: "vista-general-regional", component: DashboardPerformanceRegionalComponent },
   { path: "vista-general-supervisor", component: DashboardPerformanceSupervisorComponent },
